@@ -74,6 +74,13 @@
 			color: #777;
 		}
 
+		li {
+			margin-bottom: .5em;
+		}
+		ul, ol {
+			margin-bottom: 1em;
+		}
+
 		.example {
 			margin: 1em 1em 1.3em 1.5em; /* bottom must match p */
 			border: 1px solid #EEF;
@@ -86,7 +93,10 @@
 		}
 
 		pre {
-			margin-bottom: 1.25em; /* bottom must match p */
+			background-color: black;
+			color: #FDD;
+			font-weight: bold;
+			margin-bottom: 1.75em; /* bottom must match p, but a bit larger looks better */
 		}
 
 		dl > dt {
@@ -109,6 +119,7 @@
 			margin-top: 2em;
 		}
 			#nav a { padding-bottom: .25em; color: #E64; text-decoration: none; }
+			#nav li { margin: 0; }
 			#nav li.active { background-color: #D55; }
 			#nav li.active a { color: white; }
 			#nav li.active a:hover { color: #E64; }
@@ -138,12 +149,10 @@
 			          <li><a href="#machine">The Machine</a></li>
 			          <li><a href="#domain-name-configuration">Domain Name Configuration</a></li>
 			          <li><a href="#setup">Machine Setup</a></li>
+			          <li><a href="#admin">Administrative Page</a></li>
 			          <li><a href="#mail">Checking/Sending Mail</a></li>
-			          <li><a href="#mail-users">Adding Email Addresses</a></li>
-			          <li><a href="#ssl">SSL Certificate</a></li>
 			          <li><a href="#web">Your Website</a></li>
 			          <li><a href="#custom_dns">Custom DNS</a></li>
-			          <li><a href="#dnssec">DNSSEC</a></li>
 			          <li><a href="#other">Other</a></li>
 			          <li><a href="#checks">Systems Checks</a></li>
 			        </ul>
@@ -162,7 +171,7 @@
 	    				<dd>No. Mail-in-a-Box must be installed on a <u>fresh</u> machine that will be <u>dedicated</u> to Mail-in-a-Box. You are on your own if you try any other configuration.</dd>
 
 	    				<dt>Can I use my domain name for something else?</dt>
-	    				<dd>Yes. Even though your Mail-in-a-Box will be handling mail for your domain name, you can actually point domain anywhere else. And you can create other subdomains. This is documented at the end of this guide.</dd>
+	    				<dd>Yes. Even though your Mail-in-a-Box will be handling mail for your domain name, you can actually point domain anywhere else for a website. And you can create other subdomains.</dd>
 
 	    				<dt>What will it cost?</dt>
 	    				<dd>This is going to cost you about $15 per month. You&rsquo;re going to become your own Internet service provider &mdash; an ISP. You can divide this among friends and share your Mail-in-a-Box if you&rsquo;d like to split it up. Most of the cost is in having a (virtual) machine connected to the Internet 24/7.</dd>
@@ -239,9 +248,9 @@
 
 	    			<h3>Glue Records</h3>
 
-	    			<p>First, you&rsquo;ll create two &ldquo;glue records.&rdquo; The purpose of glue records is to say that your box is becoming a part of the domain name system. These records go by different names at different registrars, so also look out for &ldquo;hostnames&rdquo; or child nameservers. This will <em>not</em> be found in a DNS control panel.</p>
+	    			<p>First, you&rsquo;ll create two &ldquo;glue records.&rdquo; The purpose of glue records is to say that your box is becoming a part of the domain name system. These records go by different names at different registrars, so also look out for &ldquo;hostnames&rdquo; or &ldquo;child nameservers.&rdquo;. This will <em>not</em> be found in a DNS control panel.</p>
 
-	    			<p>A glue record has a hostname and an IP address. For historical reasons we need two glue records. The two records you need to create are for <code>ns1</code> + <code>.</code> + your box&rsquo;s hostname and <code>ns2</code> + <code>.</code> + your box&rsquo;s hostname. (They stand for &ldquo;nameserver one&rdquo; and &ldquo;nameserver two&rdquo;.) For the IP address, enter the IP address of your box.</p>
+	    			<p>A glue record consists of a hostname and an IP address. For historical reasons we need two glue records. The two records you need to create are for <code>ns1</code> + <code>.</code> + your box&rsquo;s hostname and <code>ns2</code> + <code>.</code> + your box&rsquo;s hostname. (They stand for &ldquo;nameserver one&rdquo; and &ldquo;nameserver two&rdquo;.) For the IP address, enter the IP address of your box.</p>
 
 	    				<p class="example">Josh&rsquo;s box&rsquo;s hostname is box.occams.info. The two glue records are for <code>ns1.box.occams.info</code> and <code>ns2.box.occams.info</code> and list the box&rsquo;s IP address of <code>94.76.202.152</code>.</p>
 
@@ -291,34 +300,76 @@ cd mailinabox</pre>
 
 					<p>It is always safe to re-run the setup script. If something goes wrong or you just want to see it again, just do again <code>sudo setup/start.sh</code>.</p>
 
-					<p>When the setup script is done running, you have a working mail server. But first check that everything is correct so far by typing:</p>
+					<h2 id="admin">The Administrative Interface</h2>
 
-					<pre>sudo management/whats_next.py</pre>
+					<h3>Connecting for the First Time</h3>
 
-					<p>This script reports configuration problems and next steps.</p>
+					<p>When the setup script is done running, you&rsquo;ll been given instructions on how to access your box&rsquo;s administrative control panel from your web browser, e.g.:</p>
 
-					<p>Things related to the domain name system sometimes take several minutes, or much longer, to update. This is called DNS propagation. If you get domain name resolving problems, you may need to wait a bit for your registrar and your home ISP&rsquo;s name servers to update. If the problem persists, there is a configuration problem either at your domain name registrar or on the box.</p>
+					<pre>Your Mail-in-a-Box is running.
 
-					<p>Also right now your SSL certificates won&rsquo;t be signed. This does not prevent you from sending or receiving email, though, so we will come back to this below.</p>
+Please log in to the control panel for further instructions at:
 
+    https://94.76.202.152/admin
+
+You will be alerted that the website has an invalid certificate. Check that
+the certificate fingerprint matches:
+
+C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
+
+					<p>Your SSL certificate is not yet signed so you will get a security warning when you visit the administrative URL. There is a way to proceed securely if you use Mozilla Firefox.</p>
+
+					<ol>
+					<li>Open the URL in Firefox. Firefox will say <em>This Connection is Untrusted</em>.</li>
+					<li>Click on <em>I Understand the Risks</em>.</li>
+					<li>Click on <em>Add Exception</em>.</li>
+					<li>Click on <em>View</em>.</li>
+					<li>Compare the <em>SHA1 Fingerprint</em> in Firefox to the fingerpint reported by Mail-in-a-Box&rsquo;s setup script in your SSH connection (see the example above). If they match, it is safe to continue.</li>
+					<li>Click on <em>Close</em>.</li>
+					<li>Click on <em>Confirm Security Exception</em>. It is safe (and convenient!) to permanently store the exception.</li>
+					</ol>
+
+					<p>The page will then load securely.</p>
+
+					<p>You can also get a signed SSL certificate (see below) so you don&rsquo;t have to go through these steps.</p>
+
+					<h3>System Status</h3>
+
+					<p>Log in to the administrative control panel with the email address and password that you provided during Mail-in-a-Box&rsquo;s setup. Proceed to the System Status Checks.</p>
+
+					<p>These checks will guide you toward finishing your setup:</p>
+
+					<ul>
+						<li>The control panel will check if your DNS is set up correctly. Things related to the domain name system sometimes take several minutes, or much longer, to update. This is called DNS propagation. Wait for the control panel to report no DNS problems &mdash; reload the page every 15 minutes or so. If problems persist, something went wrong.</li>
+						<li>Getting a signed SSL certificate is optional but is highly recommended and will remove the security exception warnings from a) the control panel and b) when you start checking and sending mail. The control panel will walk you through this.</li>
+						<li>DNSSEC is an optional step that adds additional security to your DNS records. When enabled, mail between Mail-in-a-Boxes will always be encrpyted. The control panel will walk you through setting up DNSSEC as well.</li>
+					</ul>
+
+					<h3>Other Functions</h3>
+
+					<p>The control panel will also help you:</p>
+
+					<ul>
+						<li>Add and remove additional email addresses.</li>
+						<li>Set up your mail apps.</li>
+						<li>More coming...</li>
+					</ul>
 
 					<h2 id="mail">Checking and Sending Mail</h2>
 
 	    			<p class="pros">You have webmail at <code>https://hostname/mail</code>. IMAP with SSL is on port 993 and SMTP with STARTTLS is on port 587. Your username is your email address.</p>
 
+					<p>The administrative control panel described in the last section has a page with mail instructions. Here is a summary of what it says:</p>
+
 					<h3>Webmail</h3>
 
 					<p>You can access your email at <code>https://hostname/mail</code>, where hostname is your box&rsquo;s hostname.</p>
 
-	    				<p class="example">Josh goes to <a href="https://box.occams.info/mail">https://box.occams.info/mail</a> to check and send email using webmail.</p>
+	    			<p>You will get a security warning if you do not yet have a signed SSL certificate and have not yet confirmed the exception (see above for how to do that securely).</p>
 
-	    			<p>When you visit this page you will see a warning about the site&rsquo;s SSL certificate being invalid. Right now you are using a self-signed certificate. If it is unlikely that anyone is running an active network attack on you right now, just permanently confirm the security exception and you will be good to go.</p>
+	    			<p>Your username is the <u>email address</u> you entered when you ran the Mail-in-a-Box setup program above.</p>
 
-	    			<p>(Otherwise, check that the SSL fingerprint show to you matches the SSL fingerprint printed toward the top of the long output of the setup script. You may run <code>sudo setup/start.sh</code> again if you missed it.)</p>
-
-	    			<p>Your username is the <u>email address</u> you entered when you ran the setup program above.</p>
-
-	    			<p><strong>Try to send some mail now!</strong></p>
+	    			<p>Try to send some mail now!</p>
 
 	    			<h3>Mobile and other mail clients</h3>
 
@@ -327,12 +378,10 @@ cd mailinabox</pre>
 	    			<p>Configure your device as follows:</p>
 
 	    			<table>
-	    			<tr><th>Server Name:</th> <td>Your box&rsquo;s hostname.</td></tr>
-	    			<tr><th>Username:</th> <td>The complete <u>email address</u> you provided when you ran the setup program earlier.</td></tr>
-	    			<tr><th>Password:</th> <td>The password you gave the email address during the setup program earlier.</td></tr>
+	    			<thead><tr><th>Option</th> <th>Value</th></tr></thead>
+	    			<tr><th><nobr>Server Name:</nobr></th> <td>Your box&rsquo;s hostname.</td></tr>
+	    			<tr valign="top"><th>Login:</th> <td>Your username is the complete <u>email address</u> you provided when you ran the setup program earlier. Your password is the password you gave.</td></tr>
 	    			</table>
-
-	    			<p>Depending on your mail program, you will either use IMAP &amp; SMTP or Exchange ActiveSync:</p>
 
 	    			<table>
 	    			<thead><tr><th>Protocol</th> <th>Port</th> <th>Options</th></tr></thead>
@@ -342,31 +391,10 @@ cd mailinabox</pre>
 	    			<tr><td colspan="3" style="padding: 0 0 0 1em; font-size: 90%">see <a href="http://z-push.org/compatibility/">list of compatible devices</a> for Exchange ActiveSync</td></tr>
 	    			</table>
 
+	    			<p>Depending on your mail program, you will either use IMAP &amp; SMTP or you will use Exchange ActiveSync When you use Exchange ActiveSync, you can also get contacts synchronization.</p>
+
 	    			<p>Note: Mail-in-a-Box uses <a href="http://en.wikipedia.org/wiki/Greylisting">greylisting</a> to cut down on spam. The first time you receive an email from a recipient, it may be delayed for ten minutes.</p>
 
-
-	    			<h2 id="mail-users">Adding More Email Addresses</h2>
-
-	    			<p class="pros">Use <code>tools/mail.py</code> to manage email addresses and aliases.</p>
-
-	    			<p>Your box may manage the email for multiple email addresses. While logged in with SSH (see above), run:</p>
-
-	    			<pre>sudo tools/mail.py</pre>
-
-	    			<p>This command will help you add and remove email accounts and email aliases (forwarders).</p>
-
-	    			<p>You may add email addresses on other domain names. If you do, you will need to set the nameservers for those domains in the domain name registrar configuration too, as described above.</p>
-
-
-	    			<h2 id="ssl">Getting a Signed Certificate</h2>
-
-	    			<p>To configure a real signed SSL certificate, run the <code>whats_next</code> script and follow the instructions:</p>
-
-					<pre>sudo management/whats_next.py</pre>
-
-					<p>The script will give you the CSR (which you give to your registrar or other SSL provider).</p>
-
-					<p>When you purchase an SSL certificate you will receive a certificate in PEM format and possibly a file containing &ldquo;intermediate certificates&rdquo; in PEM format. If you receive intermediate certificates, use a text editor like Notepad or Gedit and paste <em>your</em> certificate on top and <em>then</em> the intermediate certificates below it. Save the file and place this <em>combined</em> file onto your box in the location indicated by the <code>whats_next</code> script.</p>
 
 					<h2 id="web">Publishing Your Website</h2>
 
@@ -408,19 +436,6 @@ cd mailinabox</pre>
   					<p>to update the DNS settings.</p>
 
 					<p>Mail and web are handled by separate types of DNS records. You can actually override the DNS for any domain you have an email address at &mdash; except the box&rsquo;s hostname itself &mdash; to have the domain's website served by another machine without affecting its email.</p>
-
-
-					<h2 id="dnssec">Configuring DNSSEC</h2>
-
-	    			<p>The domain name system is not very secure. Enabling DNSSEC provides a layer of cryptographic security on top of the domain name system in a similar way to how HTTPS web addresses add a layer of security to the web.</p>
-
-	    			<p>DNSSEC is optional, but with it your box will advertise that it is secure. Other mail servers that support DNSSEC and DANE will begin encrypting mail to you while it is in transit. (Since Mail-in-a-Box supports this too, email between DNSSEC-enabled Mail-in-a-Boxes is always encrypted in transit.)</p>
-
-	    			<p>DNSSEC is configured at your domain name registrar. To activate DNSSEC, you'll need to get DS configuration information from the box and then enter that at your registrar. While logged in on the box, run:</p>
-
-					<pre>sudo management/whats_next.py</pre>
-
-					<p>Copy the DS information and follow the DS record instructions provided by your domain name registrar. How this works varies from registrar to registrar.</p>
 
 
 					<h2 id="maintenance">Keeping Your Box Humming</h2>
