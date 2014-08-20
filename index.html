@@ -143,15 +143,14 @@ sudo management/whats_next.py</pre>
 							</ul>
 							<p>Log into your competely fresh Ubuntu machine using SSH, then type:</p>
 						</div>
-						<pre class="deploy hidden">wget https://mailinabox.email/bootstrap.sh
-sudo bash bootstrap.sh</pre>
+						<pre class="deploy hidden">sudo apt-get install git</span>
+git clone <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>
+cd mailinabox
+git checkout -q 14.08-beta
+sudo setup/start.sh</pre>
 						<div class="deploy hidden">
-							<p>You will be asked to enter the email address you want and a few other configuration questions.</p>
-							<p>Then run the post-install checklist command to see what you need to do next:</p>
-						</div>
-						<pre class="deploy hidden">sudo management/whats_next.py</pre>
-						<div class="deploy hidden">
-							<p>Consult the <a href="guide.html">setup guide</a> for further details. Or visit <code>https://yourdomain.com/mail</code> to start emailing.</p>
+							<p>You will be asked to enter the email address you want and a few other configuration questions. At the end you&rsquo;ll be given instructions for how to access the web-based administrative control panel.</p>
+							<p>Consult the <a href="guide.html">setup guide</a> for further details.</p>
 						</div>
 	    			</div>
 
