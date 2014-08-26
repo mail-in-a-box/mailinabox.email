@@ -49,29 +49,25 @@
 			margin-bottom: 2.5em;
 		}
 
-		#example-toolbar {
-			margin-bottom: 1px;
+		#instructions {
+			margin: 1.25em 1em;
+			border-left: 3px solid #999;
+			padding: .5em 1.25em;
 		}
-		#example {
-			background-color: #fafafa;
-			border: 1px solid #ccc;
-			border-radius: 4px;
-			margin-bottom: .5em;
+			#instructions pre {
+				margin: 1.25em 0;
+			}
+
+		#screenshots {
+			margin-top: 1.5em;
 		}
-			#example pre {
-				border: none;
-				margin: 0;
-				background-color: #f0f0f0;
-			}
-			#example > div {
-				padding: 9.5px 9.5px 0 9.5px;
-				font-family: serif;
-				font-size: 14px;
-			}
-			#example ul {
-				padding-left: 1.5em;
-				list-style-type: square;
-			}
+		#screenshots div {
+			font-weight: bold;
+			text-align: center;
+		}
+		#screenshots img {
+			border: 1px solid #999;
+		}
 
 		#sidebar {
 			color: #DDD;
@@ -120,41 +116,26 @@
 	    			<h1>Mail-in-a-Box</h1>
 	    			<p id="deck">Take back control of your email with this easy-to-deploy mail server in a box.</p>
 
-					<div id="example-toolbar" class="btn-toolbar">
-					  <div class="btn-group btn-group-xs">
-						<button type="button" class="btn btn-default active" data-id="vagrant">Test with Vagrant</button>
-						<button type="button" class="btn btn-default" data-id="deploy">Deploy on Ubuntu 14.04</button>
-					  </div>
-					</div>    			
-	    			<div id="example">
-	    				<pre class="vagrant">sudo apt-get install vagrant git
-git clone <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>
-cd mailinabox
+					<h2>What&rsquo;s inside the box?</h2>
 
-vagrant up
-vagrant ssh
-sudo management/whats_next.py</pre>
-						
-						<div class="deploy hidden">
-							<p>You will need:</p>
-							<ul>
-								<li>A domain name.</li>
-								<li>A <i>completely</i> fresh Ubuntu 14.04 machine, e.g. from <a href="https://www.digitalocean.com/">Digital Ocean</a> (please read the <a href="guide.html">setup guide</a> for details).</li>
-							</ul>
-							<p>Log into your competely fresh Ubuntu machine using SSH, then type:</p>
-						</div>
-						<pre class="deploy hidden">sudo apt-get install git</span>
-git clone <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>
-cd mailinabox
-git checkout -q 14.08-beta
-sudo setup/start.sh</pre>
-						<div class="deploy hidden">
-							<p>You will be asked to enter the email address you want and a few other configuration questions. At the end you&rsquo;ll be given instructions for how to access the web-based administrative control panel.</p>
-							<p>Consult the <a href="guide.html">setup guide</a> for further details.</p>
-						</div>
-	    			</div>
+					<p>Mail-in-a-Box turns a fresh cloud computer into a working mail server including everything you&rsquo;d expect like contact synchronization and spam filtering (see list <span class="hidden-xs">on the left</span><span class="hidden-sm hidden-md hidden-lg">below</span>).</p>
 
-					<p class="text-danger small" style="margin-top: 2em;">Note: This is a work in progress. I work on Mail-in-a-Box in my limited free time. Your mileage may vary.</p>
+					<p>On your phone, you can use apps like <a href="https://play.google.com/store/apps/details?id=com.fsck.k9">K-9 Mail</a> and <a href="https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync">CardDAV-Sync free beta</a> to sync your email and contacts with your box. Plus you get:</p>
+
+					<div id="screenshots" class="row">
+						<div class="col-sm-4">
+							<div>Roudcube Webmail</div>
+							<a href="/static/roundcube.png"><img src="/static/roundcube.png" class="img-responsive"></a>
+						</div>
+						<div class="col-sm-4">
+							<div>ownCloud (contacts)</div>
+							<a href="/static/owncloud_contacts.png"><img src="/static/owncloud_contacts.png" class="img-responsive"></a>
+						</div>
+						<div class="col-sm-4">
+							<div>A Control Panel</div>
+							<a href="/static/control_panel.png"><img src="/static/control_panel.png" class="img-responsive"></a>
+						</div>
+					</div>
 
 					<h2>Why build this?</h2>
 
@@ -162,11 +143,30 @@ sudo setup/start.sh</pre>
 
 					<p>Although the core protocol of email, <a href="http://www.faqs.org/rfcs/rfc821.html">SMTP</a>, is completely decentralized, in practice email has become highly centralized because it is so damn difficult to implement the dozens of modern protocols that surround it. </p>
 
-					<p>Mail-in-a-Box turns a fresh Ubuntu 14.04 LTS 64-bit machine into a working mail server including all of the components listed <span class="hidden-xs">on the left</span><span class="hidden-sm hidden-md hidden-lg">below</span>.</p>
 
 					<h2>Getting started</h2>
 
-					<p>For <strong>instructions</strong> for getting up and running, please read the <a href="guide.html">setup guide</a>.</p>
+					<p>For instructions for getting up and running, please read the <a href="guide.html">setup guide</a>.</p>
+
+					<p>Here is the super quick version:</p>
+
+					<div id="instructions">
+						<p>You will need:</p>
+						<ul>
+							<li>A domain name.</li>
+							<li>A <i>completely</i> fresh Ubuntu 14.04 machine.</li>
+						</ul>
+						<p>Log in to your competely fresh Ubuntu machine using SSH, then type:</p>
+						<pre>sudo apt-get install git</span>
+git clone <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>
+cd mailinabox
+git checkout -q 14.08-beta
+sudo setup/start.sh</pre>
+						<p>You will be asked to enter the email address you want and a few other configuration questions. At the end you&rsquo;ll be given instructions for how to access the web-based administrative control panel to finish up.</p>
+						<p>Consult the <a href="guide.html">setup guide</a> for further details.</p>
+						<p><strong>Are you a developer?</strong> For testing, just <code>git clone</code> and <code>vagrant up</code>.</p>
+						<p class="text-danger small" style="margin-top: 1em;">Note: This is a work in progress. I work on Mail-in-a-Box in my limited free time. Your mileage may vary.</p>
+	    			</div>
 
 					<p>If you need <strong>help</strong>, please <a href="https://discourse.mailinabox.email/">ask on the forum</a>. If you think you have found a problem in Mail-in-a-Box or don&rsquo;t get a response on the forum, then <a href="https://github.com/mail-in-a-box/mailinabox/issues">open an issue on github</a>.</p>
 
@@ -187,9 +187,9 @@ sudo setup/start.sh</pre>
 
 					<h2>Development</h2>
 
-					<p>Development takes place on github at <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>.</p>
+					<p>Mail-in-a-Box is based on Ubuntu 14.04 LTS 64-bit and uses a bunch of shell scripts and a Python management daemon to configure the system. Take a look at the <a href="static/architecture.svg">system architecture diagram</a>.</p>
 
-					<p>Take a look at the <a href="static/architecture.svg">system architecture diagram</a>.</p>
+					<p>Development takes place on github at <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>.</p>
 
 					<p>Thank you to the contributors!</p>
 
