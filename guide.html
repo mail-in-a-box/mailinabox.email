@@ -60,20 +60,6 @@
 			margin-bottom: 1.25em; /* see .example, .figure, pre */
 		}
 
-		p.pros {
-			font-size: 12px;
-			font-family: Ubuntu;
-			margin: 11px 0 22px -6px;
-			padding: 6px;
-			background-color: #F8F8F8;
-			color: #666;
-		}
-		p.pros:before {
-			content: "Expert summary: ";
-			font-weight: bold;
-			color: #777;
-		}
-
 		li {
 			margin-bottom: .5em;
 		}
@@ -127,7 +113,7 @@
     </style>
 </head>
 <body data-spy="scroll" data-target="#nav">
-	<a href="https://github.com/mail-in-a-box/mailinabox/tree/website" class="visible-md visible-lg"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+	<a href="https://github.com/mail-in-a-box/mailinabox.email/blob/master/guide.html" class="visible-md visible-lg"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
 	<div id="back">
 		<div class="container">
@@ -150,10 +136,7 @@
 			          <li><a href="#domain-name-configuration">Domain Name Configuration</a></li>
 			          <li><a href="#setup">Machine Setup</a></li>
 			          <li><a href="#admin">Administrative Page</a></li>
-			          <li><a href="#mail">Checking/Sending Mail</a></li>
 			          <li><a href="#web">Your Website</a></li>
-			          <li><a href="#custom_dns">Custom DNS</a></li>
-			          <li><a href="#other">Other</a></li>
 			          <li><a href="#checks">Systems Checks</a></li>
 			        </ul>
 				</div>
@@ -168,7 +151,7 @@
 
 	    			<dl>
 	    				<dt>Can I use my box for something else too?</dt>
-	    				<dd>No. Mail-in-a-Box must be installed on a <u>fresh</u> machine that will be <u>dedicated</u> to Mail-in-a-Box. You are on your own if you try any other configuration.</dd>
+	    				<dd>No. Mail-in-a-Box must be installed on a <u>fresh</u> machine that will be <u>dedicated</u> to Mail-in-a-Box. You cannot modify the box. You are on your own if you try anything else.</dd>
 
 	    				<dt>Can I use my domain name for something else?</dt>
 	    				<dd>Yes. Even though your Mail-in-a-Box will be handling mail for your domain name, you can actually point domain anywhere else for a website. And you can create other subdomains.</dd>
@@ -177,28 +160,22 @@
 	    				<dd>This is going to cost you about $15 per month. You&rsquo;re going to become your own Internet service provider &mdash; an ISP. You can divide this among friends and share your Mail-in-a-Box if you&rsquo;d like to split it up. Most of the cost is in having a (virtual) machine connected to the Internet 24/7.</dd>
 
 	    				<dt>Do I have time?</dt>
-	    				<dd>There&rsquo;s also your time. Once a Mail-in-a-Box is set up, we hope it &ldquo;just works&rdquo; but when you are your own systems administrator you must be prepared to resolve issues as they arise.</dd>
+	    				<dd>There&rsquo;s also your time. Once a Mail-in-a-Box is set up, we hope it &ldquo;just works&rdquo; but when you are your own system administrator you must be prepared to resolve issues as they arise.</dd>
 	    			</dl>
 
 	    			<h2 id="domain-name-registration">Your Domain Name</h2>
-
-	    			<p class="pros">Register a new domain name, or have a domain name that you can have your Mail-in-a-Box completely take over.</p>
 
 	    			<p>The first step in setting up a Mail-in-a-Box is to pick your new email address. An email address has two parts. The part after the @-sign is the <b>domain name</b>. Each domain name is owned by someone, and you are going to be the owner of your own.</p>
 
 	    				<p class="example">Josh&rsquo;s email address is <script>document.write("tj".split("").reverse().join(""));</script>@occams.info. His domain name is <code>occams.info</code>.</p>
 
-	    			<p>Besides using the domain name for email, you&rsquo;ll also be able to put a simple website at the domain.</p>
+	    			<p>Some domain names have quirks, depending on which &ldquo;top-level domain&rdquo; (TLD) it is under (.com, .me, .io, and so on). When choosing a domain name, please consult our <a href="tld-quirks.html">TLD quirks page</a> first.</p>
 
-	    			<p>Go over to <a href="http://www.gandi.net/domain">Gandi.net</a>, a domain name registrar, and buy a new domain name. It&rsquo;s about $17/year, but the price varies by which &ldquo;top-level domain&rdquo; (TLD) you use, whether it&rsquo;s <code>.com</code>, <code>.me</code>, <code>.info</code>, and so on.</p>
+	    			<p>Now go over to <a href="http://www.gandi.net/domain">Gandi.net</a>, a domain name registrar, and buy a new domain name. It&rsquo;s about $17/year (depending on TLD). Buy anything you want. This is your new identity.</p>
 
-	    			<p>Buy anything you want. This is your new identity.</p>
-
-	    			<p>After you buy the name you&rsquo;ll need to set it up, but that comes later so keep reading. Note that a Mail-in-a-Box can handle the email for multiple domains names too &mdash; more on that later.</p>
+	    			<p>After you buy the name you&rsquo;ll need to set it up, but that comes later so keep reading. Note that a Mail-in-a-Box box can handle the email for multiple domains names too &mdash; more on that later.</p>
 
 	    			<h2 id="hostname">Your Box Has A Name</h2>
-
-	    			<p class="pros">Your box&rsquo;s hostname should be <tt>box.yourdomain.com</tt>.</p>
 
 	    			<p>Every machine connected to the Internet has a <b>name</b> and an <b>address</b>.</p>
 
@@ -214,8 +191,6 @@
 
 
 	    			<h2 id="machine">The Machine</h2>
-
-	    			<p class="pros">Spin up an Ubuntu 14.04 x64 machine with about 1 GB memory and 12 GB disk, and then set the machine&rsquo;s <u>reverse DNS</u>.</p>
 
 	    			<p>Now you will rent a machine, or a virtual part of a machine, somewhere in &ldquo;the cloud.&rdquo; We&rsquo;ll call this machine your box.</p>
 
@@ -238,8 +213,6 @@
 
 	    			<h2 id="domain-name-configuration">Configuring Your Domain Name</h2>
 
-	    			<p class="pros">At your registrar, create hostname records for <code>ns1.box.yourdomain.com</code> and <code>ns2.box.yourdomain.com</code> providing your box&rsquo;s IP address, and then set your domain name&rsquo;s nameservers to these two hostnames.</p>
-
 	    			<p>We&rsquo;ll now go back to your domain name registrar to associate your domain name with your box&rsquo;s IP address.</p>
 
 	    			<p>The association between your domain name and IP address is . . . complicated. The domain name system (DNS) is a global, distributed network of machines that turn domain names into IP addresses. Your registrar and your box play a role in the domain name system.</p>
@@ -248,7 +221,7 @@
 
 	    			<h3>Glue Records</h3>
 
-	    			<p>First, you&rsquo;ll create two &ldquo;glue records.&rdquo; The purpose of glue records is to say that your box is becoming a part of the domain name system. These records go by different names at different registrars, so also look out for &ldquo;hostnames&rdquo; or &ldquo;child nameservers.&rdquo;. This will <em>not</em> be found in a DNS control panel.</p>
+	    			<p>First, you&rsquo;ll create two &ldquo;glue records.&rdquo; The purpose of glue records is to say that your box is becoming a part of the domain name system. These records go by different names at different registrars, so also look out for &ldquo;hostnames&rdquo; or &ldquo;child nameservers.&rdquo;. This will <em>not</em> be found in a DNS control panel. [<a href="http://wiki.gandi.net/en/domains/management/change-glue">Gandi instructions</a>]</p>
 
 	    			<p>A glue record consists of a hostname and an IP address. For historical reasons we need two glue records. The two records you need to create are for <code>ns1</code> + <code>.</code> + your box&rsquo;s hostname and <code>ns2</code> + <code>.</code> + your box&rsquo;s hostname. (They stand for &ldquo;nameserver one&rdquo; and &ldquo;nameserver two&rdquo;.) For the IP address, enter the IP address of your box.</p>
 
@@ -278,8 +251,6 @@
 
 					<h2 id="setup">Setting Up The Box</h2>
 
-	    			<p class="pros">Clone our github repo <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>, cd to the directory, and run <code>setup/start.sh</code>.</p>
-
 					<p>You will now have to log into your running box using SSH. Your cloud provider will probably give you some instructions on how to do that. If your personal computer has a command line, you'll be doing something like this:</p>
 
 					<pre>ssh -i yourkey.pem ubuntu@10.20.30.40</pre>
@@ -297,7 +268,7 @@ git checkout -q 14.08-beta</pre>
 
 					<p>You will be asked to enter the email address you want and a few other configuration questions. At the end you will be asked for a password for your email address.</p>
 
-					<p>This password will be used to login to webmail, and to authorize sending and receiving mail through SMTP and IMAP. It will <strong>not</strong> be used to log onto your Mail-in-a-Box server using SSH.</p>
+					<p>This password will be used to login to webmail, the administrative interface, and on your devices. It will <strong>not</strong> be used to log onto your Mail-in-a-Box server using SSH (that&rsquo;s what you did above).</p>
 
 					<p>It is always safe to re-run the setup script. If something goes wrong or you just want to see it again, just do again <code>sudo setup/start.sh</code>.</p>
 
@@ -334,72 +305,39 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p>You can also get a signed SSL certificate (see below) so you don&rsquo;t have to go through these steps.</p>
 
-					<h3>System Status</h3>
+					<h3>System status &amp; DNS</h3>
 
 					<p>Log in to the administrative control panel with the email address and password that you provided during Mail-in-a-Box&rsquo;s setup. Proceed to the System Status Checks.</p>
 
 					<p>These checks will guide you toward finishing your setup:</p>
 
+					<p>The control panel will check if your DNS is set up correctly. Things related to the domain name system sometimes take several minutes, or much longer, to update. This is called DNS propagation. Wait for the control panel to report no DNS problems &mdash; reload the page every 15 minutes or so. If problems persist, something went wrong.</p>
+
+					<p>DNSSEC is an optional step that adds additional security to your DNS records. When enabled, mail between Mail-in-a-Boxes will always be encrpyted. The control panel will walk you through setting up DNSSEC as well.</p>
+
+					<h3>Getting a signed SSL certificate</h3>
+
+					<p>Getting a signed SSL certificate is optional but is highly recommended and will remove the security exception warnings from a) the control panel and b) when you start checking and sending mail. The control panel will walk you through this.</p>
+
+					<p>If you skip this, you can still safely check your email if you verify any certificate warnings like above.</p>
+
+					<h3>Checking your email</h3>
+
+					<p>The administrative control panel will provide instructions for how to check your email with webmail, IMAP/SMTP, or Exchange/ActiveSync.</p>
+
+					<p>The control panel will also help you add or remove additional email accounts and mail aliases (forwarders).</p>
+
+					<h3>Advanced tools</h3>
+
+					<p>The administrative control panel also helps you with...</p>
+
 					<ul>
-						<li>The control panel will check if your DNS is set up correctly. Things related to the domain name system sometimes take several minutes, or much longer, to update. This is called DNS propagation. Wait for the control panel to report no DNS problems &mdash; reload the page every 15 minutes or so. If problems persist, something went wrong.</li>
-						<li>Getting a signed SSL certificate is optional but is highly recommended and will remove the security exception warnings from a) the control panel and b) when you start checking and sending mail. The control panel will walk you through this.</li>
-						<li>DNSSEC is an optional step that adds additional security to your DNS records. When enabled, mail between Mail-in-a-Boxes will always be encrpyted. The control panel will walk you through setting up DNSSEC as well.</li>
+					<li>Checking the status of backups</li>
+					<li>Setting custom DNS records</li>
+					<li>Setting up an external DNS server</li>
 					</ul>
 
-					<h3>Other Functions</h3>
-
-					<p>The control panel will also help you:</p>
-
-					<ul>
-						<li>Add and remove additional email addresses.</li>
-						<li>Set up your mail apps.</li>
-						<li>More coming...</li>
-					</ul>
-
-					<h2 id="mail">Checking and Sending Mail</h2>
-
-	    			<p class="pros">You have webmail at <code>https://hostname/mail</code>. IMAP with SSL is on port 993 and SMTP with STARTTLS is on port 587. Your username is your email address.</p>
-
-					<p>The administrative control panel described in the last section has a page with mail instructions. Here is a summary of what it says:</p>
-
-					<h3>Webmail</h3>
-
-					<p>You can access your email at <code>https://hostname/mail</code>, where hostname is your box&rsquo;s hostname.</p>
-
-	    			<p>You will get a security warning if you do not yet have a signed SSL certificate and have not yet confirmed the exception (see above for how to do that securely).</p>
-
-	    			<p>Your username is the <u>email address</u> you entered when you ran the Mail-in-a-Box setup program above.</p>
-
-	    			<p>Try to send some mail now!</p>
-
-	    			<h3>Mobile and other mail clients</h3>
-
-	    			<p>On mobile devices you might need to install a &ldquo;mail client&rdquo; app. We recommend <a href="https://play.google.com/store/apps/details?id=com.fsck.k9">K-9 Mail</a>. On a desktop you could try <a href="https://www.mozilla.org/en-US/thunderbird/">Mozilla Thunderbird</a>.</p>
-
-	    			<p>Configure your device as follows:</p>
-
-	    			<table>
-	    			<thead><tr><th>Option</th> <th>Value</th></tr></thead>
-	    			<tr><th><nobr>Server Name:</nobr></th> <td>Your box&rsquo;s hostname.</td></tr>
-	    			<tr valign="top"><th>Login:</th> <td>Your username is the complete <u>email address</u> you provided when you ran the setup program earlier. Your password is the password you gave.</td></tr>
-	    			</table>
-
-	    			<table>
-	    			<thead><tr><th>Protocol</th> <th>Port</th> <th>Options</th></tr></thead>
-	    			<tr><th>IMAP</th> <td>993</td> <td>SSL</td></tr>
-	    			<tr><th>SMTP</th> <td>587</td> <td>STARTTLS</td></tr>
-	    			<tr><th>Exchange ActiveSync</th> <td>n/a</td> <td>Secure Connection</td></tr>
-	    			<tr><td colspan="3" style="padding: 0 0 0 1em; font-size: 90%">see <a href="http://z-push.org/compatibility/">list of compatible devices</a> for Exchange ActiveSync</td></tr>
-	    			</table>
-
-	    			<p>Depending on your mail program, you will either use IMAP &amp; SMTP or you will use Exchange ActiveSync When you use Exchange ActiveSync, you can also get contacts synchronization.</p>
-
-	    			<p>Note: Mail-in-a-Box uses <a href="http://en.wikipedia.org/wiki/Greylisting">greylisting</a> to cut down on spam. The first time you receive an email from a recipient, it may be delayed for ten minutes.</p>
-
-
-					<h2 id="web">Publishing Your Website</h2>
-
-	    			<p class="pros">Put static files in <code>/home/user-data/www/default</code>.</p>
+					<h2 id="web">Publishing a Static Website</h2>
 
 					<p>Your box will immediately begin serving a simple, default static website at the box&rsquo;s hostname (you already saw webmail there) and on any domain that you set up an email address for.</p>
 
@@ -411,32 +349,7 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p>to update the web configuration so that it knows the new location of the static files.</p>
 
-					<p>The box also provides support for <a href="http://webfinger.net/">Webfinger</a>, which is a web-based protocol, if you have installed a signed certificate for the domain.</p>
-
-					<p>If you want to have the box host a static website on a domain that you have&rsquo;t set up an email address for, create a dummy email address on the domain (see above for how to do that). Then run the <tt>whats_next.py</tt> script as described in the previous section to ensure it is set up correctly.</p>
-
-					<p>Although your box is handling mail for your domain name, it is actually possible to host a website on another machine by using custom DNS. See below.</p>
-
-					<h2 id="custom_dns">Custom DNS</h2>
-
-					<p>Your box is managing the DNS for your domain names. If you run other web services on other machines, you may want to create custom DNS records.</p>
-
-					<p>Create a file named <tt>/home/user-data/dns/custom.yaml</tt> and put in it custom DNS settings in this format:</p>
-
-					<pre>www.yourdomain.com: 72.249.66.164</pre>
-
-					<p>or</p>
-
-					<pre>www.yourdomain.com:
-  CNAME: otherserver.com.</pre>
-
-  					<p>After modifying this file, run:</p>
-
-  					<pre>sudo tools/dns_update</pre>
-
-  					<p>to update the DNS settings.</p>
-
-					<p>Mail and web are handled by separate types of DNS records. You can actually override the DNS for any domain you have an email address at &mdash; except the box&rsquo;s hostname itself &mdash; to have the domain's website served by another machine without affecting its email.</p>
+					<p>If you want to have the box host a static website on a domain that you have&rsquo;t set up an email address for, create a dummy email address on the domain (see above for how to do that). Then check the System Status page in the administrative control panel.</p>
 
 
 					<h2 id="maintenance">Keeping Your Box Humming</h2>
@@ -450,19 +363,12 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 					<p>You should also move to the latest Mail-in-a-Box release occasionally:</p>
 
 					<pre>cd mailinabox
-git pull
+git checkout <i>latest-release-tag</i>
 sudo setup/start.sh</pre>
 
+					<p>Replace <i>atest-release-tag</i> with our latest release tag. That&rsquo;s currently <code>14.08-beta</code>.</p>
+
 					<p>Remember that it is always safe to re-run the setup script like this.</p>
-
-
-					<h2 id="other">To-be-written</h2>
-
-					<p>It is also possible to...</p>
-
-					<ul>
-						<li>Backup your mail.</li>
-					</ul>
 
 
 					<h2 id="checks">Systems Checks</h2>

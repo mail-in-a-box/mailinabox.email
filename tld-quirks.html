@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title>TLD Quirks - Mail-in-a-Box Setup Guide</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" />
+    <style>
+    	body {
+    	}
+
+		a {
+			color: #24A;
+			text-decoration: underline;
+		}
+
+		#back {
+			background-color: #EEE;
+			font-size: 90%;
+			padding: .5em;
+		}
+		#back a { text-decoration: none; }
+		#back a:hover { text-decoration: underline; }
+
+		.tld { font-weight: bold; display: block; }
+		.tld .explanation { font-weight: normal; }
+
+    </style>
+</head>
+<body data-spy="scroll" data-target="#nav">
+	<a href="https://github.com/mail-in-a-box/mailinabox.email/blob/master/tld-quirks.html" class="visible-md visible-lg"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+	<div id="back">
+		<div class="container">
+			<a href="guide.html">
+				&lt; Back to Mail-in-a-Box Setup Guide
+			</a>
+		</div>
+	</div>
+
+	<div class="container">
+    	<div class="row">
+
+    		<div class="col-sm-12">
+
+    			<div style="padding-left: 1em; max-width: 55em">
+	    			<h1>Choosing a Domain Name</h1>
+
+	    			<p>Every domain name is within a TLD, or top-level domain. This page lists some of the quirks Mail-in-a-Box users have found in TLDs that might impact whether you can successfully set up Mail-in-a-Box.</p>
+
+	    			<h2>Good TLDs</h2>
+
+	    			<p>The following TLDs have worked for us:</p>
+
+	    			<p>
+	    				<span class="tld">.email</span>
+	    				<span class="tld">.info</span>
+	    				<span class="tld">.me</span>
+	    			</p>
+
+	    			<h2>Known problems</h2>
+
+	    			<p>The following TLDs have had issues:</p>
+
+	    			<p>
+	    				<span class="tld">.us <span class="explanation">(couldn't set DNSSEC DS record at Godaddy)</span></span>
+	    				<span class="tld">.de <span class="explanation">(requires two distinct nameservers)</span></span>
+	    			</p>
+
+	    			<h2>Other TLDs</h2>
+
+	    			<p>For other TLDs, unfortunately we don&rsquo;t yet know.</p>
+
+	    			<p>If you will register your domain name with Gandi, check their <a href="http://wiki.gandi.net/en/domains/dnssec">list of TLDs that support DNSSEC</a>. DNSSEC is optional on Mail-in-a-Box, but it&rsquo;s nice to have.</p>
+
+	    			<p>Please <a href="https://github.com/mail-in-a-box/mailinabox.email/blob/master/tld-quirks.html">submit a patch by forking this repository</a> if you find anything out.</p>
+
+
+	    		</div>
+    	</div>
+	</div>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+</body>
+</html>
