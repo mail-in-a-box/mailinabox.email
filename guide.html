@@ -9,7 +9,7 @@
     <style>
 	    @import url(https://fonts.googleapis.com/css?family=Iceland);
 	    @import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
-		@import url(https://fonts.googleapis.com/css?family=Ubuntu:300);
+		@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,500);
 
 
     	body {
@@ -26,7 +26,7 @@
 		h2 {
 			margin-top: 1.75em;
 			font-family: Ubuntu, Arial, sans-serif;
-			font-weight: 300;
+			font-weight: bold;
 			font-size: 20px;
 			padding-bottom: .25em;
 			border-bottom: 1px solid #DDD;
@@ -40,7 +40,7 @@
 			font-weight: 300;
 			font-size: 18px;
 			font-style: italic;
-			color: #777;
+			color: black;
 		}
 
 		a {
@@ -87,6 +87,19 @@
 
 		dl > dt {
 			margin-top: 1em;
+			margin-bottom: 3px;
+			font-weight: normal;
+			color: black;
+		}
+		dl > dt:before {
+			display: inline-block;
+			position: relative;
+			top: 1px;
+			content: "☑";
+			width: 20px;
+		}
+		dl > dd {
+			margin-left: 20px;
 		}
 
 		code {
@@ -153,8 +166,11 @@
 	    				<dt>Can I use my box for something else too?</dt>
 	    				<dd>No. Mail-in-a-Box must be installed on a <u>fresh</u> machine that will be <u>dedicated</u> to Mail-in-a-Box. You cannot modify the box. You are on your own if you try anything else.</dd>
 
-	    				<dt>Can I use my domain name for something else?</dt>
-	    				<dd>Yes. Even though your Mail-in-a-Box will be handling mail for your domain name, you can actually point domain anywhere else for a website. And you can create other subdomains.</dd>
+	    				<dt>What about my website?</dt>
+	    				<dd>Your Mail-in-a-Box wants to take over your DNS so that it can configure it correctly for email. We recommend you let the box manage your DNS but add a DNS record at the end of setup to point to the server that is running your website. If your website is just HTML pages, you can also copy it onto your Mail-in-a-Box.</dd>
+
+	    				<dt>Can I run it at home?</dt>
+	    				<dd>No. Most residential Internet service providers block outbound mail to prevent abuse by spammers, and most residential networks are blocked <a href="http://www.spamhaus.org/pbl/">on the receiving end</a> because of that spam problem. Your home IP address is also probably dynamic, which is also a problem.</dd>
 
 	    				<dt>What will it cost?</dt>
 	    				<dd>This is going to cost you about $15 per month. You&rsquo;re going to become your own Internet service provider &mdash; an ISP. You can divide this among friends and share your Mail-in-a-Box if you&rsquo;d like to split it up. Most of the cost is in having a (virtual) machine connected to the Internet 24/7.</dd>
@@ -215,6 +231,8 @@
 
 	    			<p>We&rsquo;ll now go back to your domain name registrar to associate your domain name with your box&rsquo;s IP address.</p>
 
+	    			<p><em>If you are using an external DNS provider, e.g. if you already have a website on your domain name, you may skip this section. However, we recommend that you continue and let your box take over your DNS so that it can set it up securely and correctly for email.</em></p>
+
 	    			<p>The association between your domain name and IP address is . . . complicated. The domain name system (DNS) is a global, distributed network of machines that turn domain names into IP addresses. Your registrar and your box play a role in the domain name system.</p>
 
 	    			<p>The way this works varies from registrar to registrar, but it goes something like this:</p>
@@ -247,6 +265,8 @@
 
 	    			<img src="static/domain_nameservers.png" title="Nameserver Configuration at Your Domain Registrar" class="img-responsive figure"/>
 
+	    			<p>This part <em>is</em> repeated for each domain name you associate with your box.</p>
+
 	    			<p>Don&rsquo;t worry if you are confused about what this all means. It is complicated &mdash; we all get confused at this point.</p>
 
 					<h2 id="setup">Setting Up The Box</h2>
@@ -276,7 +296,7 @@ git checkout -q 14.08-beta</pre>
 
 					<h3>Connecting for the First Time</h3>
 
-					<p>When the setup script is done running, you&rsquo;ll been given instructions on how to access your box&rsquo;s administrative control panel from your web browser, e.g.:</p>
+					<p>When the setup script is done running, you&rsquo;ll been given instructions on how to access your box&rsquo;s web-based administrative control panel:</p>
 
 					<pre>Your Mail-in-a-Box is running.
 
@@ -303,7 +323,7 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p>The page will then load securely.</p>
 
-					<p>You can also get a signed SSL certificate (see below) so you don&rsquo;t have to go through these steps.</p>
+					<p>You can also get a signed SSL certificate later (see below) so you don&rsquo;t have to go through these steps.</p>
 
 					<h3>System status &amp; DNS</h3>
 
@@ -315,6 +335,8 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p>DNSSEC is an optional step that adds additional security to your DNS records. When enabled, mail between Mail-in-a-Boxes will always be encrpyted. The control panel will walk you through setting up DNSSEC as well.</p>
 
+					<p><em>If you skipped the DNS settings earlier, you should now go to the DNS (Custom/External) &gt; External DNS section of the control panel and copy the DNS records into your own DNS control panel.</em></p>
+
 					<h3>Getting a signed SSL certificate</h3>
 
 					<p>Getting a signed SSL certificate is optional but is highly recommended and will remove the security exception warnings from a) the control panel and b) when you start checking and sending mail. The control panel will walk you through this.</p>
@@ -325,7 +347,7 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p>The administrative control panel will provide instructions for how to check your email with webmail, IMAP/SMTP, or Exchange/ActiveSync.</p>
 
-					<p>The control panel will also help you add or remove additional email accounts and mail aliases (forwarders).</p>
+					<p>You can also add or remove additional email accounts and mail aliases (forwarders).</p>
 
 					<h3>Advanced tools</h3>
 
@@ -333,8 +355,7 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<ul>
 					<li>Checking the status of backups</li>
-					<li>Setting custom DNS records</li>
-					<li>Setting up an external DNS server</li>
+					<li>Setting custom DNS records, e.g. if you run a website on the same domain name but on another machine.</li>
 					</ul>
 
 					<h2 id="web">Publishing a Static Website</h2>
