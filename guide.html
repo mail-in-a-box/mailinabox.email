@@ -269,6 +269,13 @@
 
 	    			<p>Don&rsquo;t worry if you are confused about what this all means. It is complicated &mdash; we all get confused at this point.</p>
 
+	    			<h3>DNSSEC DS Record</h3>
+
+	    			<p>DNSSEC adds a security layer on top of DNS, in the same way that HTTPS adds a security layer to HTTP. It is not necessary, but it is recommended. When enabled, mail between Mail-in-a-Boxes will always be encrpyted.</p>
+
+	    			<p>Your box&rsquo;s control panel will tell you to come back to your domain name registrar at the end to configure the DNSSEC DS record. It&rsquo;s not something the box can set up on its own, but you also can&rsquo;t configure it until after the box itself is set up &mdash; so you will come back to this.</p>
+
+
 					<h2 id="setup">Setting Up The Box</h2>
 
 					<p>You will now have to log into your running box using SSH. Your cloud provider will probably give you some instructions on how to do that. If your personal computer has a command line, you'll be doing something like this:</p>
@@ -333,7 +340,7 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p>The control panel will check if your DNS is set up correctly. Things related to the domain name system sometimes take several minutes, or much longer, to update. This is called DNS propagation. Wait for the control panel to report no DNS problems &mdash; reload the page every 15 minutes or so. If problems persist, something went wrong.</p>
 
-					<p>DNSSEC is an optional step that adds additional security to your DNS records. When enabled, mail between Mail-in-a-Boxes will always be encrpyted. The control panel will walk you through setting up DNSSEC as well.</p>
+					<p>DNSSEC is an optional step that adds additional security to DNS. The control panel will walk you through setting up DNSSEC as well. You will need to go back to your domain name registrar and enter additional information.</p>
 
 					<p><em>If you skipped the DNS settings earlier, you should now go to the DNS (Custom/External) &gt; External DNS section of the control panel and copy the DNS records into your own DNS control panel.</em></p>
 
