@@ -135,6 +135,16 @@
 	    			<h1>Mail-in-a-Box</h1>
 	    			<p id="deck">Take back control of your email with this easy-to-deploy mail server in a box.</p>
 
+	    			<h2>Super quick version . . </h2>
+
+	    			<p>You will need a domain name and a completely fresh Ubuntu 14.04 machine. Then on the machine run:</p>
+
+					<pre style="font-weight: bold">curl -s https://mailinabox.email/bootstrap.sh | sudo bash</pre>
+
+					<p>You will be asked to enter the email address you want and a few other configuration questions.  Consult the <a href="guide.html">setup guide</a> for complete details.</p>
+					
+					<p class="text-danger small" style="margin-top: 1em;">Note: This is a work in progress. I work on Mail-in-a-Box in my limited free time. Your mileage may vary.</p>
+
 					<h2>What&rsquo;s inside the box?</h2>
 
 					<p>Mail-in-a-Box turns a fresh cloud computer into a working mail server.</p>
@@ -164,30 +174,7 @@
 
 					<p>Although the core protocol of email, <a href="http://www.faqs.org/rfcs/rfc821.html">SMTP</a>, is completely decentralized, in practice email has become highly centralized because it is so damn difficult to implement the dozens of modern protocols that surround it. </p>
 
-
-					<h2>Getting started</h2>
-
-					<p>For instructions for getting up and running, please read the <a href="guide.html">setup guide</a>.</p>
-
-					<p>Here is the super quick version:</p>
-
-					<div id="instructions">
-						<p>You will need:</p>
-						<ul>
-							<li>A domain name.</li>
-							<li>A <i>completely</i> fresh Ubuntu 14.04 machine.</li>
-						</ul>
-						<p>Log in to your competely fresh Ubuntu machine using SSH, then type:</p>
-						<pre>sudo apt-get install git</span>
-git clone <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>
-cd mailinabox
-git checkout -q 14.08-beta
-sudo setup/start.sh</pre>
-						<p>You will be asked to enter the email address you want and a few other configuration questions. At the end you&rsquo;ll be given instructions for how to access the web-based administrative control panel to finish up.</p>
-						<p>Consult the <a href="guide.html">setup guide</a> for further details.</p>
-						<p><strong>Are you a developer?</strong> For testing, just <code>git clone</code> and <code>vagrant up</code>.</p>
-						<p class="text-danger small" style="margin-top: 1em;">Note: This is a work in progress. I work on Mail-in-a-Box in my limited free time. Your mileage may vary.</p>
-	    			</div>
+					<h2>Help</h2>
 
 					<p>If you need <strong>help</strong>, please <a href="https://discourse.mailinabox.email/">ask on the forum</a>. If you think you have found a problem in Mail-in-a-Box or don&rsquo;t get a response on the forum, then <a href="https://github.com/mail-in-a-box/mailinabox/issues">open an issue on github</a>.</p>
 

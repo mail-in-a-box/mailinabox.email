@@ -38,8 +38,7 @@
 			margin-bottom: .75em;
 			font-family: Ubuntu, Arial, sans-serif;
 			font-weight: 300;
-			font-size: 18px;
-			font-style: italic;
+			font-size: 17px;
 			color: black;
 		}
 
@@ -231,17 +230,21 @@
 
 	    			<p>We&rsquo;ll now go back to your domain name registrar to associate your domain name with your box&rsquo;s IP address.</p>
 
-	    			<p><em>If you are using an external DNS provider, e.g. if you already have a website on your domain name, you may skip this section. However, we recommend that you continue and let your box take over your DNS so that it can set it up securely and correctly for email.</em></p>
+	    			<h3>Advanced: External DNS</h3>
+
+	    			<p>If you are using an external DNS provider, e.g. if you already have a website on your domain name, you may skip this section. However, we recommend that you continue and let your box take over your DNS so that it can set it up securely and correctly for email.</p>
+
+	    			<p>If you choose to skip this section, pay special attention to &ldquo;System status & DNS&rdquo; toward the end.</p>
+
+	    			<h3>Glue Records</h3>
 
 	    			<p>The association between your domain name and IP address is . . . complicated. The domain name system (DNS) is a global, distributed network of machines that turn domain names into IP addresses. Your registrar and your box play a role in the domain name system.</p>
 
 	    			<p>The way this works varies from registrar to registrar, but it goes something like this:</p>
 
-	    			<h3>Glue Records</h3>
-
 	    			<p>First, you&rsquo;ll create two &ldquo;glue records.&rdquo; The purpose of glue records is to say that your box is becoming a part of the domain name system. These records go by different names at different registrars, so also look out for &ldquo;hostnames&rdquo; or &ldquo;child nameservers.&rdquo;. This will <em>not</em> be found in a DNS control panel. [<a href="http://wiki.gandi.net/en/domains/management/change-glue">Gandi instructions</a> | <a href="https://support.godaddy.com/help/article/664/setting-nameservers-for-your-domain-names">GoDaddy instructions</a>]</p>
 
-	    			<p>A glue record consists of a hostname and an IP address. For historical reasons we need two glue records. The two records you need to create are for <code>ns1</code> + <code>.</code> + your box&rsquo;s hostname and <code>ns2</code> + <code>.</code> + your box&rsquo;s hostname. (They stand for &ldquo;nameserver one&rdquo; and &ldquo;nameserver two&rdquo;.) For the IP address, enter the IP address of your box.</p>
+	    			<p>A glue record consists of a hostname and an IP address. You will need two: <code>ns1.</code> + your box&rsquo;s hostname and <code>ns2.</code> + your box&rsquo;s hostname. (They stand for &ldquo;nameserver one&rdquo; and &ldquo;nameserver two&rdquo;.) For the IP address, enter the IP address of your box.</p>
 
 	    				<p class="example">Josh&rsquo;s box&rsquo;s hostname is box.occams.info. The two glue records are for <code>ns1.box.occams.info</code> and <code>ns2.box.occams.info</code> and list the box&rsquo;s IP address of <code>94.76.202.152</code>.</p>
 
@@ -282,22 +285,15 @@
 
 					<pre>ssh -i yourkey.pem ubuntu@10.20.30.40</pre>
 
-					<p>Once inside, you will now get the Mail-in-a-Box code onto your box. Type:</p>
+					<p>Once inside, you will now get the Mail-in-a-Box code onto your box and start its setup. Copy and paste this into your terminal and hit <key>enter</key>:</p>
 
-					<pre>sudo apt-get install -y git
-git clone https://github.com/mail-in-a-box/mailinabox
-cd mailinabox
-git checkout -q 14.08-beta</pre>
-
-					<p>And then start the setup process:</p>
-
-					<pre>sudo setup/start.sh</pre>
+					<pre>curl -s https://mailinabox.email/bootstrap.sh | sudo bash</pre>
 
 					<p>You will be asked to enter the email address you want and a few other configuration questions. At the end you will be asked for a password for your email address.</p>
 
 					<p>This password will be used to login to webmail, the administrative interface, and on your devices. It will <strong>not</strong> be used to log onto your Mail-in-a-Box server using SSH (that&rsquo;s what you did above).</p>
 
-					<p>It is always safe to re-run the setup script. If something goes wrong or you just want to see it again, just do again <code>sudo setup/start.sh</code>.</p>
+					<p>It is always safe to re-run the setup script, either because something went wrong or you just want to see it again. You can do so by just running <code>sudo mailinabox</code> from the command line.</p>
 
 					<h2 id="admin">The Administrative Interface</h2>
 
@@ -361,13 +357,14 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 					<p>The administrative control panel also helps you with...</p>
 
 					<ul>
+					<li>Setting up contact and calendar synchronization</li>
 					<li>Checking the status of backups</li>
 					<li>Setting custom DNS records, e.g. if you run a website on the same domain name but on another machine.</li>
 					</ul>
 
 					<h2 id="web">Publishing a Static Website</h2>
 
-					<p>Your box will immediately begin serving a simple, default static website at the box&rsquo;s hostname (you already saw webmail there) and on any domain that you set up an email address for.</p>
+					<p>Your box will immediately begin serving a simple, default static website at the box&rsquo;s hostname and on any domain that you set up an email address for.</p>
 
 					<p>Replace the files in <tt>/home/user-data/www/default</tt> on your box with any HTML pages and other static files for your own website. You will probably need to use an SSH file transfer program such as <a href="https://filezilla-project.org/">FileZilla</a> or <a href="http://linuxcommand.org/man_pages/scp1.html">scp</a>. (Use the same login credentials as when you connected with <tt>ssh</tt>.)</p>
 
@@ -388,16 +385,9 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<pre>sudo apt-get update &amp;&amp; sudo apt-get upgrade</pre>
 
-					<p>You should also move to the latest Mail-in-a-Box release occasionally:</p>
+					<p>You should also move to the latest Mail-in-a-Box release occasionally. To do so, go back to the section called <a href="#machine">Setting Up The Box</a> and follow the same steps again.</p>
 
-					<pre>cd mailinabox
-git checkout <i>latest-release-tag</i>
-sudo setup/start.sh</pre>
-
-					<p>Replace <i>atest-release-tag</i> with our latest release tag. That&rsquo;s currently <code>14.08-beta</code>.</p>
-
-					<p>Remember that it is always safe to re-run the setup script like this.</p>
-
+					<p>Remember that it is always safe to re-run the setup script by typing <code>sudo mailinabox</code> at the SSH terminal prompt.</p>
 
 					<h2 id="checks">Systems Checks</h2>
 
@@ -408,8 +398,6 @@ sudo setup/start.sh</pre>
 						<li>DKIM and SPF: <a href="http://www.brandonchecketts.com/emailtest.php">brandonchecketts.com/emailtest</a></li>
 						<li>SSL: <a href="https://www.ssllabs.com/ssltest/analyze.html">ssllabs.com</a></li>
 					</ul>
-
-					<p>There are also Python scripts in the <a href="https://github.com/mail-in-a-box/mailinabox/tree/master/tests"><code>tests/</code></a> directory on GitHub for automated testing.</p>
 
 					<div class="hidden-xs" style="height: 200px"> </div>
 
