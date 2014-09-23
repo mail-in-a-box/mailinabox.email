@@ -56,7 +56,7 @@
 			font-size: 20px;
 			padding-bottom: .25em;
 			border-bottom: 1px solid #DDD;
-			margin-bottom: .5em;
+			margin-bottom: 1em;
 		}
 		#main a {
 			color: #24A;
@@ -68,14 +68,7 @@
 			margin-bottom: 2.5em;
 		}
 
-		#instructions {
-			margin: 1.25em 1em;
-			border-left: 3px solid #999;
-			padding: .5em 1.25em;
-		}
-			#instructions pre {
-				margin: 1.25em 0;
-			}
+		p, pre { margin-bottom: 1.33em; }
 
 		#screenshots {
 			margin-top: 1.5em;
@@ -147,9 +140,9 @@
 
 					<h2>What&rsquo;s inside the box?</h2>
 
-					<p>Mail-in-a-Box turns a fresh cloud computer into a working mail server.</p>
+					<p>Mail-in-a-Box turns a fresh cloud computer into a working mail server. For a full list of what is included see the list <span class="hidden-xs">on the left</span><span class="hidden-sm hidden-md hidden-lg">below</span>.</p>
 
-					<p>You get contact synchronization, spam filtering, and so on. On your phone, you can use apps like <a href="https://play.google.com/store/apps/details?id=com.fsck.k9">K-9 Mail</a> and <a href="https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync">CardDAV-Sync free beta</a> to sync your email and contacts between your phone and your box. And in your browser:</p>
+					<p>Although Mail-in-a-Box mostly provides mail infrastrcture, it does have some visible components. Some screenshots:</p>
 
 					<div id="screenshots" class="row">
 						<div class="col-sm-4">
@@ -165,8 +158,6 @@
 							<a href="/static/control_panel.png"><img src="/static/control_panel.png" class="img-responsive"></a>
 						</div>
 					</div>
-
-					<p style="margin-top: 1em">For a full list of what is included see the list <span class="hidden-xs">on the left</span><span class="hidden-sm hidden-md hidden-lg">below</span>.</p>
 
 					<h2>Why build this?</h2>
 
@@ -188,7 +179,7 @@
 					<li>Promote <a href="http://redecentralize.org/">decentralization</a>, innovation, and privacy on the web.</li>
 					<li>Have automated, auditable, and <a href="http://sharknet.us/2014/02/01/automated-configuration-management-challenges-with-idempotency/">idempotent</a> system configuration.</li>
 					<li><strong>Not</strong> build a mail server that the NSA cannot hack.</li>
-					<li><strong>Not</strong> be endlessly customizable by power users.</li>
+					<li><strong>Not</strong> make something endlessly customizable by power users.</li>
 					</ul>
 
 					<p>Who am I? I'm <a href="http://razor.occams.info">@JoshData</a>. I&rsquo;ve been running my own mail server for 15 years and am tired of feeling like the last hold-out. So join me.</p>
@@ -226,13 +217,13 @@
 
     			<h2>Inside Every Box . . .</h2>
     			<ul>
-    				<li data-title="SMTP" data-content="SMTP is the core protocol of email. Mail servers talk in SMTP, and when you send off a new email you connect to your box using SMTP."><a href="http://www.postfix.org/">SMTP</a></li>
-					<li data-title="IMAP" data-content="IMAP is the protocol you'll use to connect to your box to see if you have new mail."><a href="http://dovecot.org/">IMAP</a></li>
-					<li data-title="Exchange ActiveSync" data-content="An alternative to IMAP, Exchange ActiveSync is a protocol for checking if you have new mail."><a href="http://z-push.org/">Exchange ActiveSync</a></li>
-					<li data-title="Webmail" data-content="Check your email from your browser from anywhere. We use the open source Roundcube Webmail project."><a href="http://roundcube.net/">Webmail</a></li>
-					<li data-title="Spam Filtering" data-content="Spamassassin and IP address blacklists protect you from spam."><a href="https://spamassassin.apache.org/">Spam filtering</a></li>
+    				<li data-title="SMTP" data-content="SMTP is the core protocol of email. Mail servers talk in SMTP, and when you send off a new email your mail app connects to your box using SMTP."><a href="http://www.postfix.org/">SMTP</a></li>
+					<li data-title="IMAP" data-content="IMAP is the protocol your mail app uses to connect to your box to see if you have new mail."><a href="http://dovecot.org/">IMAP</a></li>
+					<li data-title="Exchange ActiveSync" data-content="An alternative to IMAP, Exchange ActiveSync is another protocol for checking if you have new mail."><a href="http://z-push.org/">Exchange ActiveSync</a></li>
+					<li data-title="Webmail" data-content="Check your email from your web browser from anywhere. We use the open source Roundcube Webmail project."><a href="http://roundcube.net/">Webmail</a></li>
 					<li data-title="Contacts" data-content="Store your contacts on your box and sync them to your phone. We use the open source ownCloud project."><a href="http://owncloud.org/">Contacts Sync</a></li>
 					<li data-title="Calendar" data-content="Store your calendar on your box and sync it to your phone. We use the open source ownCloud project."><a href="http://owncloud.org/">Calendar Sync</a></li>
+					<li data-title="Spam Filtering" data-content="Spamassassin and IP address blacklists protect you from spam."><a href="https://spamassassin.apache.org/">Spam filtering</a></li>
 					<li data-title="Greylisting" data-content="Greylisting cuts down on spam by soft-rejecting mail the first time it arrives. All compliant SMTP servers re-send the mail after a few minutes. Spammers don't usually bother trying again."><a href="http://postgrey.schweikert.ch/">Greylisting</a></li>
 					<li data-title="WWW" data-content="Upload static files to the box to host your own homepage too."><a href="http://nginx.org/">Static Website Hosting</a></li>
 					<li data-title="DNS" data-content="The box is also a non-recursive DNS server so that it can automatically configure SPF, DKIM, DMARC, DNSSEC, and DANE TLSA."><a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS Server</a></li>
