@@ -67,15 +67,32 @@
 	    				<li>.me</li>
 	    			</ul>
 
+	    			<h2>Good TLDs except for DNSSEC</h2>
+
+	    			<p>These TLDs are working except possibly for setting up DNSSEC. While DNSSEC is optional, it is a neat security protection to have.</p>
+
+	    			<p>Not yet known if DNSSEC is working:</p>
+
+	    			<ul class="tld-list">
+	    				<li>.com</li>
+	    				<li>.eu</li>
+	    				<li>.computer</li>
+	    			</ul>
+
+	    			<p>Known to have DNSSEC problems:</p>
+
+	    			<ul class="tld-list">
+	    				<li>.us <span class="explanation">(couldn't set DNSSEC DS record at Godaddy)</span></li>
+	    				<li>.email <span class="explanation">(DNSSEC DS record requires RSA/SHA-256 specifically)</span></li>
+	    			</ul>
+
 	    			<h2>Known problems</h2>
 
 	    			<p>The following TLDs have had issues:</p>
 
 	    			<ul class="tld-list">
-	    				<li>.us <span class="explanation">(couldn't set DNSSEC DS record at Godaddy)</span></li>
 	    				<li>.de <span class="explanation">(requires two distinct nameservers)</span></li>
 	   	    			<li>.at <span class="explanation">(requires two distinct nameservers)</span></li>
-	    				<li>.email <span class="explanation">(DNSSEC DS record requires RSA/SHA-256 specifically)</span></li>
 	    			</ul>
 
 	    			<h2>Other TLDs</h2>
