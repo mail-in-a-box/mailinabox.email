@@ -23,8 +23,17 @@
 		#back a { text-decoration: none; }
 		#back a:hover { text-decoration: underline; }
 
-		.tld { font-weight: bold; display: block; }
-		.tld .explanation { font-weight: normal; }
+		.tld-list {
+			list-style: none;
+			font-family: monospace;
+			font-weight: bolder;
+		}
+		.tld-list .explanation {
+			font-weight: normal;
+			font-size: 90%;
+			font-family: sans-serif;
+			color: #666;
+		}
 
     </style>
 </head>
@@ -53,21 +62,21 @@
 
 	    			<p>The following TLDs have worked for us:</p>
 
-	    			<p>
-	    				<span class="tld">.info</span>
-	    				<span class="tld">.me</span>
-	    			</p>
+	    			<ul class="tld-list">
+	    				<li>.info</li>
+	    				<li>.me</li>
+	    			</ul>
 
 	    			<h2>Known problems</h2>
 
 	    			<p>The following TLDs have had issues:</p>
 
-	    			<p>
-	    				<span class="tld">.us <span class="explanation">(couldn't set DNSSEC DS record at Godaddy)</span></span>
-	    				<span class="tld">.de <span class="explanation">(requires two distinct nameservers)</span></span>
-	   	    			<span class="tld">.at <span class="explanation">(requires two distinct nameservers)</span></span>
-	    				<span class="tld">.email <span class="explanation">(DNSSEC DS record requires RSA/SHA-256 specifically)</span></span>
-	    			</p>
+	    			<ul class="tld-list">
+	    				<li>.us <span class="explanation">(couldn't set DNSSEC DS record at Godaddy)</span></li>
+	    				<li>.de <span class="explanation">(requires two distinct nameservers)</span></li>
+	   	    			<li>.at <span class="explanation">(requires two distinct nameservers)</span></li>
+	    				<li>.email <span class="explanation">(DNSSEC DS record requires RSA/SHA-256 specifically)</span></li>
+	    			</ul>
 
 	    			<h2>Other TLDs</h2>
 
