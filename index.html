@@ -33,13 +33,20 @@
 	    @import url(https://fonts.googleapis.com/css?family=Iceland);
 	    @import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
 		@import url(https://fonts.googleapis.com/css?family=Ubuntu:300);
-
+		@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:500);
 
     	body {
     		background-color: black;
     		font-family: Raleway, sans-serif;
     		font-size: 16px;
     	}
+
+    	pre {
+			font-family: 'Source Code Pro', monospace;
+    		color: black;
+    		font-size: 15px;
+    	}
+
     	#main {
     		background-color: white;
     		padding-bottom: 1em;
@@ -132,7 +139,7 @@
 
 	    			<p>You will need a domain name and a completely fresh Ubuntu 14.04 machine. Then on the machine run:</p>
 
-					<pre style="font-weight: bold">curl -s https://mailinabox.email/bootstrap.sh | sudo bash</pre>
+					<pre>curl -s https://mailinabox.email/bootstrap.sh | sudo bash</pre>
 
 					<p>You will be asked to enter the email address you want and a few other configuration questions.  Consult the <a href="guide.html">setup guide</a> for complete details.</p>
 					

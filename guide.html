@@ -10,7 +10,7 @@
 	    @import url(https://fonts.googleapis.com/css?family=Iceland);
 	    @import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
 		@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,500);
-
+		@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:500);
 
     	body {
     		font-family: Raleway, sans-serif;
@@ -77,11 +77,20 @@
 			margin: 1.25em auto; /* bottom must match p */
 		}
 
-		pre {
+		pre, code {
 			background-color: black;
-			color: #FDD;
-			font-weight: bold;
+			font-family: 'Source Code Pro', monospace;
+			color: #FFE5E0;
+		}
+
+		pre {
 			margin-bottom: 1.75em; /* bottom must match p, but a bit larger looks better */
+    		font-size: 15px;
+		}
+
+		.example code {
+			background: white;
+			color: black;
 		}
 
 		dl > dt {
@@ -99,12 +108,6 @@
 		}
 		dl > dd {
 			margin-left: 20px;
-		}
-
-		code {
-			 background-color: black;
-			 color: #FDD;
-			 font-weight: bold;
 		}
 
 		table { margin-bottom: 1.25em; }
