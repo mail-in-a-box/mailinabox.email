@@ -151,7 +151,6 @@
 			          <li><a href="#domain-name-configuration">Domain Name Configuration</a></li>
 			          <li><a href="#setup">Machine Setup</a></li>
 			          <li><a href="#admin">Administrative Page</a></li>
-			          <li><a href="#web">Your Website</a></li>
 			          <li><a href="#checks">Systems Checks</a></li>
 			        </ul>
 				</div>
@@ -361,24 +360,10 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<ul>
 					<li>Setting up contact and calendar synchronization</li>
+					<li>Publishing a static website</li>
 					<li>Checking the status of backups</li>
-					<li>Setting custom DNS records, e.g. if you run a website on the same domain name but on another machine.</li>
+					<li>Setting custom DNS records, e.g. if you run a website on the same domain name but on another machine</li>
 					</ul>
-
-					<h2 id="web">Publishing a Static Website</h2>
-
-					<p>Your box will immediately begin serving a simple, default static website at the box&rsquo;s hostname and on any domain that you set up an email address for.</p>
-
-					<p>Replace the files in <tt>/home/user-data/www/default</tt> on your box with any HTML pages and other static files for your own website. You will probably need to use an SSH file transfer program such as <a href="https://filezilla-project.org/">FileZilla</a> or <a href="http://linuxcommand.org/man_pages/scp1.html">scp</a>. (Use the same login credentials as when you connected with <tt>ssh</tt>.)</p>
-
-					<p>If you want a different website to appear at different domain names, put the files instead in <tt>/home/user-data/www/[your.domainname.com]</tt>. Then run:</p>
-
-					<pre>sudo tools/web_update</pre>
-
-					<p>to update the web configuration so that it knows the new location of the static files.</p>
-
-					<p>If you want to have the box host a static website on a domain that you have&rsquo;t set up an email address for, create a dummy email address on the domain (see above for how to do that). Then check the System Status page in the administrative control panel.</p>
-
 
 					<h2 id="maintenance">Keeping Your Box Humming</h2>
 
