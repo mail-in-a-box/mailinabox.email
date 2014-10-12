@@ -30,7 +30,6 @@
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
     <style>
-	    @import url(https://fonts.googleapis.com/css?family=Iceland);
 	    @import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
 		@import url(https://fonts.googleapis.com/css?family=Ubuntu:300);
 		@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:500);
@@ -53,11 +52,12 @@
     	}
 
 		h1 {
-			font-family: 'Iceland', sans-serif;
-			font-size: 50px;
+			margin: 1em 0 .75em 0;
+			font-family: Ubuntu, sans-serif;
+			font-size: 46px;
 		}
 		#main h2 {
-			margin-top: 1.75em;
+			margin-top: 1.9em;
 			font-family: Ubuntu, Arial, sans-serif;
 			font-weight: 300;
 			font-size: 20px;
@@ -78,9 +78,10 @@
 		p, pre { margin-bottom: 1.33em; }
 
 		#screenshots {
-			margin-top: 1.5em;
+			margin-bottom: 2em;
 		}
 		#screenshots div {
+			margin: 1.5em 0 .5em 0;
 			font-weight: bold;
 			text-align: center;
 		}
@@ -142,35 +143,39 @@
 					<pre>curl -s https://mailinabox.email/bootstrap.sh | sudo bash</pre>
 
 					<p>You will be asked to enter the email address you want and a few other configuration questions.  Consult the <a href="guide.html">setup guide</a> for complete details.</p>
+
+					<p>Version 0.03 was posted on Sept. 24, 2014. To upgrade, just run exactly the same command above again.</p>
 					
-					<p class="text-danger small" style="margin-top: 1em;">Note: This is a work in progress. I work on Mail-in-a-Box in my limited free time. Your mileage may vary.</p>
+					<p class="text-danger small" style="margin-top: 1em;">Note: Mail-in-a-Box&rsquo;s maintainer works on Mail-in-a-Box in his limited free time. Your mileage may vary.</p>
 
 					<h2>What&rsquo;s inside the box?</h2>
 
-					<p>Mail-in-a-Box turns a fresh cloud computer into a working mail server. For a full list of what is included see the list <span class="hidden-xs">on the left</span><span class="hidden-sm hidden-md hidden-lg">below</span>.</p>
-
-					<p>Although Mail-in-a-Box mostly provides mail infrastrcture, it does have some visible components. Some screenshots:</p>
+					<p style="margin-bottom: 0;">Mail-in-a-Box turns a fresh cloud computer into a working mail server, including webmail, IMAP, contacts and calendar synchronization, a control panel, and everything in the list <span class="hidden-xs">on the left</span><span class="hidden-sm hidden-md hidden-lg">at the bottom of the page</span>.</p>
 
 					<div id="screenshots" class="row">
 						<div class="col-sm-4">
 							<div>Roundcube Webmail</div>
-							<a href="/static/roundcube.png"><img src="/static/roundcube.png" class="img-responsive"></a>
+							<a href="/static/roundcube.png"><img src="static/roundcube.png" class="img-responsive"></a>
 						</div>
 						<div class="col-sm-4">
-							<div>ownCloud (contacts)</div>
-							<a href="/static/owncloud_contacts.png"><img src="/static/owncloud_contacts.png" class="img-responsive"></a>
+							<div>ownCloud Contacts</div>
+							<a href="static/owncloud_contacts.png"><img src="static/owncloud_contacts.png" class="img-responsive"></a>
 						</div>
 						<div class="col-sm-4">
 							<div>A Control Panel</div>
-							<a href="/static/control_panel.png"><img src="/static/control_panel.png" class="img-responsive"></a>
+							<a href="static/control_panel.png"><img src="static/control_panel.png" class="img-responsive"></a>
 						</div>
 					</div>
 
+					<p>Our long-term goal is to make this a one-click install with no confusing customization options.</p>
+
 					<h2>Why build this?</h2>
 
-					<p>Mass electronic surveillance by governments revealed over the last year has spurred a new movement to <a href="http://redecentralize.org/">re-decentralize the web</a>: to empower individuals to be their own service providers again.</p>
+					<p>Mass electronic surveillance by governments revealed over the last year or so has spurred a new movement to <a href="http://redecentralize.org/">re-decentralize the web</a>, a movement to empower individuals to be their own service providers again.</p>
 
-					<p>Although the core protocol of email, <a href="http://www.faqs.org/rfcs/rfc821.html">SMTP</a>, is completely decentralized, in practice email has become highly centralized because it is so damn difficult to implement the dozens of modern protocols that surround it. </p>
+					<p>Although the core protocol of email <a href="http://www.faqs.org/rfcs/rfc821.html">SMTP</a> is inherently decentralized, in practice email has become highly centralized because it is so damn difficult to implement the dozens of modern protocols that surround it. Mail-in-a-Box takes care of all of that, and no more.</p>
+
+					<p>Mail-in-a-Box was created in 2013 by <a href="http://razor.occams.info">@JoshData</a> who has been running his own mail server for 15 years.</p>
 
 					<h2>Help</h2>
 
@@ -178,9 +183,9 @@
 
 					<p>We&rsquo;ll announce <strong>updates</strong> at <a href="https://twitter.com/mailinabox">@Mailinabox</a> on Twitter.</p>
 
-					<h2>My goals</h2>
+					<h2>Goals</h2>
 
-					<p>I want to...</p>
+					<p>The goals of this project are to . . .</p>
 					<ul>
 					<li>Make deploying a good mail server easy.</li>
 					<li>Promote <a href="http://redecentralize.org/">decentralization</a>, innovation, and privacy on the web.</li>
@@ -189,11 +194,9 @@
 					<li><strong>Not</strong> make something endlessly customizable by power users.</li>
 					</ul>
 
-					<p>Who am I? I'm <a href="http://razor.occams.info">@JoshData</a>. I&rsquo;ve been running my own mail server for 15 years and am tired of feeling like the last hold-out. So join me.</p>
-
 					<h2>Development</h2>
 
-					<p>Mail-in-a-Box is based on Ubuntu 14.04 LTS 64-bit and uses a bunch of shell scripts and a Python management daemon to configure the system. Take a look at the <a href="static/architecture.svg">system architecture diagram</a>.</p>
+					<p>Mail-in-a-Box is based on Ubuntu 14.04 LTS 64-bit and uses very-well-documented shell scripts and a Python management daemon to configure the system. Take a look at the <a href="static/architecture.svg">system architecture diagram</a>.</p>
 
 					<p>Development takes place on github at <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>.</p>
 
