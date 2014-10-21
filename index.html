@@ -249,14 +249,7 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 	<script>
 		$(function() {
-			$('#example-toolbar button').click(function() {
-				var me = $(this);
-				$('#example-toolbar button').removeClass('active')
-				me.addClass('active');
-				$('#example > *').addClass('hidden');
-				$('#example > .' + me.attr('data-id')).removeClass('hidden');
-			})
-
+			// Add popovers if the window is wide enough.
 			if ($(window).width() > 768)
 				$('#sidebar li').popover({ animation: false, trigger: 'hover', container: 'body' })
 
