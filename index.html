@@ -40,12 +40,6 @@
     		font-size: 16px;
     	}
 
-    	pre {
-			font-family: 'Source Code Pro', monospace;
-    		color: black;
-    		font-size: 15px;
-    	}
-
     	#main {
     		background-color: white;
     		padding-bottom: 1em;
@@ -76,6 +70,45 @@
 		}
 
 		p, pre { margin-bottom: 1.33em; }
+
+    	#bootstrap {
+    		/* copy of bootstrap css for <pre>, except doubling bottom margin from 10 to 20px */
+			display: block;
+			padding: 9.5px;
+			margin: 0 0 20px;
+			font-size: 13px;
+			line-height: 1.42857143;
+			word-break: break-all;
+			word-wrap: break-word;
+			color: #333;
+			background-color: #f5f5f5;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+    	}
+    		#bootstrap pre {
+    			padding: 0;
+    			margin: 0;
+    			border: none;
+
+				font-family: 'Source Code Pro', monospace;
+	    		color: black;
+	    		font-size: 15px;
+    		}
+
+		#install-stats {
+			display: none;
+			margin-top: 9.5px;
+			border-top: 1px solid #ccc;	
+			padding-top: 9.5px;
+			background-color: #f5f5f5;
+			font-size: 70%;
+			line-height: 120%;
+			color: #666;
+		}
+			#install-stats .heading {
+				position: absolute;
+				padding: .25em .5em;
+			}
 
 		#screenshots {
 			margin-bottom: 2em;
@@ -134,19 +167,26 @@
     			<div style="padding-left: 1em; max-width: 50em">
     				<div style="float: left; margin-right: 1em"><img src="static/logo.png" height="58"/></div>
 	    			<h1>Mail-in-a-Box</h1>
+
 	    			<p id="deck">Take back control of your email with this easy-to-deploy mail server in a box.</p>
 
 	    			<h2>How do I get it?</h2>
 
 	    			<p>You will need a domain name and a completely fresh Ubuntu 14.04 machine. Then on the machine run:</p>
 
-					<pre>curl -s https://mailinabox.email/bootstrap.sh | sudo bash</pre>
+	    			<div id="bootstrap">
+						<pre><span>curl -s https://mailinabox.email/bootstrap.sh | sudo bash</span></pre>
+						<div id="install-stats">
+							<div class="heading">installs/day<br>
+								yesterday: <span></span></div>
+						</div>
+					</div>
 
 					<p>You will be asked to enter the email address you want and a few other configuration questions. Consult the <a href="guide.html">setup guide</a> for complete details.</p>
 
 					<p>Version 0.04 was posted on Oct. 15, 2014. To upgrade, please review <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/CHANGELOG.md">the changes</a> and then just run exactly the same command above again.</p>
 					
-					<p class="text-danger small" style="margin-top: 1em;">Note: Mail-in-a-Box&rsquo;s maintainer works on Mail-in-a-Box in his limited free time. Your mileage may vary.</p>
+					<p class="text-danger small" style="margin-top: 2em;">Note: Mail-in-a-Box&rsquo;s maintainer works on Mail-in-a-Box in his limited free time. Your mileage may vary.</p>
 
 					<h2>What&rsquo;s inside the box?</h2>
 
@@ -247,11 +287,45 @@
 
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"> </script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js"></script> <!-- activity stats -->
 	<script>
 		$(function() {
 			// Add popovers if the window is wide enough.
 			if ($(window).width() > 768)
 				$('#sidebar li').popover({ animation: false, trigger: 'hover', container: 'body' })
+
+			// Create the activity chart.
+			$.getJSON("install-stats.json", function(data) {
+				// make a d3 chart
+				$("#install-stats").show();
+				var w = $("#bootstrap pre span").width();
+				var h = $("#install-stats .heading").height();
+				$("#bootstrap").css({ width: w + 20, marginLeft: '1em' });
+
+				$("#install-stats .heading span").text(data[data.length-1][1]);
+
+				var chart = d3.select("#install-stats").append("svg")
+					.attr("width", w)
+					.attr("height", h);
+
+					// axes
+					var x = d3.scale.linear()
+						.domain([0, data.length])
+						.range([0, w]);
+					var y = d3.scale.linear()
+						.domain([0, d3.max(data.map(function(d) { return d[1] }))])
+						.range([0, h]);
+
+					// bars
+					chart.selectAll("rect")
+						.data(data)
+						.enter().append("rect")
+						.attr("x", function(d, i) { return x(i); })
+						.attr("y", 0)
+						.attr("width", parseInt(w / data.length)-1)
+						.attr("height", function(d) { return y(d[1]); } )
+						.attr("fill", "#E0E0E0")
+			})
 
 		})
 	</script>
