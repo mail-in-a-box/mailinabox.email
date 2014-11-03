@@ -28,29 +28,37 @@
     <link rel="icon" type="image/png" href="/static/logo_small.png">
     <link rel="apple-touch-icon" type="image/png" href="/static/logo_small.png">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" href="static/fontello/css/fontello.css">
+
     <style>
 	    @import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
 		@import url(https://fonts.googleapis.com/css?family=Ubuntu:300);
 		@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:500);
 
     	body {
-    		background-color: black;
     		font-family: Raleway, sans-serif;
     		font-size: 16px;
     	}
 
-    	#main {
-    		background-color: white;
-    		padding-bottom: 1em;
+    	header {
+    		margin: 2em 0 1em 0;
     	}
 
 		h1 {
-			margin: 1em 0 .75em 0;
+			margin-top: 1px;
 			font-family: Ubuntu, sans-serif;
 			font-size: 46px;
+			color: black;
 		}
-		#main h2 {
+			h1 span {
+				position: relative;
+				top: 2px;
+				color: #BB6;
+			}
+
+		h2 {
 			margin-top: 1.9em;
 			font-family: Ubuntu, Arial, sans-serif;
 			font-weight: 300;
@@ -58,15 +66,17 @@
 			padding-bottom: .25em;
 			border-bottom: 1px solid #DDD;
 			margin-bottom: 1em;
+			color: black;
 		}
-		#main a {
+		a {
 			color: #24A;
 			text-decoration: underline;
 		}
 
 		p#deck {
 			font-size: 18px;
-			margin-bottom: 2.5em;
+			margin-top: .5em;
+			margin-bottom: 0;
 		}
 
 		p, pre { margin-bottom: 1.33em; }
@@ -98,99 +108,98 @@
 		#install-stats {
 			display: none;
 			margin-top: 9.5px;
-			border-top: 1px solid #ccc;	
 			padding-top: 9.5px;
-			background-color: #f5f5f5;
+			width: 90%;
 			font-size: 70%;
 			line-height: 120%;
 			color: #666;
 		}
 			#install-stats .heading {
 				position: absolute;
-				padding: .25em .5em;
+				padding-top: .25em;
 			}
 
 		#screenshots {
-			margin-bottom: 2em;
 		}
-		#screenshots div {
-			margin: 1.5em 0 .5em 0;
-			font-weight: bold;
-			text-align: center;
-		}
-		#screenshots img {
-			border: 1px solid #999;
-		}
+			#screenshots > div {
+				margin-bottom: 2em;
+			}
+			#screenshots > div > div {
+				margin-bottom: .5em;
+				font-weight: bold;
+				text-align: center;
+			}
+			#screenshots img {
+				border: 1px solid #999;
+			}
 
-		#sidebar {
-			color: #DDD;
-			font-family: Arial;
-			line-height: 125%;
-			font-size: 14px;
-		}
-		#sidebar h2 {
-			font-size: 18px;
-    		font-family: Raleway, sans-serif;
-    		color: #F2F2F2;
-    		margin-bottom: 1em;
-		}
 		#sidebar a {
 			font-size: 14px;
-			color: #FFB;
-    		font-family: Raleway, sans-serif;
+			color: #C52;
+			text-decoration: none;
 		}
-		#sidebar ul {
-			list-style: none;
-			padding: 0 1em 0 0;
+			#sidebar a:hover {
+				text-decoration: underline;
+			}
+		#sidebar i {
+			display: inline-block;
+			margin-right: 6px;
+			width: 20px;
 		}
-		#sidebar li {
-			margin-bottom: 6px;
+		#sidebar i.icon-th-list, #sidebar i.icon-chat {
+			font-size: 88%;
 		}
-		@media (max-width: 768px) {
-			body, #sidebar, #sidebar h2 {
-	    		background-color: #FAFAFA;
-	    		color: black;
-	    	}
-			#sidebar a {
-	    		color: #005;
-	    	}
+		@media all and (max-width: 768px) {
+			#sidebar {
+				border-left: 1px solid #AAA;
+			}
+			#sidebar p {
+				display: inline-block;
+				margin: 0 1em .5em 0;
+			}
+			#sidebar i {
+				margin-right: 2px;
+			}
 		}
     </style>
 </head>
 <body>
-	<div class="container-fluid">
-    	<div class="row">
-    		<div id="main" class="col-sm-10 col-sm-push-2">
-				<a href="https://github.com/mail-in-a-box/mailinabox" class="visible-md visible-lg"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+	<a href="https://github.com/mail-in-a-box/mailinabox"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
+	<div class="container">
 
-    			<div style="padding-left: 1em; max-width: 50em">
-    				<div style="float: left; margin-right: 1em"><img src="static/logo.png" height="58"/></div>
-	    			<h1>Mail-in-a-Box</h1>
+		<header>
+			<div style="float: left; margin-right: 1em"><img src="static/logo.png" height="58"/></div>
+			<h1 style="float: left">Mail<span>-</span>in<span>-</span>a<span>-</span>Box</h1>
+			<div class="clearfix"> </div>
+   			<p id="deck">Take back control of your email with this easy-to-deploy mail server in a box.</p>
+		</header>
 
-	    			<p id="deck">Take back control of your email with this easy-to-deploy mail server in a box.</p>
+		<div class="row">
+			<div id="sidebar" class="col-sm-3 col-sm-push-9 col-lg-push-8">
+				<h2>quick links</h2>
+				<p><a href="guide.html"><i class="icon-th-list"></i>setup guide</a></p>
+				<p><a href="https://discourse.mailinabox.email/"><i class="icon-chat"></i>discussion forum</a></p>
+				<p><a href="https://github.com/mail-in-a-box/mailinabox"><i class="icon-github"></i>github repository</a></p>
+				<p><a href="https://twitter.com/mailinabox"><i class="icon-twitter"></i>@Mailinabox</a></p>
+			</div>
 
-	    			<h2>How do I get it?</h2>
+			<div class="col-sm-9 col-lg-8 col-sm-pull-3">
+				<h2>What is it?</h2>
 
-	    			<p>You will need a domain name and a completely fresh Ubuntu 14.04 machine. Then on the machine run:</p>
+					<p>Mail-in-a-Box lets you become your own mail service provider in a few easy steps. It&rsquo;s sort of like making your own gmail, but one you control from top to bottom.</p>
 
-	    			<div id="bootstrap">
-						<pre><span>curl -s https://mailinabox.email/bootstrap.sh | sudo bash</span></pre>
-						<div id="install-stats">
-							<div class="heading">installs/day<br>
-								yesterday: <span></span></div>
-						</div>
+					<p>Technically, Mail-in-a-Box turns a fresh cloud computer into a working mail server. But you don&rsquo;t need to be a technology expert to set it up.</p>
+
+					<div id="install-stats">
+						<div class="heading">installs/day<br>
+							yesterday: <span></span></div>
 					</div>
 
-					<p>You will be asked to enter the email address you want and a few other configuration questions. Consult the <a href="guide.html">setup guide</a> for complete details.</p>
 
-					<p>Version 0.04 was posted on Oct. 15, 2014. To upgrade, please review <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/CHANGELOG.md">the changes</a> and then just run exactly the same command above again.</p>
-					
-					<p class="text-danger small" style="margin-top: 2em;">Note: Mail-in-a-Box&rsquo;s maintainer works on Mail-in-a-Box in his limited free time. Your mileage may vary.</p>
+				<h2>What&rsquo;s inside the box?</h2>
 
-					<h2>What&rsquo;s inside the box?</h2>
-
-					<p style="margin-bottom: 0;">Mail-in-a-Box turns a fresh cloud computer into a working mail server, including webmail, IMAP, contacts and calendar synchronization, a control panel, and everything in the list <span class="hidden-xs">on the left</span><span class="hidden-sm hidden-md hidden-lg">at the bottom of the page</span>.</p>
+					<p>Each Mail-in-a-Box provides webmail and an IMAP/SMTP/Exchange server for use with mobile devices and desktop mail software. It also includes contacts and calendar synchronization.</p>
 
 					<div id="screenshots" class="row">
 						<div class="col-sm-4">
@@ -207,25 +216,49 @@
 						</div>
 					</div>
 
-					<p>Our long-term goal is to make this a one-click install with no confusing customization options.</p>
+					<p>The box also includes automatic DNS configuration, spam filtering, <a href="http://postgrey.schweikert.ch/">greylisting</a>, static website hosting, and easy SSL certificate installation.</p>
 
-					<h2>Why build this?</h2>
+					<p>It implements modern mail protocols (<a href="https://en.wikipedia.org/wiki/Sender_Policy_Framework">SPF</a>, <a href="https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail">DKIM</a>, and <a href="https://en.wikipedia.org/wiki/DMARC">DMARC</a>) and the latest security best practices, including <a href="https://en.wikipedia.org/wiki/Opportunistic_encryption">opportunistic TLS</a>, strong ciphers, and <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS</a>. When enabled, <a href="https://en.wikipedia.org/wiki/DNSSEC">DNSSEC</a> (with <a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities">DANE TLSA</a>) provides a higher level of protection against active attacks.</p>
+    			
+    			<h2>How do I get it?</h2>
+
+    				<p>Use the <a href="guide.html">setup guide</a>, which walks you through getting your own box set up.</p>
+
+	    			<p>If you are an expert, you can skip ahead if you have a domain name and a <u>completely fresh</u> Ubuntu 14.04 machine running in the cloud. On the machine run:</p>
+
+	    			<div id="bootstrap">
+						<pre><span>curl -s https://mailinabox.email/bootstrap.sh | sudo bash</span></pre>
+					</div>
+
+					<p>You will be asked to enter the email address you want and a few other configuration questions. Consult the <a href="guide.html">setup guide</a> for complete details.</p>
+
+					<p>Version 0.04 was posted on Oct. 15, 2014. To upgrade, please review <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/CHANGELOG.md">the changes</a> and then just run exactly the same command above again.</p>
+					
+					<p class="text-danger small" style="margin-top: 2em;">Note: Mail-in-a-Box&rsquo;s maintainer works on Mail-in-a-Box in his limited free time. Your mileage may vary.</p>
+
+				<h2>Why build this?</h2>
 
 					<p>Mass electronic surveillance by governments revealed over the last year or so has spurred a new movement to <a href="http://redecentralize.org/">re-decentralize the web</a>, a movement to empower individuals to be their own service providers again.</p>
 
 					<p>Although the core protocol of email <a href="http://www.faqs.org/rfcs/rfc821.html">SMTP</a> is inherently decentralized, in practice email has become highly centralized because it is so damn difficult to implement the dozens of modern protocols that surround it. Mail-in-a-Box takes care of all of that, and no more.</p>
 
+					<p>My long-term goal is to make this a one-click install with no customization options so anyone can do it.</p>
+
 					<p>Mail-in-a-Box was created in 2013 by <a href="http://razor.occams.info">@JoshData</a> who has been running his own mail server for 15 years.</p>
 
-					<h2>Help</h2>
+				<h2>Help</h2>
 
 					<p>If you need <strong>help</strong>, please <a href="https://discourse.mailinabox.email/">ask on the forum</a>. If you think you have found a problem in Mail-in-a-Box or don&rsquo;t get a response on the forum, then <a href="https://github.com/mail-in-a-box/mailinabox/issues">open an issue on github</a>.</p>
 
 					<p>We&rsquo;ll announce <strong>updates</strong> at <a href="https://twitter.com/mailinabox">@Mailinabox</a> on Twitter.</p>
 
-					<h2>Goals</h2>
+				<h2>Development</h2>
 
-					<p>The goals of this project are to . . .</p>
+					<p>Mail-in-a-Box is based on Ubuntu 14.04 LTS 64-bit and uses very-well-documented shell scripts and a Python management daemon to configure the system. Take a look at the <a href="static/architecture.svg">system architecture diagram</a>.</p>
+
+					<p>Development takes place on github at <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>.</p>
+
+					<p>Note that the goals of this project are to . . .</p>
 					<ul>
 					<li>Make deploying a good mail server easy.</li>
 					<li>Promote <a href="http://redecentralize.org/">decentralization</a>, innovation, and privacy on the web.</li>
@@ -234,74 +267,35 @@
 					<li><strong>Not</strong> make something endlessly customizable by power users.</li>
 					</ul>
 
-					<h2>Development</h2>
-
-					<p>Mail-in-a-Box is based on Ubuntu 14.04 LTS 64-bit and uses very-well-documented shell scripts and a Python management daemon to configure the system. Take a look at the <a href="static/architecture.svg">system architecture diagram</a>.</p>
-
-					<p>Development takes place on github at <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>.</p>
+					<p>Mail-in-a-Box is dedicated to the public domain using <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</p>
 
 					<p>Thank you to the contributors!</p>
 
-					<p>Mail-in-a-Box is dedicated to the public domain using <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</p>
-
-					<h2>Acknowledgements</h2>
+				<h2>Acknowledgements</h2>
 
 					<p>This project was inspired in part by the <a href="http://sealedabstract.com/code/nsa-proof-your-e-mail-in-2-hours/">"NSA-proof your email in 2 hours"</a> blog post by Drew Crawford, <a href="https://github.com/al3x/sovereign">Sovereign</a> by Alex Payne, and conversations with <a href="https://twitter.com/shevski" target="_blank">@shevski</a>, <a href="https://github.com/konklone" target="_blank">@konklone</a>, and <a href="https://github.com/gregelin" target="_blank">@GregElin</a>.</p>
 
 					<p>Mail-in-a-Box is similar to <a href="http://www.iredmail.org/">iRedMail</a> and <a href="https://github.com/tonioo/modoboa">Modoboa</a>.</p>
 
-					<div class="hidden-xs" style="height: 200px"> </div>
+					<p>Mail-in-a-Box is based on <a href="http://www.postfix.org/">Postfix</a>, <a href="http://dovecot.org/">Dovecot</a>, <a href="http://z-push.org/">Z-Push</a>, <a href="http://roundcube.net/">Roundcube</a>, <a href="http://owncloud.org/">ownCloud</a>, <a href="https://spamassassin.apache.org/">Spamassassin</a>, <a href="http://postgrey.schweikert.ch/">Postgrey</a>, <a href="http://nginx.org/">Nginx</a>, <a href="https://gist.github.com/konklone/6532544">@konklone&rsquo;s nginx config</a>, and more.</p>
+
+					<div style="height: 100px"> </div>
 				</div>
-    		</div>
-
-    		<div id="sidebar" class="col-sm-2 col-sm-pull-10">
-    			<h2>Quick Links</h2>
-
-    			<ul>
-    				<li><a href="guide.html">setup guide</a></li>
-    				<li><a href="https://discourse.mailinabox.email/">discussion forum</a></li>
-    				<li><a href="https://github.com/mail-in-a-box/mailinabox">github repository</a></li>
-    				<li><a href="static/architecture.svg">architecture diagram</a></li>
-    				<li><a href="https://twitter.com/mailinabox">@Mailinabox</a></li>
-    			</ul>
-
-    			<h2>Inside Every Box . . .</h2>
-    			<ul>
-    				<li data-title="SMTP" data-content="SMTP is the core protocol of email. Mail servers talk in SMTP, and when you send off a new email your mail app connects to your box using SMTP."><a href="http://www.postfix.org/">SMTP</a></li>
-					<li data-title="IMAP" data-content="IMAP is the protocol your mail app uses to connect to your box to see if you have new mail."><a href="http://dovecot.org/">IMAP</a></li>
-					<li data-title="Exchange ActiveSync" data-content="An alternative to IMAP, Exchange ActiveSync is another protocol for checking if you have new mail."><a href="http://z-push.org/">Exchange ActiveSync</a></li>
-					<li data-title="Webmail" data-content="Check your email from your web browser from anywhere. We use the open source Roundcube Webmail project."><a href="http://roundcube.net/">Webmail</a></li>
-					<li data-title="Contacts" data-content="Store your contacts on your box and sync them to your phone. We use the open source ownCloud project."><a href="http://owncloud.org/">Contacts Sync</a></li>
-					<li data-title="Calendar" data-content="Store your calendar on your box and sync it to your phone. We use the open source ownCloud project."><a href="http://owncloud.org/">Calendar Sync</a></li>
-					<li data-title="Spam Filtering" data-content="Spamassassin and IP address blacklists protect you from spam."><a href="https://spamassassin.apache.org/">Spam filtering</a></li>
-					<li data-title="Greylisting" data-content="Greylisting cuts down on spam by soft-rejecting mail the first time it arrives. All compliant SMTP servers re-send the mail after a few minutes. Spammers don't usually bother trying again."><a href="http://postgrey.schweikert.ch/">Greylisting</a></li>
-					<li data-title="WWW" data-content="Upload static files to the box to host your own homepage too."><a href="http://nginx.org/">Static Website Hosting</a></li>
-					<li data-title="DNS" data-content="The box is also a non-recursive DNS server so that it can automatically configure SPF, DKIM, DMARC, DNSSEC, and DANE TLSA."><a href="https://en.wikipedia.org/wiki/Domain_Name_System">DNS Server</a></li>
-					<li data-title="Email Identity" data-content="Your box sets up SPF, DKIM, and DMARC for you. These DNS-based protocols tell recipients of your mail that you were definitely the sender."><a href="https://en.wikipedia.org/wiki/Sender_Policy_Framework">SPF</a>, <a href="https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail">DKIM</a>, &amp; <a href="https://en.wikipedia.org/wiki/DMARC">DMARC</a></li>
-					<li data-title="Secure DNS and TLSA" data-content="When enabled, DNSSEC provides a higher level of protection against active attacks. DANE TLSA guarantees that mail sent between two Mail-in-a-Boxes will be encrypted."><a href="https://en.wikipedia.org/wiki/DNSSEC">DNSSEC</a> &amp; <a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities">DANE TLSA</a></li>
-					<li data-title="Cryptography Settings" data-content="Settings are tweaked for opportunistic TLS, strong ciphers, the right protocols, and HSTS. Privacy sensitive mail headers in your outgoing email are stripped."><a href="https://gist.github.com/konklone/6532544">Good Crypto Settings</a></li>
-    			</ul>
     		</div>
     	</div>
 	</div>
 
 	<script src="https://code.jquery.com/jquery-2.1.1.min.js"> </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js"></script> <!-- activity stats -->
 	<script>
 		$(function() {
-			// Add popovers if the window is wide enough.
-			if ($(window).width() > 768)
-				$('#sidebar li').popover({ animation: false, trigger: 'hover', container: 'body' })
-
 			// Create the activity chart.
 			$.getJSON("install-stats.json", function(data) {
 				// make a d3 chart
 				$("#install-stats").show();
-				var w = $("#bootstrap pre span").width();
+				var w = $("#install-stats").width();
 				var h = $("#install-stats .heading").height();
-				$("#bootstrap").css({ width: w + 20, marginLeft: '1em' });
-
 				$("#install-stats .heading span").text(data[data.length-1][1]);
 
 				var chart = d3.select("#install-stats").append("svg")
