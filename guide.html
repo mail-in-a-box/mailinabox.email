@@ -289,13 +289,13 @@
 
 					<p>Once inside, you will now get the Mail-in-a-Box code onto your box and start its setup. Copy and paste this into your terminal and hit <key>enter</key>:</p>
 
-					<pre>curl -s https://mailinabox.email/bootstrap.sh | sudo bash</pre>
+					<pre>curl -s https://mailinabox.email/bootstrap.sh | sudo -E bash</pre>
 
 					<p>You will be asked to enter the email address you want and a few other configuration questions. At the end you will be asked for a password for your email address.</p>
 
 					<p>This password will be used to login to webmail, the administrative interface, and on your devices. It will <strong>not</strong> be used to log onto your Mail-in-a-Box server using SSH (that&rsquo;s what you did above).</p>
 
-					<p>It is always safe to re-run the setup script, either because something went wrong or you just want to see it again. You can do so by just running <code>sudo mailinabox</code> from the command line.</p>
+					<p>It is always safe to re-run the setup script, either because something went wrong or you just want to see it again. You can do so by just running <code>sudo -E mailinabox</code> from the command line.</p>
 
 					<h2 id="admin">The Administrative Interface</h2>
 
@@ -375,7 +375,7 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p>You should also move to the latest Mail-in-a-Box release occasionally. Check the <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/CHANGELOG.md">release notes</a> for updates and review them before updating. Then go back to the section called <a href="#setup">Setting Up The Box</a> and simply follow the same steps again to update your box to the latest from us.</p>
 
-					<p>Remember that it is always safe to re-run the setup script by typing <code>sudo mailinabox</code> at the SSH terminal prompt.</p>
+					<p>Remember that it is always safe to re-run the setup script by typing <code>sudo -E mailinabox</code> at the SSH terminal prompt.</p>
 
 					<h2 id="checks">Systems Checks</h2>
 
