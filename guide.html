@@ -167,6 +167,7 @@
 			          <li><a href="#setup">Machine Setup</a></li>
 			          <li><a href="#admin">Administrative Page</a></li>
 			          <li><a href="#checks">Systems Checks</a></li>
+			          <li><a href="#relaying">Relaying For Other Machines</a></li>
 			        </ul>
 				</div>
     		</div>
@@ -189,7 +190,10 @@
 	    				<dd>There&rsquo;s also your time. Once a Mail-in-a-Box is set up, we hope it &ldquo;just works&rdquo; but when you are your own system administrator you must be prepared to resolve issues as they arise.</dd>
 
 	    				<dt>How will this affect my website? (Advanced.)</dt>
-	    				<dd>If your website is just HTML pages and static files, you can copy it onto your Mail-in-a-Box for a really simple hosting solution. If you have a website already, be aware that your Mail-in-a-Box wants to take over your DNS so that it can configure it correctly for email, and we recommend you let the box do that. But the box will let you customize the DNS at the end of setup if you have another server running your domain name&rsquo;s website.</dd>
+	    				<dd>
+		    				<p>If your website is just HTML pages and static files, you can copy it onto your Mail-in-a-Box for a really simple hosting solution. If you have a website already, be aware that your Mail-in-a-Box wants to take over your DNS so that it can configure it correctly for email, and we recommend you let the box do that. But the box will let you customize the DNS at the end of setup if you have another server running your domain name&rsquo;s website.</p>
+		    				<p>Because Mail-in-a-Box configures your DNS to prevent unauthorised senders <a href="http://en.wikipedia.org/wiki/Email_spoofing">forging</a> mail from your domains we recommend that you only create custom A & AAAA records for any webservers that you may have, and if they need to send email that you configure them to <a href="#relaying">relay via your Mail-in-a-Box</a>.</p>
+	    				</dd>
 
 	    				<dt>Can I modify my box after / use my box for something else too? (Advanced.)</dt>
 	    				<dd>No. Mail-in-a-Box must be installed on a <u>fresh</u> machine that will be <u>dedicated</u> to Mail-in-a-Box, and you cannot modify the box after installation (configuration changes will get overwritten by the box&rsquo;s self-management). If you are looking for something more advanced, try <a href="http://www.iredmail.org/">iRedMail</a> or <a href="https://github.com/tonioo/modoboa">Modoboa</a>.</dd>
@@ -410,6 +414,38 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 						<li>DKIM and SPF: <a href="http://www.brandonchecketts.com/emailtest.php">brandonchecketts.com/emailtest</a></li>
 						<li>SSL: <a href="https://www.ssllabs.com/ssltest/analyze.html">ssllabs.com</a></li>
 					</ul>
+
+					<h2 id="relaying">Relaying For Other Machines</h2>
+
+					<p>If you have other machines on domains that are under the jurisdiction of your Mail-in-a-Box and they need to send mail (e.g. a webserver, or any machine that has cron jobs you want to see the output of) we recommend that you configure those machines to relay via the Mail-in-a-Box.</p>
+
+					<p>If the remote machine is running Ubuntu 14.04 this can be done by applying the following steps to it. No changes are required on the Mail-in-a-Box itself (other than the creation of a mail account for the remote machine to authenticate with); <em>all commands that follow are to be run on the remote machine</em>.</p>
+
+					<ol>
+						<li>Run <code>sudo apt-get install postfix</code> and choose &ldquo;Satellite system&rdquo; when prompted.</li>
+						<li>
+							<p>Append the following seven lines to <code>/etc/postfix/main.cf</code>:</p>
+							<pre><code>mydestination = 
+smtp_use_tls = yes
+smtp_tls_security_level = verify
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/relay_password
+smtp_sasl_tls_security_options = </code></pre>
+						</li>
+						<li>
+							<p>Write credentials in the following form to <code>/etc/postfix/relay_password</code> (substitute the second and third values with credentials for a freshly created account on the Mail-in-a-Box, and the first with the hostname of your Mail-in-a-Box):</p>
+							<pre><code>yourmailinabox.yourdomain relayusername:relaypassword</code></pre>
+							<p>The account that you create on Mail-in-a-Box for this purpose can be on any of the domains that your Mail-in-a-Box manages, as the only requirement on mail sent by the remote machine is that it is from <em>a</em> domain that the Mail-in-a-Box manages. You may want to create an alias on your Mail-in-a-Box so that any replies sent to automatically generated messages get routed to your own inbox; otherwise they will accumulate in the inbox of the relay account.</p>
+						</li>
+						<li>chmod the password file to 600 (<code>sudo chmod 600 /etc/postfix/relay_password</code>), run <code>sudo postmap /etc/postfix/relay_password</code> and then reload postfix (<code>sudo service postfix reload</code>).</li>
+					</ol>
+                    
+					<p>And that's it. Mail created and dispatched on the remote machine will now be routed via your Mail-in-a-Box.</p>
+ 
+					<p>You can send a test email on the remote machine by running:</p>
+
+					<pre>echo "relay test" | mail -s "relay test" destinationuser@destinationdomain</pre>
 
 					<div class="hidden-xs" style="height: 200px"> </div>
 
