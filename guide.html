@@ -140,6 +140,27 @@
 			#nav li.active a { color: white; }
 			#nav li.active a:hover { color: #E64; }
 
+		.tld-list {
+			margin: 0;
+			list-style: none;
+			font-size: 80%;
+			font-family: sans-serif;
+		}
+		.tld-list:after {
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.tld-list li {
+			float: left;
+			margin-right: .5em;
+			border: 1px solid #DDD;
+			padding: 0 2px;
+		}
+		.tld-list li.heading {
+			border: none;
+			font-weight: bold;
+		} 
     </style>
 </head>
 <body data-spy="scroll" data-target="#nav">
@@ -208,11 +229,49 @@
 
 	    				<p class="example">Josh&rsquo;s email address is <script>document.write("tj".split("").reverse().join(""));</script>@occams.info. His domain name is <code>occams.info</code>.</p>
 
-	    			<p>Some domain names have quirks, depending on which &ldquo;top-level domain&rdquo; (TLD) it is under (.com, .me, .io, and so on). When choosing a domain name, please consult our <a href="tld-quirks.html">TLD quirks page</a> first.</p>
+	    			<p>Some domain names have quirks, depending on which &ldquo;top-level domain&rdquo; (TLD) it is under. Please consult this list:</p>
 
-	    			<p>Now go over to <a href="http://www.gandi.net/domain">Gandi.net</a>, a domain name registrar, and buy a new domain name. It&rsquo;s about $17/year (depending on TLD). Buy anything you want. This is your new identity.</p>
+	    			<ul class="tld-list">
+	    				<li class="heading">Known good TLDs:</li>
+	    				<li>.com</li>
+	    				<li>.email</li>
+	    				<li>.fund</li>
+	    				<li>.guide</li>
+	    				<li>.info</li>
+	    				<li>.io</li>
+	    				<li>.me</li>
+	    				<li>.net</li>
+	    				<li>.uk</li>
+	    				<li>.me.uk</li>
+	    				<li>.us</li>
+	    			</ul>
 
-	    			<p>After you buy the name you&rsquo;ll need to set it up, but that comes later so keep reading. Note that a Mail-in-a-Box box can handle the email for multiple domains names too &mdash; more on that later.</p>
+	    			<ul class="tld-list">
+	    				<li class="heading">Probably good TLDs:</li>
+	    				<li>.computer</li>
+	    				<li>.cz</li>
+	    				<li>.eu</li>
+	    				<li>.im</li>
+	    				<li>.name</li>
+	    				<li>.net</li>
+	    				<li>.network</li>
+	    				<li>.nl</li>
+	    				<li>.nz</li>
+	    			</ul>
+
+	    			<ul class="tld-list" style="margin-bottom: 14px">
+	    				<li class="heading">Avoid these:</li>
+	   	    			<li title="requires two nameservers">.at</li>
+	    				<li title="requires two nameservers">.de</li>
+	    			</ul>
+
+	    			<p>Next you will register your new domain name. It&rsquo;s about $17/year, depending on TLD. Buy basically anything you want. This is your new identity.</p>
+
+	    			<p>I recommend you use <a href="http://www.gandi.net/domain">Gandi.net</a> to register your domain name because I know it works well for Mail-in-a-Box.</p>
+
+	    			<p>Not all TLDs support DNSSEC and neither to all domain name registrars. (DNSSEC is an optional security feature on Mail-in-a-Box. It&rsquo;s nice to have but things will work just fine without it.) If you will use Gandi, you should check their <a href="http://wiki.gandi.net/en/domains/dnssec">list of TLDs that support DNSSEC</a>. You can use other domain name registrars besides Gandi, but support for DNSSEC is not good everywhere. For instance, Namecheap does not support it.</p>
+
+	    			<p>After you buy the domain name you&rsquo;ll need to set it up, but that comes later so keep reading. Note that a Mail-in-a-Box box can handle the email for multiple domains names too &mdash; more on that later.</p>
 
 	    			<h2 id="hostname">Your Box Has A Name</h2>
 
