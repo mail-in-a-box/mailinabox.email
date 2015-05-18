@@ -21,125 +21,8 @@
 
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="guides.css" />
     <style>
-	    @import url(https://fonts.googleapis.com/css?family=Iceland);
-	    @import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
-		@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,500);
-		@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:500);
-
-    	body {
-    		font-family: Raleway, sans-serif;
-    		font-size: 16px;
-			color: #555;
-    	}
-
-		h1 {
-			font-family: 'Iceland', sans-serif;
-			font-size: 50px;
-		}
-
-		h2 {
-			margin-top: 1.75em;
-			font-family: Ubuntu, Arial, sans-serif;
-			font-weight: bold;
-			font-size: 20px;
-			padding-bottom: .25em;
-			border-bottom: 1px solid #DDD;
-			margin-bottom: 1em;
-		}
-
-		h3 {
-			margin-top: 1.5em;
-			margin-bottom: .75em;
-			font-family: Ubuntu, Arial, sans-serif;
-			font-weight: 300;
-			font-size: 17px;
-			color: black;
-		}
-
-		a {
-			color: #24A;
-			text-decoration: underline;
-		}
-
-		#back {
-			background-color: #EEE;
-			font-size: 90%;
-			padding: .5em;
-		}
-		#back a { text-decoration: none; }
-		#back a:hover { text-decoration: underline; }
-
-		p {
-			margin-bottom: 1.25em; /* see .example, .figure, pre */
-		}
-
-		li {
-			margin-bottom: .5em;
-		}
-		ul, ol {
-			margin-bottom: 1em;
-		}
-
-		.example {
-			margin: 1em 1em 1.3em 1.5em; /* bottom must match p */
-			border: 1px solid #EEF;
-			padding: .5em;
-			background-color: #FAFAFF;
-		}
-
-		.figure {
-			margin: 1.25em auto; /* bottom must match p */
-		}
-
-		pre, code {
-			background-color: black;
-			font-family: 'Source Code Pro', monospace;
-			color: #FFE5E0;
-		}
-
-		pre {
-			margin-bottom: 1.75em; /* bottom must match p, but a bit larger looks better */
-    		font-size: 15px;
-		}
-
-		.example code {
-			background: white;
-			color: black;
-		}
-
-		dl > dt {
-			margin-top: 1em;
-			margin-bottom: 3px;
-			font-weight: normal;
-			color: black;
-		}
-		dl > dt:before {
-			display: inline-block;
-			position: relative;
-			top: 1px;
-			content: "☑";
-			width: 20px;
-		}
-		dl > dd {
-			margin-left: 20px;
-		}
-
-		table { margin-bottom: 1.25em; }
-		table thead th { border-bottom: 1px solid #555; }
-		table th, table td {
-			padding: .25em 1em .25em 0;
-		}
-
-		#nav {
-			margin-top: 2em;
-		}
-			#nav a { padding-bottom: .25em; color: #E64; text-decoration: none; }
-			#nav li { margin: 0; }
-			#nav li.active { background-color: #D55; }
-			#nav li.active a { color: white; }
-			#nav li.active a:hover { color: #E64; }
-
 		.tld-list {
 			margin: 0;
 			list-style: none;
@@ -188,7 +71,6 @@
 			          <li><a href="#setup">Machine Setup</a></li>
 			          <li><a href="#admin">Administrative Page</a></li>
 			          <li><a href="#checks">Systems Checks</a></li>
-			          <li><a href="#relaying">Relaying For Other Machines</a></li>
 			        </ul>
 				</div>
     		</div>
@@ -487,38 +369,6 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 						<li>DKIM and SPF: <a href="http://www.brandonchecketts.com/emailtest.php">brandonchecketts.com/emailtest</a></li>
 						<li>SSL: <a href="https://www.ssllabs.com/ssltest/analyze.html">ssllabs.com</a></li>
 					</ul>
-
-					<h2 id="relaying">Relaying For Other Machines</h2>
-
-					<p>If you have other machines on domains that are under the jurisdiction of your Mail-in-a-Box and they need to send mail (e.g. a webserver, or any machine that has cron jobs you want to see the output of) we recommend that you configure those machines to relay via the Mail-in-a-Box.</p>
-
-					<p>If the remote machine is running Ubuntu 14.04 this can be done by applying the following steps to it. No changes are required on the Mail-in-a-Box itself (other than the creation of a mail account for the remote machine to authenticate with); <em>all commands that follow are to be run on the remote machine</em>.</p>
-
-					<ol>
-						<li>Run <code>sudo apt-get install postfix</code> and choose &ldquo;Satellite system&rdquo; when prompted.</li>
-						<li>
-							<p>Append the following seven lines to <code>/etc/postfix/main.cf</code>:</p>
-							<pre><code>mydestination = 
-smtp_use_tls = yes
-smtp_tls_security_level = verify
-smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
-smtp_sasl_auth_enable = yes
-smtp_sasl_password_maps = hash:/etc/postfix/relay_password
-smtp_sasl_tls_security_options = </code></pre>
-						</li>
-						<li>
-							<p>Write credentials in the following form to <code>/etc/postfix/relay_password</code> (substitute the second and third values with credentials for a freshly created account on the Mail-in-a-Box, and the first with the hostname of your Mail-in-a-Box):</p>
-							<pre><code>yourmailinabox.yourdomain relayusername:relaypassword</code></pre>
-							<p>The account that you create on Mail-in-a-Box for this purpose can be on any of the domains that your Mail-in-a-Box manages, as the only requirement on mail sent by the remote machine is that it is from <em>a</em> domain that the Mail-in-a-Box manages. You may want to create an alias on your Mail-in-a-Box so that any replies sent to automatically generated messages get routed to your own inbox; otherwise they will accumulate in the inbox of the relay account.</p>
-						</li>
-						<li>chmod the password file to 600 (<code>sudo chmod 600 /etc/postfix/relay_password</code>), run <code>sudo postmap /etc/postfix/relay_password</code> and then reload postfix (<code>sudo service postfix reload</code>).</li>
-					</ol>
-                    
-					<p>And that's it. Mail created and dispatched on the remote machine will now be routed via your Mail-in-a-Box.</p>
- 
-					<p>You can send a test email on the remote machine by running:</p>
-
-					<pre>echo "relay test" | mail -s "relay test" destinationuser@destinationdomain</pre>
 
 					<div class="hidden-xs" style="height: 200px"> </div>
 

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Mail-in-a-Box Advanced Configuration Guide</title>
+    <meta name="description" content="Advanced configuration information for Mail-in-a-Box. Take back control of your email with this easy-to-deploy mail server in a box." />
+
+    <meta property="og:site_name" content="Mail-in-a-Box">
+    <meta name="twitter:creator" content="@joshdata" />
+    <meta name="twitter:creator:id" content="352686442" />
+    <meta name="twitter:site" content="@mailinabox" />
+    <meta name="twitter:site:id" content="2612357965" />
+
+    <meta name="og:image" content="https://mailinabox.email/static/logo.png" />
+    <link rel="vcs-git" href="https://github.com/mail-in-a-box/mailinabox.email" title="code for Mail-in-a-Box website" />
+    <link rel="icon" type="image/png" href="/static/logo_small.png">
+    <link rel="apple-touch-icon" type="image/png" href="/static/logo_small.png">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="guides.css" />
+</head>
+<body data-spy="scroll" data-target="#nav">
+	<a href="https://github.com/mail-in-a-box/mailinabox.email/blob/master/advanced-configuration.html" class="visible-md visible-lg"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+	<div id="back">
+		<div class="container">
+			<a href="/">
+				&lt; Back to Mail-in-a-Box
+			</a>
+		</div>
+	</div>
+
+	<div class="container">
+    	<div class="row">
+    		<div id="sidebar" class="col-sm-4 col-md-3">
+				<div id="nav" class="small">
+					<p style="margin: 0 0 .5em 14px; border-bottom: 1px solid #CCC; color: #888;">Table of Contents</p>
+			        <ul class="nav nav-list">
+			          <li><a href="#relaying">Relaying For Other Machines</a></li>
+			        </ul>
+				</div>
+    		</div>
+
+    		<div class="col-sm-8 col-md-9">
+
+    			<div style="padding-left: 1em; max-width: 55em">
+	    			<h1>Mail-in-a-Box Advanced Configuration</h1>
+
+	    			<p>This page collects tips for advanced configurations.</p>
+
+					<h2 id="relaying">Relaying For Other Machines</h2>
+
+					<p>If you have other machines on domains that are under the jurisdiction of your Mail-in-a-Box and they need to send mail (e.g. a webserver, or any machine that has cron jobs you want to see the output of) we recommend that you configure those machines to relay via the Mail-in-a-Box.</p>
+
+					<p>If the remote machine is running Ubuntu 14.04 this can be done by applying the following steps to it. No changes are required on the Mail-in-a-Box itself (other than the creation of a mail account for the remote machine to authenticate with); <em>all commands that follow are to be run on the remote machine</em>.</p>
+
+					<ol>
+						<li>Run <code>sudo apt-get install postfix</code> and choose &ldquo;Satellite system&rdquo; when prompted.</li>
+						<li>
+							<p>Append the following seven lines to <code>/etc/postfix/main.cf</code>:</p>
+							<pre><code>mydestination = 
+smtp_use_tls = yes
+smtp_tls_security_level = verify
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/relay_password
+smtp_sasl_tls_security_options = </code></pre>
+						</li>
+						<li>
+							<p>Write credentials in the following form to <code>/etc/postfix/relay_password</code> (substitute the second and third values with credentials for a freshly created account on the Mail-in-a-Box, and the first with the hostname of your Mail-in-a-Box):</p>
+							<pre><code>yourmailinabox.yourdomain relayusername:relaypassword</code></pre>
+							<p>The account that you create on Mail-in-a-Box for this purpose can be on any of the domains that your Mail-in-a-Box manages, as the only requirement on mail sent by the remote machine is that it is from <em>a</em> domain that the Mail-in-a-Box manages. You may want to create an alias on your Mail-in-a-Box so that any replies sent to automatically generated messages get routed to your own inbox; otherwise they will accumulate in the inbox of the relay account.</p>
+						</li>
+						<li>chmod the password file to 600 (<code>sudo chmod 600 /etc/postfix/relay_password</code>), run <code>sudo postmap /etc/postfix/relay_password</code> and then reload postfix (<code>sudo service postfix reload</code>).</li>
+					</ol>
+                    
+					<p>And that's it. Mail created and dispatched on the remote machine will now be routed via your Mail-in-a-Box.</p>
+ 
+					<p>You can send a test email on the remote machine by running:</p>
+
+					<pre>echo "relay test" | mail -s "relay test" destinationuser@destinationdomain</pre>
+
+					<div class="hidden-xs" style="height: 200px"> </div>
+
+    		</div>
+
+    	</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"> </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script>
+		if ($(window).width() >= 768) {
+			// scroll spy with a fixed TOC doesn't work on small screens
+			$('#nav').attr('data-spy', 'affix');
+			$('body').scrollspy()
+		}
+	</script>
+</body>
+</html>

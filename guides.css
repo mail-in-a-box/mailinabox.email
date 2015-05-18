@@ -1,0 +1,118 @@
+@import url(https://fonts.googleapis.com/css?family=Iceland);
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:300,500);
+@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:500);
+
+body {
+	font-family: Raleway, sans-serif;
+	font-size: 16px;
+	color: #555;
+}
+
+h1 {
+	font-family: 'Iceland', sans-serif;
+	font-size: 50px;
+}
+
+h2 {
+	margin-top: 1.75em;
+	font-family: Ubuntu, Arial, sans-serif;
+	font-weight: bold;
+	font-size: 20px;
+	padding-bottom: .25em;
+	border-bottom: 1px solid #DDD;
+	margin-bottom: 1em;
+}
+
+h3 {
+	margin-top: 1.5em;
+	margin-bottom: .75em;
+	font-family: Ubuntu, Arial, sans-serif;
+	font-weight: 300;
+	font-size: 17px;
+	color: black;
+}
+
+a {
+	color: #24A;
+	text-decoration: underline;
+}
+
+#back {
+	background-color: #EEE;
+	font-size: 90%;
+	padding: .5em;
+}
+#back a { text-decoration: none; }
+#back a:hover { text-decoration: underline; }
+
+p {
+	margin-bottom: 1.25em; /* see .example, .figure, pre */
+}
+
+li {
+	margin-bottom: .5em;
+}
+ul, ol {
+	margin-bottom: 1em;
+}
+
+.example {
+	margin: 1em 1em 1.3em 1.5em; /* bottom must match p */
+	border: 1px solid #EEF;
+	padding: .5em;
+	background-color: #FAFAFF;
+}
+
+.figure {
+	margin: 1.25em auto; /* bottom must match p */
+}
+
+pre, code {
+	background-color: black;
+	font-family: 'Source Code Pro', monospace;
+	color: #FFE5E0;
+}
+
+pre {
+	margin-bottom: 1.75em; /* bottom must match p, but a bit larger looks better */
+	font-size: 15px;
+}
+
+.example code {
+	background: white;
+	color: black;
+}
+
+dl > dt {
+	margin-top: 1em;
+	margin-bottom: 3px;
+	font-weight: normal;
+	color: black;
+}
+dl > dt:before {
+	display: inline-block;
+	position: relative;
+	top: 1px;
+	content: "☑";
+	width: 20px;
+}
+dl > dd {
+	margin-left: 20px;
+}
+
+table { margin-bottom: 1.25em; }
+table thead th { border-bottom: 1px solid #555; }
+table th, table td {
+	padding: .25em 1em .25em 0;
+}
+
+#nav {
+	margin-top: 2em;
+}
+	#nav a { padding-bottom: .25em; color: #E64; text-decoration: none; }
+	#nav li { margin: 0; }
+	#nav li.active { background-color: #D55; }
+	#nav li.active a { color: white; }
+	#nav li.active a:hover { color: #E64; }
+
