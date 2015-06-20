@@ -67,7 +67,8 @@
 			          <li><a href="#domain-name-registration">Getting a Domain Name</a></li>
 			          <li><a href="#hostname">The Box&rsquo;s Hostname</a></li>
 			          <li><a href="#machine">The Machine</a></li>
-			          <li><a href="#domain-name-configuration">Domain Name Configuration</a></li>
+			          <li><a href="#glue-records">Domain Name Glue Records</a></li>
+			          <li><a href="#domain-name-nameservers">Domain Name Nameservers</a></li>
 			          <li><a href="#setup">Machine Setup</a></li>
 			          <li><a href="#admin">Administrative Page</a></li>
 			          <li><a href="#checks">Systems Checks</a></li>
@@ -199,17 +200,15 @@
 	    			<p>If your machine is behind a hardware firewall (or virtual equivalent, such as an AWS security group), ensure that the following ports are open: 22 (SSH), 25 (SMTP), 53 (DNS; must be open for both tcp &amp; udp), 80 (HTTP), 443 (HTTPS), 587 (SMTP submission), and 993 (IMAP). It doesn&rsquo;t hurt to block other ports, but your box will take care of that itself by configuring a software firewall on the machine itself.</p>
 
 
-	    			<h2 id="domain-name-configuration">Configuring Your Domain Name</h2>
+	    			<h2 id="glue-records">Domain Name Configuration &mdash; Glue Records</h2>
 
-					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=497&end=625">Watch a video of this step.</a></p>
+					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=497&end=587">Watch a video of this step.</a></p>
 
-	    			<p>We&rsquo;ll now go back to your domain name registrar to associate your domain name with your box&rsquo;s IP address.</p>
+	    			<p>We&rsquo;ll now go back to your domain name registrar to associate your domain name with your box&rsquo;s IP address. This has two parts: glue records and nameservers.</p>
 
 	    			<h3>Advanced: External DNS</h3>
 
-	    			<p>If you are using an external DNS provider, e.g. if you already have a website on your domain name, you may skip this section. However, we recommend that you continue and let your box take over your DNS so that it can set it up securely and correctly for email.</p>
-
-	    			<p>If you choose to skip this section, pay special attention to &ldquo;System status & DNS&rdquo; toward the end.</p>
+	    			<p>If you are using an external DNS provider, e.g. if you already have a website on your domain name, you may skip this section. However, we recommend that you continue and let your box take over your DNS so that it can set it up securely and correctly for email. <strong>If you choose to skip this section, pay special attention to &ldquo;System status &amp; DNS&rdquo; toward the end.</strong></p>
 
 	    			<h3>Glue Records</h3>
 
@@ -231,11 +230,21 @@
 
 	    				<p class="example">Josh&rsquo;s domain name is occams.info. The two glue hostnames are <code>ns1.box.occams.info</code> and <code>ns2.box.occams.info</code>, but his registrar asks him to enter them with &ldquo;.occams.info&rdquo; omitted leaving just <code>ns1.box</code> and <code>ns2.box</code>.</p>
 
-	    			<p>If your Mail-in-a-Box is handling mail for multiple domains, you only do the part above once. Other domain names skip this step.</p>
+	    			<p>If your Mail-in-a-Box is handling mail for multiple domains, you only do glue records once (for your first domain name). Additional domain names skip this step.</p>
+
+
+
+			        <h2 id="domain-name-nameservers">Domain Name Configuration &mdash; Nameservers</h2>
+
+					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=587&end=625">Watch a video of this step.</a></p>
+
+	    			<h3>Advanced: External DNS</h3>
+
+	    			<p>If you skipped the previous section, you will skip this one too and follow your external DNS provider&rsquo;s instructions instead. <strong>If you skip this section, pay special attention to &ldquo;System status &amp; DNS&rdquo; toward the end.</strong></p>
 
 	    			<h3>Nameservers</h3>
 
-	    			<p>Second, you&rsquo;ll tell your domain registrar that your domain name&rsquo;s nameservers are <code>ns1.</code> + your box&rsquo;s hostname and <code>ns2.</code> + your box&rsquo;s hostname.</p>
+	    			<p>Now you&rsquo;ll tell your domain registrar that your domain name&rsquo;s nameservers are <code>ns1.</code> + your box&rsquo;s hostname and <code>ns2.</code> + your box&rsquo;s hostname.</p>
 
 	    			<p>You will usually be turning off the registrar&rsquo;s provided nameservers and turning on custom servers. This is usually <i>not</i> found in the domain name&rsquo;s DNS control panel. You will be disabling that control panel.</p>
 
@@ -243,9 +252,9 @@
 
 	    			<img src="static/domain_nameservers.png" title="Nameserver Configuration at Your Domain Registrar" class="img-responsive figure"/>
 
-	    			<p>This part <em>is</em> repeated for each domain name you associate with your box.</p>
-
 	    			<p>Don&rsquo;t worry if you are confused about what this all means. It is complicated &mdash; we all get confused at this point.</p>
+
+	    			<p>If you add another domain name to your box later, this section is repeated for each domain name you associate with your box. All domain names on the box will use the exact same two nameservers. So if you used <code>ns1.yourdomain.com</code> for your first domain, use exactly the same thing for your second domain name. (You do NOT use <code>ns1.yourseconddomain.com</code>, etc.)</p>
 
 	    			<h3>DNSSEC DS Record</h3>
 
@@ -352,13 +361,12 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p>Follow <a href="http://twitter.com/Mailinabox">@Mailinabox</a> on Twitter so you know when we post any updates to Mail-in-a-Box.</p>
 
-					<p>You should periodically update the software on Mail-in-a-Box. Every now and then update the Ubuntu base packages in case there have been any security updates. Log into your machine with SSH and then type:</p>
-
-					<pre>sudo apt-get update &amp;&amp; sudo apt-get upgrade</pre>
-
-					<p>You should also move to the latest Mail-in-a-Box release occasionally. Check the <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/CHANGELOG.md">release notes</a> for updates and review them before updating. Then go back to the section called <a href="#setup">Setting Up The Box</a> and simply follow the same steps again to update your box to the latest from us.</p>
+					<p>Check your box&rsquo;s control panel periodically to see that the System Status Checks report everything is OK. Your box will also automatically email you whenever anything changes in the status checks.</p>
 
 					<p>Remember that it is always safe to re-run the setup script by typing <code>sudo mailinabox</code> at the SSH terminal prompt.</p>
+
+					<p>Finally, consult the <a href="maintenance.html">Maintenance Guide</a> for further questions.</p>
+
 
 					<h2 id="checks">Systems Checks</h2>
 

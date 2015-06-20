@@ -16,9 +16,9 @@
    version="1.1"
    inkscape:version="0.91 r13725"
    sodipodi:docname="architecture.svg"
-   inkscape:export-filename="/home/user/dev/mailinabox/static/architecture.png"
-   inkscape:export-xdpi="55.380001"
-   inkscape:export-ydpi="55.380001">
+   inkscape:export-filename="/home/user/dev/mailinabox.email/static/architecture.png"
+   inkscape:export-xdpi="150.04572"
+   inkscape:export-ydpi="150.04572">
   <defs
      id="defs4">
     <marker
@@ -978,7 +978,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4"
-     inkscape:cx="845.78568"
+     inkscape:cx="725.78568"
      inkscape:cy="211.71071"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"

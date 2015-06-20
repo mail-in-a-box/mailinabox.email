@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Mail-in-a-Box Maintenance Guide</title>
+    <meta name="description" content="Maintenance instructions for Mail-in-a-Box. Take back control of your email with this easy-to-deploy mail server in a box." />
+
+    <meta property="og:site_name" content="Mail-in-a-Box">
+    <meta name="twitter:creator" content="@joshdata" />
+    <meta name="twitter:creator:id" content="352686442" />
+    <meta name="twitter:site" content="@mailinabox" />
+    <meta name="twitter:site:id" content="2612357965" />
+
+    <meta name="og:image" content="https://mailinabox.email/static/logo.png" />
+    <link rel="vcs-git" href="https://github.com/mail-in-a-box/mailinabox.email" title="code for Mail-in-a-Box website" />
+    <link rel="icon" type="image/png" href="/static/logo_small.png">
+    <link rel="apple-touch-icon" type="image/png" href="/static/logo_small.png">
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="guides.css" />
+    <style>
+    </style>
+</head>
+<body data-spy="scroll" data-target="#nav">
+	<a href="https://github.com/mail-in-a-box/mailinabox.email/blob/master/maintenance.html" class="visible-md visible-lg"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+
+	<div id="back">
+		<div class="container">
+			<a href="/">
+				&lt; Back to Mail-in-a-Box
+			</a>
+		</div>
+	</div>
+
+	<div class="container">
+    	<div class="row">
+    		<div id="sidebar" class="col-sm-4 col-md-3">
+				<div id="nav" class="small">
+					<p style="margin: 0 0 .5em 14px; border-bottom: 1px solid #CCC; color: #888;">Table of Contents</p>
+			        <ul class="nav nav-list">
+			          <li><a href="#multiple-domains">Multiple Domains</a></li>
+			          <li><a href="#updating-software">Updating System Software</a></li>
+			          <li><a href="#updating-mail-in-a-box">Updating Mail-in-a-Box</a></li>
+			          <li><a href="#moving-boxes">Moving to a New Box</a></li>
+			        </ul>
+				</div>
+    		</div>
+
+    		<div class="col-sm-8 col-md-9">
+
+    			<div style="padding-left: 1em; max-width: 55em">
+	    			<h1>Mail-in-a-Box Maintenance Guide</h1>
+
+	    			<p>This page covers frequently asked questions about how to configure a running Mail-in-a-Box and how to keep it up to date. For help setting up a new box, see the <a href="guide.html">setup guide</a>.</p>
+
+	    			<h2 id="multiple-domains">Multiple Domain Names</h2>
+
+	    			<p>Your box can host email and serve static websites for more than one domain name. To set up additional domain names, just follow three steps:</p>
+
+	    			<ol>
+	    			<li>Buy an additional domain name if you don&rsquo;t yet own it. See the <a href="guide.html#domain-name-registration">Your Domain Name</a> section of the setup guide for tips.</li>
+	    			<li>Configure its nameservers to be the same nameservers on your first domain name. Follow the <a href="guide.html#domain-name-nameservers">Domain Name Configuration — Nameservers</a> section of the setup guide for instructions.</li>
+	    			<li>Add an email account (user) or alias on your box for the new domain name using the control panel. If you only plan to serve a website, still add an email address or alias &mdash; that&rsquo;s how the box knows to handle that domain name.</li>
+	    			</ol>
+
+
+	    			<h2 id="updating-software">Updating System Software</h2>
+
+	    			<p>Mail-in-a-Box is based on a collection of other software packages provided by <a href="http://www.ubuntu.com/">Ubuntu</a>. We call these packages system software packages. These packages may have security or other functionality updates.</p>
+
+					<p>You should periodically update the system software on your box. The box will automatically install security updates as they are made available by Ubuntu, but your control panel will let you know if a reboot is needed or if non-security updates are available for you to install.</p>
+
+					<p>When indicated to do so, log into your machine with SSH (using the same <code>ssh</code> command that you used <a href="guide.html#setup">during setup</a>) and then type:</p>
+
+					<pre>sudo apt-get update &amp;&amp; sudo apt-get upgrade</pre>
+
+					<p>If prompted to reboot, type:</p>
+
+					<pre>sudo reboot</pre>
+
+
+	    			<h2 id="updating-mail-in-a-box">Updating Mail-in-a-Box</h2>
+
+					<p>Notices of updates to Mail-in-a-Box itself are posted on Twitter at <a href="http://twitter.com/Mailinabox">@Mailinabox</a>. Or check the Mail-in-a-Box website.</p>
+
+					<p>You should move to the latest Mail-in-a-Box release as they are posted, especially if an update addresses any security issues, although you do not necessarily need to do so.</p>
+
+					<p>Check the <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/CHANGELOG.md">release notes</a> prior to updating to see what&rsquo;s been changed in the latest version.</p>
+
+					<p>Then simply go back to the setup guide section called <a href="guide.html#setup">Setting Up The Box</a> and follow the same steps again to update your box to the latest from us.</p>
+
+
+	    			<h2 id="moving-boxes">Moving to a New Box</h2>
+
+	    			<p>If you want to move your Mail-in-a-Box installation to a new machine (e.g. you&rsquo;re getting more memory, getting a new IP address, etc.), or if something is horribly wrong with your box, you can easily move all of your data to a new machine.</p>
+
+	    			<p>Follow these steps:</p>
+
+	    			<ol>
+	    			<li>Spin up the new machine following the setup guide&rsquo;s section <a href="guide.html#machine">The Machine</a>.</li>
+	    			<li>Update your domain name&rsquo;s glue records to the new machine&rsquo;s IP address (see the setup guide&rsquo;s section on <a href="guide.html#machine">glue records</a>.</li>
+	    			<li>Copy the <code>/home/user-data</code> directory on your old machine to the same location your new machine. See below for tips.</li>
+	    			<li>Continue the setup guide from <a href="guide.html#setup">Setting Up The Box</a>.</li>
+	    			</ol>
+
+	    			<p>To copy your <code>/home/user-data</code> directory, you can run this command (from your personal home computer if Linux or Mac):</p>
+
+	    			<pre>scp -r -i yourkey.pem ubuntu@old-machine-ip-address:/home/user-data ubuntu@new-machine-ip-address:/home/user-data</pre>
+
+	    			<p>This is all one line. Replace <code>ubuntu@old-machine-ip-address</code> depending on the SSH login instructions provided to you by your old cloud provider &mdash; like how you logged in with SSH to the machine originally. Similarly replace <code>ubuntu@new-machine-ip-address</code> with the appropriate SSH login information for your new machine. I&rsquo;s included <code>-i yourkey.pem</code> if your instructions include a private key, but only include this if you were instructed to do so.</p>
+
+	    			<p>You can also use any SFTP program to copy the files, such as <a href="https://filezilla-project.org/">FileZilla</a>. Your SFTP login will be exactly the same as your SSH login on each machine (possibly with an identity private key file).</p>
+
+
+					<div class="hidden-xs" style="height: 200px"> </div>
+
+    		</div>
+
+    	</div>
+	</div>
+
+	<script src="https://code.jquery.com/jquery-2.1.1.min.js"> </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script>
+		if ($(window).width() >= 768) {
+			// scroll spy with a fixed TOC doesn't work on small screens
+			$('#nav').attr('data-spy', 'affix');
+			$('body').scrollspy()
+		}
+	</script>
+</body>
+</html>
