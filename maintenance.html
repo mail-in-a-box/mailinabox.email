@@ -42,6 +42,7 @@
 				<div id="nav" class="small">
 					<p style="margin: 0 0 .5em 14px; border-bottom: 1px solid #CCC; color: #888;">Table of Contents</p>
 			        <ul class="nav nav-list">
+			          <li><a href="#something-went-wrong">Something Went Wrong</a></li>
 			          <li><a href="#multiple-domains">Multiple Domains</a></li>
 			          <li><a href="#updating-software">Updating System Software</a></li>
 			          <li><a href="#updating-mail-in-a-box">Updating Mail-in-a-Box</a></li>
@@ -56,6 +57,26 @@
 	    			<h1>Mail-in-a-Box Maintenance Guide</h1>
 
 	    			<p>This page covers frequently asked questions about how to configure a running Mail-in-a-Box and how to keep it up to date. For help setting up a new box, see the <a href="guide.html">setup guide</a>.</p>
+
+	    			<h2 id="something-went-wrong">Something Went Wrong!</h2>
+
+	    			<p>Is something not working right? Start here. Please follow these steps before asking a question on the discussion forum:</p>
+
+	    			<ol>
+	    			<li>Check your System Status Checks page in the control panel at <code>https://box.yourdomain.com/admin</code>. Everything should be green. Anything not green may help you diagnose the problem on your own.</li>
+	    			<li>Re-run the setup by logging into your box (using the same <code>ssh</code> command that you used <a href="guide.html#setup">during setup</a>) and running <code>sudo mailinabox</code>. Then check the System Status Checks page again.</li>
+	    			<li>Restart your box by logging in with SSH and then typing <code>sudo reboot</code>. Once the box has started up, check the System Status Checks page again.</li>
+	    			</ol>
+
+	    			<p>Please do these steps first. If you&rsquo;ve done these steps, then head to the <a href="https://discourse.mailinabox.email">discussion forum</a> to ask your question. In your post:</p>
+
+	    			<ol>
+	    			<li>Describe the problem you are having. Instead of saying &ldquo;it doesn&rsquo;t work&rdquo;, write the error message you see, post a screenshot, or describe what you are seeing that you don&rsquo;t want to be seeing.</li>
+	    			<li>Mention that you &ldquo;checked the status page, re-ran setup, and rebooted the box&rdquo;, per the steps above, so that anyone answering knows what you have tried so far. If you don&rsquo;t mention this, someone may ask you to do it before providing other assistance.</li>
+	    			<li>If everything in the System Status Checks is green, mention that by saying &ldquo;all checks are green&rdquo;. If something isn&rsquo;t green, mention it.</li>
+	    			</ol>
+
+	    			<p>If you figure out the problem on your own, you are also welcome to write up your experience on the <a href="https://discourse.mailinabox.email">discussion forum</a> so that it might help others.</p>
 
 	    			<h2 id="multiple-domains">Multiple Domain Names</h2>
 
