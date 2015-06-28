@@ -53,9 +53,9 @@
 
 					<h2 id="relaying">Relaying For Other Machines</h2>
 
-					<p>If you have other machines on domains that are under the jurisdiction of your Mail-in-a-Box and they need to send mail (e.g. a webserver, or any machine that has cron jobs you want to see the output of) we recommend that you configure those machines to relay via the Mail-in-a-Box.</p>
+					<p>If you have other machines sending mail using a domain name hosted on your Mail-in-a-Box (e.g. a webserver, or any machine that has cron jobs you want to see the output of) we recommend that you configure those machines to relay their outbound mail via the Mail-in-a-Box. Otherwise those emails may be marked as spam by recipients.</p>
 
-					<p>If the remote machine is running Ubuntu 14.04 this can be done by applying the following steps to it. No changes are required on the Mail-in-a-Box itself (other than the creation of a mail account for the remote machine to authenticate with); <em>all commands that follow are to be run on the remote machine</em>.</p>
+					<p>If the sending machine is running Ubuntu 14.04 this can be done by applying the following steps to it. No changes are required on the Mail-in-a-Box itself (other than the creation of a mail account for the remote machine to authenticate with); <em>all commands that follow are to be run on the remote machine</em>.</p>
 
 					<ol>
 						<li>Run <code>sudo apt-get install postfix</code> and choose &ldquo;Satellite system&rdquo; when prompted.</li>

@@ -43,7 +43,23 @@
 		.tld-list li.heading {
 			border: none;
 			font-weight: bold;
-		} 
+		}
+
+		.watch-a-video {
+			float: right;
+			display: inline-block;
+			border: 1px solid #CCC;
+			background-color: #005;
+			margin-left: 2em;
+			padding: 3px .5em;
+			color: white;
+		}
+			.watch-a-video i {
+				margin-right: .5em;
+			}
+			.watch-a-video a {
+				color: white;
+			}
     </style>
 </head>
 <body data-spy="scroll" data-target="#nav">
@@ -85,18 +101,16 @@
 
 	    			<dl>
 	    				<dt>Can I run my Mail-in-a-Box at home?</dt>
-	    				<dd>No. Most residential servers are blocked from sending mail both on the sending end (your ISP) and on the receiving end (by <a href="http://www.spamhaus.org/pbl/">blacklists</a>) because residential computers are all too often hijacked to send spam. Your home IP address is also probably dynamic, which won&rsquo;t work for this. You&rsquo;ll almost certainly need to use a virtual machine in the cloud to have reliable mail delivery.</dd>
+	    				<dd>No. Computers on most residential networks are blocked from sending mail both on the sending end (your ISP) and on the receiving end (by <a href="http://www.spamhaus.org/pbl/">blacklists</a>) because residential computers are all too often hijacked to send spam. Your home IP address is also probably dynamic, which won&rsquo;t work for this. You&rsquo;ll almost certainly need to use a virtual machine in the cloud to have reliable mail delivery.</dd>
 
 	    				<dt>What will it cost?</dt>
-	    				<dd>This is going to cost you about $16 per month. You&rsquo;re going to become your own Internet service provider &mdash; an ISP. You can divide this among friends and share your Mail-in-a-Box if you&rsquo;d like to split it up. Most of the cost is in having a (virtual) machine connected to the Internet 24/7.</dd>
+	    				<dd>This is going to cost you about $16 per month. Most of the cost is in having a (virtual) machine connected to the Internet 24/7. You can divide this among friends and share your Mail-in-a-Box if you&rsquo;d like to split it up.</dd>
 
 	    				<dt>Do I have time?</dt>
 	    				<dd>There&rsquo;s also your time. Once a Mail-in-a-Box is set up, we hope it &ldquo;just works&rdquo; but when you are your own system administrator you must be prepared to resolve issues as they arise.</dd>
 
 	    				<dt>How will this affect my website? (Advanced.)</dt>
-	    				<dd>
-		    				<p>If your website is just HTML pages and static files, you can copy it onto your Mail-in-a-Box for a really simple hosting solution. If you have a website already, be aware that your Mail-in-a-Box wants to take over your DNS so that it can configure it correctly for email, and we recommend you let the box do that. But the box will let you customize the DNS at the end of setup if you have another server running your domain name&rsquo;s website.</p>
-		    				<p>Because Mail-in-a-Box configures your DNS to prevent unauthorised senders <a href="http://en.wikipedia.org/wiki/Email_spoofing">forging</a> mail from your domains we recommend that you only create custom A & AAAA records for any webservers that you may have, and if they need to send email that you configure them to <a href="advanced-configuration.html#relaying">relay via your Mail-in-a-Box</a>.</p>
+	    				<dd>If your website is just HTML pages and static files, you can copy it onto your Mail-in-a-Box for a really simple hosting solution. If you have a website already, be aware that your Mail-in-a-Box wants to take over your DNS so that it can configure it correctly for email, and we recommend you let the box do that, but you can configure the DNS to keep your website on another machine. You may also need to configure <a href="advanced-configuration.html#relaying">relaying</a> for outbound transactional email.</p>
 	    				</dd>
 
 	    				<dt>Can I modify my box after / use my box for something else too? (Advanced.)</dt>
@@ -106,7 +120,7 @@
 
 	    			<h2 id="domain-name-registration">Your Domain Name</h2>
 
-					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=59&end=249">Watch a video of this step.</a></p>
+					<p class="watch-a-video"><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=59&end=249">Watch a video of this step.</a></p>
 
 	    			<p>The first step in setting up a Mail-in-a-Box is to pick your new email address. An email address has two parts. The part after the @-sign is the <b>domain name</b>. Each domain name is owned by someone, and you are going to be the owner of your own.</p>
 
@@ -149,11 +163,11 @@
 	    				<li title="requires two nameservers">.nl</li> <!-- https://discourse.mailinabox.email/t/nameservers-setup-problems/572/3 -->
 	    			</ul>
 
-	    			<p>Next you will register your new domain name. It&rsquo;s about $17/year, depending on TLD. Buy basically anything you want. This is your new identity.</p>
+	    			<p>Next you will register your new domain name. It&rsquo;s about $17/year, depending on the TLD. Buy basically anything you want, taking into account the TLD recommendations above. This will be the start of your new identity.</p>
 
-	    			<p>I recommend you use <a href="http://www.gandi.net/domain">Gandi.net</a> to register your domain name because I know it works well for Mail-in-a-Box.</p>
+	    			<p>I recommend you use <a href="http://www.gandi.net/domain">Gandi.net</a> to register your domain name because I know it works well for Mail-in-a-Box. You can use other domain name registrars besides Gandi, but support for DNSSEC is not good everywhere. For instance, Namecheap does not support it. (DNSSEC is an optional security feature on Mail-in-a-Box. It&rsquo;s nice to have but things will work just fine without it.) </p>
 
-	    			<p>Not all TLDs support DNSSEC and neither to all domain name registrars. (DNSSEC is an optional security feature on Mail-in-a-Box. It&rsquo;s nice to have but things will work just fine without it.) If you will use Gandi, you should check their <a href="http://wiki.gandi.net/en/domains/dnssec">list of TLDs that support DNSSEC</a>. You can use other domain name registrars besides Gandi, but support for DNSSEC is not good everywhere. For instance, Namecheap does not support it.</p>
+	    			<p>Not all TLDs support DNSSEC either. If you will use Gandi, you should check their <a href="http://wiki.gandi.net/en/domains/dnssec">list of TLDs that support DNSSEC</a>.</p>
 
 	    			<p>After you buy the domain name you&rsquo;ll need to set it up, but that comes later so keep reading. Note that a Mail-in-a-Box box can handle the email for multiple domains names too &mdash; more on that later.</p>
 
@@ -174,9 +188,9 @@
 
 	    			<h2 id="machine">The Machine</h2>
 
-	    			<h3>Finding a cloud service provider</h3>
+					<p class="watch-a-video"><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=251&end=497">Watch a video of this step.</a></p>
 
-					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=251&end=497">Watch a video of this step.</a></p>
+	    			<h3>Finding a cloud service provider</h3>
 
 	    			<p>Now you will rent a machine, or a virtual part of a machine, somewhere in &ldquo;the cloud.&rdquo; We&rsquo;ll call this machine your box.</p>
 
@@ -186,11 +200,17 @@
 
 	    				<p class="example">Josh&rsquo;s droplet would be named <code>box.occams.info</code> (if Josh used Digital Ocean).</p>
 
-	    			<p>I've been a long-time customer of <a href="http://rimuhosting.com/order/v2orderstart.jsp">Rimuhosting.com</a> which also provides cheap virtual machines, which they call &ldquo;VPS&rdquo;s, at several locations around the world. Choose a location near you &mdash; it&rsquo;ll be faster! Most any cloud provider will do, but not Amazon Web Services because its network is often blocked to prevent users from sending spam. Wherever you rent your box, you <em>must</em> choose Ubuntu 14.04 x64 and at least 768 MB RAM.</p>
+	    			<p>I've been a long-time customer of <a href="http://rimuhosting.com/order/v2orderstart.jsp">Rimuhosting.com</a> which also provides cheap virtual machines, which they call &ldquo;VPS&rdquo;s, at several locations around the world. Most any cloud provider will do, but not Amazon Web Services because its network is often blocked to prevent users from sending spam.</p>
+
+	    			<p>If you have a choice, choose a location for your machine that is near you &mdash; it&rsquo;ll be faster! You also <em>must</em> choose Ubuntu 14.04 x64 and at least 768 MB RAM.</p>
+
+	    			<h3>Reverse DNS</h3>
 
 	    			<p>Each cloud provider will have different instructions for setting up &ldquo;reverse DNS.&rdquo; You <strong>must</strong> follow your cloud provider&rsquo;s instructions for setting the reverse DNS of your box to your box&rsquo;s hostname. At Digital Ocean you set the name of your droplet to the box&rsquo;s hostname, as mentioned above.</p>
 
 	    				<p class="example">Josh&rsquo;s box&rsquo;s reverse DNS is set to the same as the box&rsquo;s hostname: <code>box.occams.info</code>.</p>
+
+	    			<h3>Locate the machine&rsquo;s IP address</h3>
 
 	    			<p>Your cloud provider will also now tell you the IP address of your machine. It looks like 123.123.123.123.</p>
 
@@ -203,8 +223,6 @@
 
 	    			<h2 id="glue-records">Domain Name Configuration &mdash; Glue Records</h2>
 
-					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=497&end=587">Watch a video of this step.</a></p>
-
 	    			<p>We&rsquo;ll now go back to your domain name registrar to associate your domain name with your box&rsquo;s IP address. This has two parts: glue records and nameservers.</p>
 
 	    			<h3>Advanced: External DNS</h3>
@@ -212,6 +230,8 @@
 	    			<p>If you are using an external DNS provider, e.g. if you already have a website on your domain name, you may skip this section. However, we recommend that you continue and let your box take over your DNS so that it can set it up securely and correctly for email. <strong>If you choose to skip this section, pay special attention to &ldquo;System status &amp; DNS&rdquo; toward the end.</strong></p>
 
 	    			<h3>Glue Records</h3>
+
+					<p class="watch-a-video"><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=497&end=587">Watch a video of this step.</a></p>
 
 	    			<p>The association between your domain name and IP address is . . . complicated. The domain name system (DNS) is a global, distributed network of machines that turn domain names into IP addresses. Your registrar and your box play a role in the domain name system.</p>
 
@@ -237,13 +257,13 @@
 
 			        <h2 id="domain-name-nameservers">Domain Name Configuration &mdash; Nameservers</h2>
 
-					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=587&end=625">Watch a video of this step.</a></p>
-
 	    			<h3>Advanced: External DNS</h3>
 
 	    			<p>If you skipped the previous section, you will skip this one too and follow your external DNS provider&rsquo;s instructions instead. <strong>If you skip this section, pay special attention to &ldquo;System status &amp; DNS&rdquo; toward the end.</strong></p>
 
 	    			<h3>Nameservers</h3>
+
+					<p class="watch-a-video"><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=587&end=625">Watch a video of this step.</a></p>
 
 	    			<p>Now you&rsquo;ll tell your domain registrar that your domain name&rsquo;s nameservers are <code>ns1.</code> + your box&rsquo;s hostname and <code>ns2.</code> + your box&rsquo;s hostname.</p>
 
@@ -266,7 +286,7 @@
 
 					<h2 id="setup">Setting Up The Box</h2>
 
-					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=625&end=753">Watch a video of this step.</a></p>
+					<p class="watch-a-video"><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=625&end=753">Watch a video of this step.</a></p>
 
 					<p>You will now have to log into your running box using SSH. Your cloud provider will probably give you some instructions on how to do that. If your personal computer has a command line, you'll be doing something like this:</p>
 
@@ -288,7 +308,7 @@
 
 					<h3>Connecting for the First Time</h3>
 
-					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=753&end=790">Watch a video of this step.</a></p>
+					<p class="watch-a-video"><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=753&end=790">Watch a video of this step.</a></p>
 
 					<p>When the setup script is done running, you&rsquo;ll been given instructions on how to access your box&rsquo;s web-based administrative control panel:</p>
 
@@ -321,7 +341,7 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<h3>System status &amp; DNS</h3>
 
-					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=786&end=873">Watch a video of this step.</a></p>
+					<p class="watch-a-video"><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=786&end=873">Watch a video of this step.</a></p>
 
 					<p>Log in to the administrative control panel with the email address and password that you provided during Mail-in-a-Box&rsquo;s setup. Proceed to the System Status Checks.</p>
 
@@ -335,7 +355,7 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<h3>Getting a signed SSL certificate</h3>
 
-					<p><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=873">Watch a video of this step.</a></p>
+					<p class="watch-a-video"><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=873">Watch a video of this step.</a></p>
 
 					<p>Getting a signed SSL certificate is optional but is highly recommended and will remove the security exception warnings from a) the control panel and b) when you start checking and sending mail. The control panel will walk you through this.</p>
 
