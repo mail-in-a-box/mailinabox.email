@@ -55,7 +55,7 @@
 
 					<p>If you have other machines sending mail using a domain name hosted on your Mail-in-a-Box (e.g. a webserver, or any machine that has cron jobs you want to see the output of) we recommend that you configure those machines to relay their outbound mail via the Mail-in-a-Box. Otherwise those emails may be marked as spam by recipients.</p>
 
-					<p>If the sending machine is running Ubuntu 14.04 this can be done by applying the following steps to it. No changes are required on the Mail-in-a-Box itself (other than the creation of a mail account for the remote machine to authenticate with); <em>all commands that follow are to be run on the remote machine</em>.</p>
+					<p>If the sending machine is running Ubuntu 14.04 this can be done as follows. No changes are required on the Mail-in-a-Box itself (other than the creation of a mail account for the remote machine to authenticate with, and optionally the creation of aliases to authorize the remote machine to send from multiple addresses); <em>all commands that follow are to be run on the remote machine</em>.</p>
 
 					<ol>
 						<li>Run <code>sudo apt-get install postfix</code> and choose &ldquo;Satellite system&rdquo; when prompted.</li>
@@ -72,13 +72,19 @@ smtp_sasl_tls_security_options = </code></pre>
 						<li>
 							<p>Write credentials in the following form to <code>/etc/postfix/relay_password</code> (substitute the second and third values with credentials for a freshly created account on the Mail-in-a-Box, and the first with the hostname of your Mail-in-a-Box):</p>
 							<pre><code>yourmailinabox.yourdomain relayusername:relaypassword</code></pre>
-							<p>The account that you create on Mail-in-a-Box for this purpose can be on any of the domains that your Mail-in-a-Box manages, as the only requirement on mail sent by the remote machine is that it is from <em>a</em> domain that the Mail-in-a-Box manages. You may want to create an alias on your Mail-in-a-Box so that any replies sent to automatically generated messages get routed to your own inbox; otherwise they will accumulate in the inbox of the relay account.</p>
+              <p>If the remote machine only needs to be able to send mail from one address you should just use that address as the relay username.</p>
+              <p>If the remote machine needs to be able to send mail from multiple addresses, the relay username can be anything, as you will need to separately authorize it to send from those addresses. This is done by creating mail-forward aliases:</p>
+              <ol>
+                <li>Create regular mail-forward aliases for each address that the remote machine needs to be able to send from if you know those addresses in advance.</li>
+                <li>Create catch-all mail-forward aliases for each domain that the remote machine needs to be able to send from if you do not know which addresses on that domain the remote machine will need to send as.</li>
+              </ol>
+              <p>Catch-all aliases should be avoided where possible because accepting mail to all address on a domain can catch a lot of spam.</p>
 						</li>
 						<li>chmod the password file to 600 (<code>sudo chmod 600 /etc/postfix/relay_password</code>), run <code>sudo postmap /etc/postfix/relay_password</code> and then reload postfix (<code>sudo service postfix reload</code>).</li>
 					</ol>
-                    
+
 					<p>And that's it. Mail created and dispatched on the remote machine will now be routed via your Mail-in-a-Box.</p>
- 
+
 					<p>You can send a test email on the remote machine by running:</p>
 
 					<pre>echo "relay test" | mail -s "relay test" destinationuser@destinationdomain</pre>
