@@ -102,7 +102,7 @@
 
 	    			<dl>
 	    				<dt>Can I run my Mail-in-a-Box at home?</dt>
-	    				<dd>No. Computers on most residential networks are blocked from sending mail both on the sending end (your ISP) and on the receiving end (by <a href="http://www.spamhaus.org/pbl/">blacklists</a>) because residential computers are all too often hijacked to send spam. Your home IP address is also probably dynamic, which won&rsquo;t work for this. You&rsquo;ll almost certainly need to use a virtual machine in the cloud to have reliable mail delivery.</dd>
+	    				<dd>No. Computers on most residential networks are blocked from sending mail both on the sending end (e.g. your ISP blocking port 25) and on the receiving end (by <a href="http://www.spamhaus.org/pbl/">blacklists</a>) because residential computers are all too often hijacked to send spam. Your home IP address is also probably dynamic and lacks configurable &ldquo;reverse DNS.&rdquo; If <em>any</em> of these apply to you, you&rsquo;ll need to use a virtual machine in the cloud.</dd>
 
 	    				<dt>What will it cost?</dt>
 	    				<dd>This is going to cost you about $16 per month. Most of the cost is in having a (virtual) machine connected to the Internet 24/7. You can divide this among friends and share your Mail-in-a-Box if you&rsquo;d like to split it up.</dd>
@@ -115,7 +115,7 @@
 	    				</dd>
 
 	    				<dt>Can I modify my box after / use my box for something else too? (Advanced.)</dt>
-	    				<dd>No. Mail-in-a-Box must be installed on a <u>fresh</u> machine that will be <u>dedicated</u> to Mail-in-a-Box, and you cannot modify the box after installation (configuration changes will get overwritten by the box&rsquo;s self-management). If you are looking for something more advanced, try <a href="http://www.iredmail.org/">iRedMail</a> or <a href="https://github.com/tonioo/modoboa">Modoboa</a>.</dd>
+	    				<dd>No. Mail-in-a-Box must be installed on a <u>fresh</u> machine that will be <u>dedicated</u> to Mail-in-a-Box, and you cannot modify the box after installation (configuration changes will get overwritten by the box&rsquo;s self-management). If you are looking for something more advanced, try <a href="http://www.iredmail.org/">iRedMail</a>, <a href="https://github.com/sovereign/sovereign">Sovereign</a>, or <a href="https://github.com/tonioo/modoboa">Modoboa</a>.</dd>
 
 	    			</dl>
 
