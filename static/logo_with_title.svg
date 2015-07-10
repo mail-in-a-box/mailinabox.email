@@ -16,7 +16,7 @@
    version="1.1"
    inkscape:version="0.48.4 r9939"
    sodipodi:docname="logo_with_title.svg"
-   inkscape:export-filename="/home/user/dev/mailinabox/static/logo_with_title_small.png"
+   inkscape:export-filename="/home/user/dev/mailinabox.email/static/logo_with_title.png"
    inkscape:export-xdpi="19.729013"
    inkscape:export-ydpi="19.729013">
   <defs
@@ -315,14 +315,14 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.175"
-     inkscape:cx="1495.4274"
-     inkscape:cy="-94.603213"
+     inkscape:zoom="0.35"
+     inkscape:cx="1167.7904"
+     inkscape:cy="-97.352841"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1631"
-     inkscape:window-height="1026"
+     inkscape:window-width="1311"
+     inkscape:window-height="744"
      inkscape:window-x="49"
      inkscape:window-y="24"
      inkscape:window-maximized="1"
@@ -608,15 +608,15 @@
        transform="matrix(0.20333228,0,0,0.20333228,364.77656,814.73732)" />
     <text
        xml:space="preserve"
-       style="font-size:285.63815308px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#552200;fill-opacity:1;stroke:none;font-family:Sans"
-       x="454.92825"
-       y="856.56403"
+       style="font-size:282.02151489px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#552200;fill-opacity:1;stroke:none;font-family:Sans"
+       x="455.15973"
+       y="853.75751"
        id="text3060"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3062"
-         x="454.92825"
-         y="856.56403"
-         style="font-style:normal;font-variant:normal;font-weight:600;font-stretch:normal;fill:#552200;font-family:URW Gothic L;-inkscape-font-specification:URW Gothic L Semi-Bold">Mail-in-a-Box</tspan></text>
+         x="455.15973"
+         y="853.75751"
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;fill:#4d4d4d;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Medium">Mail-in-a-Box</tspan></text>
   </g>
 </svg>
