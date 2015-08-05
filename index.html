@@ -123,7 +123,7 @@
 		}
 			#install-stats .heading {
 				position: absolute;
-				padding-top: .25em;
+				margin-top: -1.2em;
 			}
 
 		#screenshots {
@@ -232,8 +232,7 @@
 					</div>
 
 					<div id="install-stats">
-						<div class="heading">installs/day<br>
-							yesterday: <span></span></div>
+						<div class="heading"><span></span> installs yesterday. installs per week Aug 2014-present shown below.</div>
 					</div>
 
 
@@ -334,8 +333,20 @@
 				// make a d3 chart
 				$("#install-stats").show();
 				var w = $("#install-stats").width();
-				var h = $("#install-stats .heading").height();
+				var h = 2*$("#install-stats .heading").height();
 				$("#install-stats .heading span").text(data[data.length-1][1]);
+
+				// The first few data points are tiny because I just started.
+				data.shift(); data.shift(); data.shift(); data.shift();
+
+				// data is daily data, but that's a lot of data points now, so bin.
+				var data2 = [];
+				for (var i = 0; i < data.length; i++) {
+					if ((i % 7) == 0) data2.push({ dates: [], values: [] });
+					data2[data2.length-1].dates.push(data[i][0]);
+					data2[data2.length-1].values.push(data[i][1]);
+				}
+				data = data2;
 
 				var chart = d3.select("#install-stats").append("svg")
 					.attr("width", w)
@@ -346,7 +357,7 @@
 						.domain([0, data.length])
 						.range([0, w]);
 					var y = d3.scale.linear()
-						.domain([0, d3.max(data.map(function(d) { return d[1] }))])
+						.domain([0, d3.max(data.map(function(d) { return d3.mean(d.values); }))])
 						.range([0, h]);
 
 					// bars
@@ -356,7 +367,7 @@
 						.attr("x", function(d, i) { return x(i); })
 						.attr("y", 0)
 						.attr("width", parseInt(w / data.length)-1)
-						.attr("height", function(d) { return y(d[1]); } )
+						.attr("height", function(d) { return y(d3.mean(d.values)); } )
 						.attr("fill", "#E0E0E0")
 			})
 
