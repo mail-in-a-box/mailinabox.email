@@ -61,7 +61,7 @@
 						<li>Run <code>sudo apt-get install postfix</code> and choose &ldquo;Satellite system&rdquo; when prompted.</li>
 						<li>
 							<p>Append the following seven lines to <code>/etc/postfix/main.cf</code>:</p>
-							<pre><code>mydestination = 
+							<pre><code>mydestination =
 smtp_tls_security_level = verify
 smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
 smtp_sasl_auth_enable = yes
@@ -72,12 +72,11 @@ smtp_sasl_tls_security_options = </code></pre>
 							<p>Write credentials in the following form to <code>/etc/postfix/relay_password</code> (substitute the second and third values with credentials for a freshly created account on the Mail-in-a-Box, and the first with the hostname of your Mail-in-a-Box):</p>
 							<pre><code>yourmailinabox.yourdomain relayusername:relaypassword</code></pre>
               <p>If the remote machine only needs to be able to send mail from one address you should just use that address as the relay username.</p>
-              <p>If the remote machine needs to be able to send mail from multiple addresses, the relay username can be anything, as you will need to separately authorize it to send from those addresses. This is done by creating mail-forward aliases:</p>
-              <ol>
+              <p>If the remote machine needs to be able to send mail from multiple addresses, the relay username can be anything, as you will need to separately authorize it to send from those addresses. This is done by creating mail-forward aliases which include the relay username in the alias's permitted senders field (select the "I’ll enter the mail users that can send mail claiming to be from the alias address." option in the aliases UI).</p>
+              <ul>
                 <li>Create regular mail-forward aliases for each address that the remote machine needs to be able to send from if you know those addresses in advance.</li>
                 <li>Create catch-all mail-forward aliases for each domain that the remote machine needs to be able to send from if you do not know which addresses on that domain the remote machine will need to send as.</li>
-              </ol>
-              <p>Catch-all aliases should be avoided where possible because accepting mail to all address on a domain can catch a lot of spam.</p>
+              </ul>
 						</li>
 						<li>chmod the password file to 600 (<code>sudo chmod 600 /etc/postfix/relay_password</code>), run <code>sudo postmap /etc/postfix/relay_password</code> and then reload postfix (<code>sudo service postfix reload</code>).</li>
 					</ol>
