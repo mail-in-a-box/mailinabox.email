@@ -79,9 +79,9 @@ smtp_sasl_tls_security_options = </code></pre>
               </ul>
 						</li>
 						<li>chmod the password file to 600 (<code>sudo chmod 600 /etc/postfix/relay_password</code>), run <code>sudo postmap /etc/postfix/relay_password</code> and then reload postfix (<code>sudo service postfix reload</code>).</li>
-                        <li>If your Mailinabox is using self-signed certificates, the remote machine will not trust the connection.
+                        <li>If your Mail-in-a-Box is using self-signed certificates, the remote machine will not trust the connection.
                             <ul>
-                                <li>Copy <code>/home/user-data/ssl/ssl_certificate.pem</code> from your Mailinabox to the remote machine.</li>
+                                <li>Copy <code>/home/user-data/ssl/ssl_certificate.pem</code> from your Mail-in-a-Box to the remote machine.</li>
                                 <li>Add it to the trusted certificates store (distribution specific). On Debian/Ubuntu, move the certificate to <code>/usr/local/share/ca-certificates/</code> and rename it so its extension is <code>crt</code>. Run <code>sudo update-ca-certificates</code> to add it to the trusted certificate store.</li>
                               </ul>
                         </li>
