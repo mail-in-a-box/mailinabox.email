@@ -93,6 +93,27 @@ smtp_sasl_tls_security_options = </code></pre>
 
 					<pre>echo "relay test" | mail -s "relay test" destinationuser@destinationdomain</pre>
 
+
+					<h2 id="relaying">Sieve Filtering</h2>
+
+					<p>Sieve can be used to filter, file, flag, highlight, etc. messages as well as do vacation/auto replies.
+
+					<p>Users who wish to do their own Sieve filter scripts may do so by using the filter section of Roundcube mail. Make sure to set one of the scripts as active in Roundcube to enable it. These scripts are placed automatically into <code>user-data/mail/sieve/DOMAIN/USER</code>. You can also manually create a script at <code>user-data/mail/sieve/DOMAIN.sieve</code>.
+
+					<p>You may also enable server-wide Sieve rules that will be run either before or after the user's sieve script. To so, make a text file with a .sieve extension and place it into <code>user-data/mail/sieve/global_before</code> or <code>user-data/mail/sieve/global_after</code>, depending on if you want the global script run before or after the user's script. You typically would want to use global_before since it is possible for the user's sieve script to stop execution of your global script. At this time, these scripts run for all domains and cannot be specified for only one domain. 
+
+					<p>Here is an example file in <code>global_before/global.sieve</code> that will always place the user's email into a backup mailbox:
+
+					<p><pre><code>require ["fileinto","mailbox"];
+fileinto "INBOX";
+fileinto :create "backup-mailbox";
+</code></pre></p>
+
+				  <p>Note that Mail-in-a-box contains a sieve script to filter Spam which cannot be altered. When the header contains X-Spam-Status with value Yes, the email is filed into the Spam mailbox.
+
+				  <p>For information on what is possible with Dovecot Pigeonhole Sieve, as well as examples, see <a href="http://wiki2.dovecot.org/Pigeonhole/Sieve">http://wiki2.dovecot.org/Pigeonhole/Sieve</a>
+				
+
 					<div class="hidden-xs" style="height: 200px"> </div>
 
     		</div>
