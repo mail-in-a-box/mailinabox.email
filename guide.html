@@ -174,7 +174,7 @@
 
 	    			<p>Next you will register your new domain name. It&rsquo;s about $17/year, depending on the TLD. Buy basically anything you want, taking into account the TLD recommendations above. This will be the start of your new identity.</p>
 
-	    			<p>I recommend you use <a href="http://www.gandi.net/domain">Gandi.net</a> to register your domain name because I know it works well for Mail-in-a-Box. You can use other domain name registrars besides Gandi, but support for DNSSEC is not good everywhere. For instance, Namecheap does not support it. (DNSSEC is an optional security feature on Mail-in-a-Box. It&rsquo;s nice to have but things will work just fine without it.) </p>
+	    			<p>I recommend you use <a href="http://www.gandi.net/domain">Gandi.net</a> to register your domain name because I know it works well for Mail-in-a-Box. You can use other domain name registrars besides Gandi, but support for DNSSEC is not good everywhere. For instance some registrars, like Namecheap, do not provide a self-service DNSSEC configuration option, requiring you to file a support ticket to add the necessary records. (DNSSEC is an optional security feature on Mail-in-a-Box. It&rsquo;s nice to have but things will work just fine without it.) </p>
 
 	    			<p>Not all TLDs support DNSSEC either. If you will use Gandi, you should check their <a href="http://wiki.gandi.net/en/domains/dnssec">list of TLDs that support DNSSEC</a>.</p>
 
@@ -224,6 +224,8 @@
 	    			<p>Your cloud provider will also now tell you the IP address of your machine. It looks like 123.123.123.123.</p>
 
 	    				<p class="example">Josh&rsquo;s box&rsquo;s IP address is <code>94.76.202.152</code>.</p>
+	    				
+					<p>Sometimes you might be assigned an IP address that is on a spam block list. You may wish to use a tool such as <a href="https://mxtoolbox.com/SuperTool.aspx?action=blacklist%3a94.76.202.152&run=toolpage#">MXToolbox</a> to ensure your IP address is not on these block lists. If you find your assigned IP is on a blacklist, you might have luck requesting a "clean" IP from your provider, or creating a new host if you're using a VPS service.</p>
 
 	    			<h3>Firewall settings</h3>
 
