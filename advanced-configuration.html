@@ -41,6 +41,7 @@
 			        <ul class="nav nav-list">
 			          <li><a href="#relaying">Relaying For Other Machines</a></li>
 			          <li><a href="#filtering">Sieve Filtering</a></li>			          
+			          <li><a href="#sentmessage">Fix Sent folder with Exchange</a></li>
 			        </ul>
 				</div>
     		</div>
@@ -112,6 +113,20 @@ fileinto :create "backup-mailbox";
 
 				  <p>For information on what is possible with Dovecot Pigeonhole Sieve, as well as examples, see <a href="http://wiki2.dovecot.org/Pigeonhole/Sieve">http://wiki2.dovecot.org/Pigeonhole/Sieve</a></p>
 				
+				<h2 id="sentmessage">Fix Sent folder with Exchange</h2>
+				<p>If you use Exchange for push message on iOS and your account was created with a version prior to 13b, your device might have created a Sent Messages folder instead of a Sent folder.</p>
+				<p>This will prevent messages being sent on iOS using z-push from being delivered in the Sent folder</p>
+				<p>You will need to manually create the Sent folder in roundcube using the following steps:</p>
+				<p>
+					<ol>
+						<li>Navigate to Settings => Folders</li>
+						<li>Add a Sent folder</li>
+						<li>Navigate to email and move mail from special folder (with icon) "Sent" to "Sent"</li>
+						<li>Navigate to Settings => Preferences => Special Folders and change Sent from "Sent Messages" to "Sent"</li>
+						<li>Navigate to Settings => Folders and remove the folder "Sent Messages"</li>
+					</ol>
+				</p>
+
 					<div class="hidden-xs" style="height: 200px"> </div>
 
     		</div>
