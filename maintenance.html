@@ -113,7 +113,13 @@
 
 					<p>Check the <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/CHANGELOG.md">release notes</a> prior to updating to see what&rsquo;s been changed in the latest version.</p>
 
-					<p>Then simply go back to the setup guide section called <a href="guide.html#setup">Setting Up The Box</a> and follow the same steps again to update your box to the latest from us.</p>
+					<p>To upgrade Mail-in-a-Box to the latest release, first log into your machine using <code>SSH</code> in exactly the same manner as when you were setting up the box (see the setup guide section called <a href="guide.html#setup">Setting Up The Box</a> for a reminder of what that looked like).</p>
+
+					<p>Then, once logged in, run:</p>
+
+					<pre>curl -s https://mailinabox.email/bootstrap.sh | sudo bash</pre>
+
+					<p>This is actually the same command you ran when setting up the box. It does upgrades too.</p>
 
 
 	    			<h2 id="moving-boxes">Moving to a New Box</h2>
