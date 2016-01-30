@@ -105,7 +105,7 @@
 	    				<dd>No. Computers on most residential networks are blocked from sending mail both on the sending end (e.g. your ISP blocking port 25) and on the receiving end (by <a href="http://www.spamhaus.org/pbl/">blacklists</a>) because residential computers are all too often hijacked to send spam. Your home IP address is also probably dynamic and lacks configurable &ldquo;reverse DNS.&rdquo; If <em>any</em> of these apply to you, you&rsquo;ll need to use a virtual machine in the cloud.</dd>
 
 	    				<dt>What will it cost?</dt>
-	    				<dd>This is going to cost you about $16 per month. Most of the cost is in having a (virtual) machine connected to the Internet 24/7. You can divide this among friends and share your Mail-in-a-Box if you&rsquo;d like to split it up.</dd>
+	    				<dd>This is going to cost you about $12 per month. Most of the cost is in having a (virtual) machine connected to the Internet 24/7. You can divide this among friends and share your Mail-in-a-Box if you&rsquo;d like to split it up.</dd>
 
 	    				<dt>Do I have time?</dt>
 	    				<dd>There&rsquo;s also your time. Once a Mail-in-a-Box is set up, we hope it &ldquo;just works&rdquo; but when you are your own system administrator you must be prepared to resolve issues as they arise.</dd>
@@ -370,9 +370,7 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p class="watch-a-video"><i class="glyphicon glyphicon-film"></i> <a href="https://www.youtube.com/watch?v=HQOj-Mm1fYs&start=873">Watch a video of this step.</a></p>
 
-					<p>Getting a signed SSL certificate is optional but is highly recommended and will remove the security exception warnings from a) the control panel and b) when you start checking and sending mail. The control panel will walk you through this.</p>
-
-					<p>If you skip this, you can still safely check your email if you verify any certificate warnings like above.</p>
+					<p>Use the TLS Certificates page of the control panel to provision a free TLS (SSL) certificate from <a href="https://letsencrypt.org">Let&rsquo;s Encrypt</a>.</p>
 
 					<h3>Checking your email</h3>
 
