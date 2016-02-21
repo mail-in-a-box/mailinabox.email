@@ -210,15 +210,17 @@
 
 						<p class="example">Josh&rsquo;s droplet would be named <code>box.occams.info</code> (if Josh used Digital Ocean).</p>
 
-					<p>If you choose Linode or 1&amp;1 you must change the reverse DNS to be the same as your chosen hostname. Linode have instructions <a href="https://www.linode.com/docs/networking/dns/setting-reverse-dns">here</a>, while 1&amp;1 have instructions <a href="https://help.1and1.com/servers-c37684/dedicated-server-linux-c37687/organization-via-control-panel-c37695/configure-a-reverse-map-a606240.html">here</a>. With Digital Ocean you don't have to do this directly because the reverse DNS is automatically set to your chosen hostname during droplet creation.</p>
-
 	    			<p>I've been a long-time customer of <a href="http://rimuhosting.com/order/v2orderstart.jsp">Rimuhosting.com</a> which also provides cheap virtual machines, which they call &ldquo;VPS&rdquo;s, at several locations around the world. Most any cloud provider will do, but not Amazon Web Services because its network is often blocked to prevent users from sending spam.</p>
 
 	    			<p>If you have a choice, choose a location for your machine that is near you &mdash; it&rsquo;ll be faster! You also <em>must</em> choose Ubuntu 14.04 x64 and at least 768 MB RAM.</p>
 
 	    			<h3>Reverse DNS</h3>
 
-	    			<p>Each cloud provider will have different instructions for setting up &ldquo;reverse DNS.&rdquo; You <strong>must</strong> follow your cloud provider&rsquo;s instructions for setting the reverse DNS of your box to your box&rsquo;s hostname. At Digital Ocean you set the name of your droplet to the box&rsquo;s hostname, as mentioned above.</p>
+	    			<p>Each cloud provider will have different instructions for setting up &ldquo;reverse DNS.&rdquo; You <strong>must</strong> follow your cloud provider&rsquo;s instructions for setting the reverse DNS of your box to your box&rsquo;s hostname.</p>
+
+	    			<p>Linode have instructions <a href="https://www.linode.com/docs/networking/dns/setting-reverse-dns">here</a>, while 1&amp;1 have instructions <a href="https://help.1and1.com/servers-c37684/dedicated-server-linux-c37687/organization-via-control-panel-c37695/configure-a-reverse-map-a606240.html">here</a>. With Linode you may not be able to change the reverse DNS from its default until you have finished installing Mail-in-a-Box. This is because Linode only accept reverse DNS changes once the forward DNS is set to the box's IP address (Mail-in-a-Box handles forward DNS for you once installed). If Linode won't let you set the reverse DNS right now, just continue with setup. When you've finished everything else, Mail-in-a-Box will show this task as outstanding in the status checks. You should set the reverse DNS then.</p>
+
+	    			<p>With Digital Ocean you don't have to set the reverse DNS directly because they automatically set it to equal your chosen hostname during droplet creation.</p>
 
 	    				<p class="example">Josh&rsquo;s box&rsquo;s reverse DNS is set to the same as the box&rsquo;s hostname: <code>box.occams.info</code>.</p>
 
