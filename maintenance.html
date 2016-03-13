@@ -122,26 +122,78 @@
 					<p>This is actually the same command you ran when setting up the box. It does upgrades too.</p>
 
 
-	    			<h2 id="moving-boxes">Moving to a New Box</h2>
+	    			<h2 id="moving-boxes">Moving to a New Box / Testing Backups</h2>
 
 	    			<p>If you want to move your Mail-in-a-Box installation to a new machine (e.g. you&rsquo;re getting more memory, getting a new IP address, etc.), or if something is horribly wrong with your box, you can easily move all of your data to a new machine.</p>
 
-	    			<p>Follow these steps:</p>
 
-	    			<ol>
-	    			<li>Spin up the new machine following the setup guide&rsquo;s section <a href="guide.html#machine">The Machine</a>.</li>
-	    			<li>Update your domain name&rsquo;s glue records to the new machine&rsquo;s IP address (see the setup guide&rsquo;s section on <a href="guide.html#machine">glue records</a>.</li>
-	    			<li>Copy the <code>/home/user-data</code> directory on your old machine to the same location your new machine. See below for tips.</li>
-	    			<li>Continue the setup guide from <a href="guide.html#setup">Setting Up The Box</a>.</li>
-	    			</ol>
+					<div class="alert alert-success" role="alert">
+	    				<p>Even if your box is working fine, it&rsquo;s a good idea to test out this procedure from time to time so that you can verify that your backups are working and that you haven&rsquo;t lost the backup secret key.</p>
+					</div>
 
-	    			<p>To copy your <code>/home/user-data</code> directory, you can run this command (from your personal home computer if Linux or Mac):</p>
+	    			<h3>Create a new box</h3>
 
-	    			<pre>scp -r -i yourkey.pem ubuntu@old-machine-ip-address:/home/user-data ubuntu@new-machine-ip-address:/home/user-data</pre>
+	    			<p>Start by creating a new Mail-in-a-Box machine: Spin up a new machine following the setup guide&rsquo;s sections <a href="guide.html#machine">The Machine</a> and <a href="guide.html#setup">Setting Up The Box</a>. At this point you will have a mostly working, but empty, Mail-in-a-Box on your new machine.</p>
 
-	    			<p>This is all one line. Replace <code>ubuntu@old-machine-ip-address</code> depending on the SSH login instructions provided to you by your old cloud provider &mdash; like how you logged in with SSH to the machine originally. Similarly replace <code>ubuntu@new-machine-ip-address</code> with the appropriate SSH login information for your new machine. I&rsquo;s included <code>-i yourkey.pem</code> if your instructions include a private key, but only include this if you were instructed to do so.</p>
+	    			<h3>Restore your mail data (and other files)</h3>
 
-	    			<p>You can also use any SFTP program to copy the files, such as <a href="https://filezilla-project.org/">FileZilla</a>. Your SFTP login will be exactly the same as your SSH login on each machine (possibly with an identical private key file).</p>
+	    			<p>Next you&rsquo;ll restore your mail data and other files to the new machine. The safest way to do this is to restore the files from a backup.</p>
+
+	    			<h3>Forcing one last backup on the old machine</h3>
+
+	    			<p>If your old Mail-in-a-Box is still running, you can force a backup now to ensure you have everything backed up since the last nightly backup run. Log into your old machine using SSH and run:</p>
+
+	    			<pre>cd mailinabox
+sudo management/backup.py</pre>
+
+					<h3>Locating your backup secret key</h3>
+
+					<p>Your backups are encrypted, and you will need your backup secret key to restore from the backup.</p>
+
+					<p>You should have already stored the backup secret key in a safe place &mdash; like in your home &mdash; per the backup instructions in the control panel. If you haven&rsquo;t done that yet... and if your old box is still running... now is the time! The file is located on your old box at <code>/home/user-data/backup/secret_key.txt</code>. Copy that file to a safe place now.</p>
+
+					<p>Copy that file onto your new box. Any SFTP program like <a href="https://filezilla-project.org/">FileZilla</a> can help you with that. (SFTP is like SSH, so you will use the same login credentials as you use with SSH.)</p>
+
+					<h3>Restoring backup files</h3>
+
+					<h4>Local backups</h4>
+
+					<p>If you are using the default backup method, which stores backups on the box itself, then hopefully you have figured out how to periodically copy those files somewhere else safe &mdash; otherwise what&rsquo;s the point!</p>
+
+					<p>Using any SFTP program like <a href="https://filezilla-project.org/">FileZilla</a> (or <code>scp</code> if you know how) copy your backups from wherever you stored them to somewhere on your new machine. If your old box is still running, then just copy them from <code>/home/user-data/backup/encrypted</code> on your old box.</p>
+
+					<p>Then restore the files:</p>
+
+					<pre>export PASSPHRASE=$(cat your_backup_secret_key_file.txt)
+sudo -E duplicity restore file:///path/to/copied/files /home/user-data/</pre>
+
+					<h4>Amazon S3 backups</h4>
+
+					<p>If your backups are stored in Amazon S3, get your account credentials handy and then run a duplicity restore:</p>
+
+					<pre>export AWS_ACCESS_KEY_ID=paste your AWS access key ID here
+export AWS_SECRET_ACCESS_KEY=paste your AWS secret access key here
+export PASSPHRASE=$(cat your_backup_secret_key_file.txt)
+sudo -E duplicity restore s3://s3.amazonaws.com/your-bucket-name/your-backup-path /home/user-data/</pre>
+
+					<p>You may have to adjust the S3 URL depending on what AWS region you use.</p>
+
+					<h3>Re-configure the box</h3>
+
+					<p>Re-run Mail-in-a-Box setup now that your old files are back:</p>
+
+					<pre>sudo mailinabox</pre>
+
+					<p>Your box should be functioning now. Log into the control panel on your new box to see if things look right.</p>
+
+					<h3>Update your DNS</h3>
+
+	    			<p>Finally, update your domain name&rsquo;s glue records to the new machine&rsquo;s IP address (see the setup guide&rsquo;s section on <a href="guide.html#machine">glue records</a>.</p>
+
+	    			<p>DNS can take a few hours to update, so wait a while, and then see if the control panel&rsquo;s status checks report any problems and that your devices are picking up mail on your new box.</p>
+
+	    			<p>(Skip this if you are just testing your backups.)</p>
+
 
 
 					<div class="hidden-xs" style="height: 200px"> </div>
