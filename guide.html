@@ -291,6 +291,12 @@
 					<p>Once inside, you will now get the Mail-in-a-Box code onto your box and start its setup. Copy and paste this into your terminal and hit <key>enter</key>:</p>
 
 					<pre>curl -s https://mailinabox.email/setup.sh | sudo bash</pre>
+					
+					<div class="alert alert-warning" role="alert">
+	    				<p><strong>Pro-tip:</strong> To change the default location where Mail-in-a-Box stores all of its data, you can set an environment variable named 'STORAGE_ROOT' <em>before</em> running the setup script.</p>
+						<br>
+						<code>export STORAGE_ROOT=/your/desired/path</code>
+					</div>
 
 					<p>You will be asked to enter the email address you want and a few other configuration questions. At the end you will be asked for a password for your email address.</p>
 
