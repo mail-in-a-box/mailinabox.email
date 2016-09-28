@@ -158,7 +158,7 @@
 	    				<li title="requires two nameservers">.de</li>
 	    				<li title="requires own A record in DNS; each NS needs own PTR resource record">.is <a href="https://discourse.mailinabox.email/t/answered-no-you-cant-anyone-have-a-is-domain-working-with-miab-dns/1077"</a><i class="glyphicon glyphicon-comment" title="Link to discussion thread."></i></a> <a href="https://www.isnic.is/en/host/req"><i class="glyphicon glyphicon-globe" title="Link to registry requirements."></i></a></li>
 	    				<li title="requires two nameservers">.nl <a href="https://discourse.mailinabox.email/t/nameservers-setup-problems/572/3"</a><i class="glyphicon glyphicon-comment" title="Link to discussion thread."></i></a></li>
-	    			
+
 		    			<div><i class="glyphicon glyphicon-comment"></i> indicates link to discussion. <i class="glyphicon glyphicon-globe" title="Link to registry requirements."></i> indicates link to TLD registry requirements.</li>
 	    			</ul>
 
@@ -191,7 +191,7 @@
 
 	    			<p>Now you will rent a machine, or a virtual part of a machine, somewhere in &ldquo;the cloud.&rdquo; We&rsquo;ll call this machine your box.</p>
 
-				<p>We recommend going over to <a href="https://www.digitalocean.com/">Digital Ocean</a>, <a href="https://www.linode.com/">Linode</a>, <a href="http://www.1and1.com/">1&amp;1</a>, or <a href="http://rimuhosting.com/order/v2orderstart.jsp">Rimuhosting.com</a>. You must choose the <code>Ubuntu 14.04 x64</code> operating system and a machine with at least 1 GB of RAM. This setup currently costs around $10/month, depending on which provider you choose.</p>
+				<p>We recommend going over to <a href="https://www.digitalocean.com/">Digital Ocean</a>, <a href="https://www.linode.com/">Linode</a>, <a href="http://www.1and1.com/">1&amp;1</a>, or <a href="http://rimuhosting.com/order/v2orderstart.jsp">Rimuhosting.com</a>. You must choose the <code>Ubuntu 14.04 x64</code> operating system and a machine with at least 512 MB of RAM for small instances. This setup currently costs around $5/month, depending on which provider you choose. We recommend you to use a box with 1 GB of RAM which costs around $10/month.</p>
 
 	    			<p>(Most any cloud provider will do, but not Amazon Web Services because its network is often blocked to prevent users from sending spam.)</p>
 
@@ -199,7 +199,7 @@
 
 					<p class="example">Josh&rsquo;s droplet would be named <code>box.occams.info</code> (if Josh used Digital Ocean).</p>
 
-	    			<p>If you have a choice, choose a location for your machine that is near you &mdash; it&rsquo;ll be faster! You also <em>must</em> choose Ubuntu 14.04 x64 and at least 768 MB RAM.</p>
+	    			<p>If you have a choice, choose a location for your machine that is near you &mdash; it&rsquo;ll be faster! You also <em>must</em> choose Ubuntu 14.04 x64 and at least 512 MB RAM.</p>
 
 	    			<h3>Reverse DNS</h3>
 
@@ -214,7 +214,7 @@
 	    			<p>Your cloud provider will also now tell you the IP address of your machine. It looks like 123.123.123.123.</p>
 
 	    				<p class="example">Josh&rsquo;s box&rsquo;s IP address is <code>94.76.202.152</code>.</p>
-	    				
+
 					<p>Sometimes you might be assigned an IP address that is on a spam block list. You may wish to use a tool such as <a href="https://mxtoolbox.com/SuperTool.aspx?action=blacklist%3a94.76.202.152&run=toolpage#">MXToolbox</a> to ensure your IP address is not on these block lists. If you find your assigned IP is on a blacklist, you might have luck requesting a "clean" IP from your provider, or creating a new host if you're using a VPS service.</p>
 
 	    			<h3>Firewall settings</h3>
@@ -299,7 +299,7 @@
 					<p>It is always safe to re-run the setup, either because something went wrong or you just want to see it again. You can do so by following two the steps above again or just running <code>sudo mailinabox</code> from the command line.</p>
 
 					<p>When it comes time to update to a newer release of Mail-in-a-Box, you&rsquo;ll literally just run the above two commands again (<code>ssh ...</code> and then <code>curl ...</code>, as above) on your existing machine.</p>
-					
+
 
 					<h2 id="admin">The Administrative Interface</h2>
 
