@@ -142,16 +142,16 @@
 					<p>Moving your data to a new box is only supported if your existing Mail-in-a-Box box is up to date with the latest version of Mail-in-a-Box. So follow the steps in <i>Upgrading Mail-in-a-Box</i> above to upgrade to the latest version of Mail-in-a-Box before proceeding.</p>
 
 					<div class="alert alert-warning" role="alert">
-	    				<p>If you are upgrading from Mail-in-a-Box version v0.30 or earlier on <strong>Ubuntu 14.04</strong> to version 0.40 or later on <strong>Ubuntu 18.04</strong>, you must follow the instructions in the previous section to uprade your existing Mail-in-a-Box to v0.30, the last version supporting Ubuntu 14.04, before proceeding.</p>
+	    				<p>If you are upgrading from Mail-in-a-Box version v0.30 or earlier on <strong>Ubuntu 14.04</strong> to version v0.40 or later on <strong>Ubuntu 18.04</strong>, you must follow the instructions in the previous section to uprade your existing Mail-in-a-Box to v0.30, the last version supporting Ubuntu 14.04, before proceeding. <a href="https://discourse.mailinabox.email/t/mail-in-a-box-version-v0-40-and-moving-to-ubuntu-18-04/4289">Complete instructions for updating to Ubuntu 18.04 and v0.40 are posted on the forum.</a></p>
 	    			</div>
 
 	    			<h3>Perform one last backup on the old machine</h3>
 
 	    			<p>You will be performing a backup + restore to move your data to the new box. To ensure you have a final backup, first block access to your box to all services besides SSH so that no new emails are sent or received. Log into your old machine using SSH and run:</p>
 
-	    			<pre>ufw reset
-ufw allow 22 # enable SSH access so you don't lock yourself out
-ufw enable</pre>
+	    			<pre>sudo ufw reset
+sudo ufw allow 22 # enable SSH access so you don't lock yourself out
+sudo ufw enable</pre>
 
 					<p>Then perform a backup to ensure you have everything backed up since the last nightly backup run. Run:</p>
 
@@ -162,7 +162,7 @@ sudo management/backup.py</pre>
 
 	    			<p>Start by creating a new Mail-in-a-Box machine: Spin up a new machine following the setup guide&rsquo;s section <a href="guide.html#machine">The Machine</a>. <em>Use as many of the same settings as on your original box as makes sense.</em> On Digital Ocean you will need to use the exact same name for your box as you did previously or reverse DNS won&rsquo;t work.</p>
 
-	    			<p>Then follow the steps in the setup guide&rsquo;s section <a href="guide.html#setup">Setting Up The Box</a>. When you are promted for the box&rsquo;s hostname, you will need to use the hostname that you are currently using.</p>
+	    			<p>Then follow the steps in the setup guide&rsquo;s section <a href="guide.html#setup">Setting Up The Box</a>. When you are prompted for the box&rsquo;s hostname, you will need to use the hostname that you are currently using.</p>
 
 	    			<h3>Restore your mail data (and other files)</h3>
 
