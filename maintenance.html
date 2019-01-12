@@ -113,6 +113,12 @@
 
 					<p>Check the <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/CHANGELOG.md">release notes</a> prior to updating to see what&rsquo;s been changed in the latest version.</p>
 
+					<div class="alert alert-warning" role="alert">
+	    				<p>If you are upgrading from Mail-in-a-Box version v0.30 or earlier on <strong>Ubuntu 14.04</strong> to version 0.40 or later on <strong>Ubuntu 18.04</strong>:</p>
+	    				<p>1. Follow the instructions in this section to uprade your existing Mail-in-a-Box to v0.30, the last version supporting Ubuntu 14.04.</p>
+	    				<p>2. After your existing box is up to date with v0.30, then proceed to the section below <strong>Moving to a New Box</strong> to migrate your system to a new machine running Ubuntu 18.04 and version 0.40 of Mail-in-a-Box.</p>
+	    			</div>
+	    				
 					<p>To upgrade Mail-in-a-Box to the latest release, first log into your machine using <code>SSH</code> in exactly the same manner as when you were setting up the box (see the setup guide section called <a href="guide.html#setup">Setting Up The Box</a> for a reminder of what that looked like).</p>
 
 					<p>Then, once logged in, run:</p>
@@ -124,47 +130,55 @@
 
 	    			<h2 id="moving-boxes">Moving to a New Box / Testing Backups</h2>
 
-	    			<p>If you want to move your Mail-in-a-Box installation to a new machine (e.g. you&rsquo;re getting more memory, getting a new IP address, etc.), or if something is horribly wrong with your box, you can easily move all of your data to a new machine.</p>
+	    			<p>If you want to move your Mail-in-a-Box installation to a new machine (e.g. you&rsquo;re getting more memory, getting a new IP address, etc.), or if something is horribly wrong with your box, you can easily move all of your data to a new machine. <strong>This is also the process for upgrading a Mail-in-a-Box box from v0.30 or earlier on Ubuntu 14.04 to version 0.40 or later on Ubuntu 18.04.</strong></p>
 
 
 					<div class="alert alert-success" role="alert">
 	    				<p>Even if your box is working fine, it&rsquo;s a good idea to test out this procedure from time to time so that you can verify that your backups are working and that you haven&rsquo;t lost the backup secret key.</p>
 					</div>
 
-					<h3>Upgrade your old box first</h3>
+					<h3>Upgrade your old box first!</h3>
 
-					<p>Moving your data to a new box is only guaranteed to work if the version of Mail-in-a-Box on your box matches the version of Mail-in-a-Box that you are installing on the new box. So follow the steps in <i>Upgrading Mail-in-a-Box</i> above to upgrade to the latest version of Mail-in-a-Box before proceeding.</p>
+					<p>Moving your data to a new box is only supported if your existing Mail-in-a-Box box is up to date with the latest version of Mail-in-a-Box. So follow the steps in <i>Upgrading Mail-in-a-Box</i> above to upgrade to the latest version of Mail-in-a-Box before proceeding.</p>
 
-	    			<h3>Create a new box</h3>
+					<div class="alert alert-warning" role="alert">
+	    				<p>If you are upgrading from Mail-in-a-Box version v0.30 or earlier on <strong>Ubuntu 14.04</strong> to version 0.40 or later on <strong>Ubuntu 18.04</strong>, you must follow the instructions in the previous section to uprade your existing Mail-in-a-Box to v0.30, the last version supporting Ubuntu 14.04, before proceeding.</p>
+	    			</div>
 
-	    			<p>Start by creating a new Mail-in-a-Box machine: Spin up a new machine following the setup guide&rsquo;s sections <a href="guide.html#machine">The Machine</a> and <a href="guide.html#setup">Setting Up The Box</a>. <em>Use all the same settings you used to set up your box the first time.</em> At point you will have a mostly working, but empty, Mail-in-a-Box on your new machine.</p>
-				
-				<p><em>On Digital Ocean you will need to use the exact same name for your box as you did previously or reverse DNS (and other things will not work).</em><p>
-				
-				<p><em>When you are promted for the host name, you will need to use the hostname that you are currently using.</em></p>
+	    			<h3>Perform one last backup on the old machine</h3>
 
-	    			<h3>Restore your mail data (and other files)</h3>
+	    			<p>You will be performing a backup + restore to move your data to the new box. To ensure you have a final backup, first block access to your box to all services besides SSH so that no new emails are sent or received. Log into your old machine using SSH and run:</p>
 
-	    			<p>Next you&rsquo;ll restore your mail data and other files to the new machine. The safest way to do this is to restore the files from a backup.</p>
+	    			<pre>ufw reset
+ufw allow 22 # enable SSH access so you don't lock yourself out
+ufw enable</pre>
 
-	    			<h3>Forcing one last backup on the old machine</h3>
-
-	    			<p>If your old Mail-in-a-Box is still running, you can force a backup now to ensure you have everything backed up since the last nightly backup run. Log into your old machine using SSH and run:</p>
+					<p>Then perform a backup to ensure you have everything backed up since the last nightly backup run. Run:</p>
 
 	    			<pre>cd mailinabox
 sudo management/backup.py</pre>
 
-					<h3>Locating your backup secret key</h3>
+	    			<h3>Create a new box</h3>
+
+	    			<p>Start by creating a new Mail-in-a-Box machine: Spin up a new machine following the setup guide&rsquo;s section <a href="guide.html#machine">The Machine</a>. <em>Use as many of the same settings as on your original box as makes sense.</em> On Digital Ocean you will need to use the exact same name for your box as you did previously or reverse DNS won&rsquo;t work.</p>
+
+	    			<p>Then follow the steps in the setup guide&rsquo;s section <a href="guide.html#setup">Setting Up The Box</a>. When you are promted for the box&rsquo;s hostname, you will need to use the hostname that you are currently using.</p>
+
+	    			<h3>Restore your mail data (and other files)</h3>
+
+	    			<p>Next you&rsquo;ll restore your mail data and other files to the new machine.</p>
+
+					<h4>Locating your backup secret key</h4>
 
 					<p>Your backups are encrypted, and you will need your backup secret key to restore from the backup.</p>
 
-					<p>You should have already stored the backup secret key in a safe place &mdash; like in your home &mdash; per the backup instructions in the control panel. If you haven&rsquo;t done that yet... and if your old box is still running... now is the time! The file is located on your old box at <code>/home/user-data/backup/secret_key.txt</code>. Copy that file to a safe place now.</p>
+					<p>You should have already stored the backup secret key in a safe place &mdash; like in your home &mdash; per the backup instructions in the control panel. If you haven&rsquo;t done that yet... now is the time! The file is located on your old box at <code>/home/user-data/backup/secret_key.txt</code>. Copy that file to a safe place now.</p>
 
 					<p>Copy that file onto your new box. Any SFTP program like <a href="https://filezilla-project.org/">FileZilla</a> can help you with that. (SFTP is like SSH, so you will use the same login credentials as you use with SSH.)</p>
 
-					<h3>Restoring backup files</h3>
+					<h4>Restoring backup files</h4>
 
-					<h4>Local backups</h4>
+					<h5>Local backups</h5>
 
 					<p>If you are using the default backup method, which stores backups on the box itself, then hopefully you have figured out how to periodically copy those files somewhere else safe &mdash; otherwise what&rsquo;s the point!</p>
 
@@ -173,16 +187,16 @@ sudo management/backup.py</pre>
 					<p>Then restore the files:</p>
 
 					<pre>export PASSPHRASE=$(cat your_backup_secret_key_file.txt)
-sudo -E duplicity restore file:///path/to/copied/files /home/user-data/</pre>
+sudo -E duplicity restore --force file:///path/to/copied/files /home/user-data/</pre>
 
-					<h4>Amazon S3 backups</h4>
+					<h5>Amazon S3 backups</h5>
 
 					<p>If your backups are stored in Amazon S3, get your account credentials handy and then run a duplicity restore:</p>
 
 					<pre>export AWS_ACCESS_KEY_ID=paste your AWS access key ID here
 export AWS_SECRET_ACCESS_KEY=paste your AWS secret access key here
 export PASSPHRASE=$(cat your_backup_secret_key_file.txt)
-sudo -E duplicity restore s3://s3.amazonaws.com/your-bucket-name/your-backup-path /home/user-data/</pre>
+sudo -E duplicity restore --force s3://s3.amazonaws.com/your-bucket-name/your-backup-path /home/user-data/</pre>
 
 					<p>You may have to adjust the S3 URL depending on what AWS region you use. You can find the AWS Regions and Endpoints <a href="http://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">here</a></p>
 
