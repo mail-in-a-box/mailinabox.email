@@ -35,6 +35,12 @@
       "css": "github",
       "code": 59392,
       "src": "elusive"
+    },
+    {
+      "uid": "87276033a77d0b9b890125c3639e4f87",
+      "css": "slack",
+      "code": 61848,
+      "src": "fontawesome"
     }
   ]
 }
