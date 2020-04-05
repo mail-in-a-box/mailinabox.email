@@ -119,14 +119,19 @@
 	    				<p>2. After your existing box is up to date with v0.30, then proceed to the section below <strong>Moving to a New Box</strong> to migrate your system to a new machine running Ubuntu 18.04 and version 0.40 of Mail-in-a-Box.</p>
 	    			</div>
 	    				
-					<p>To upgrade Mail-in-a-Box to the latest release, first log into your machine using <code>SSH</code> in exactly the same manner as when you were setting up the box (see the setup guide section called <a href="guide.html#setup">Setting Up The Box</a> for a reminder of what that looked like).</p>
+					<p>To upgrade Mail-in-a-Box to the latest release, first close any web browser pages related to your instance of Mail-in-a-Box, then log into your machine using <code>SSH</code> in exactly the same manner as when you were setting up the box (see the setup guide section called <a href="guide.html#setup">Setting Up The Box</a> for a reminder of what that looked like).</p>
 
 					<p>Then, once logged in, run:</p>
 
 					<pre>curl -s https://mailinabox.email/setup.sh | sudo bash</pre>
 
 					<p>This is actually the same command you ran when setting up the box. It does upgrades too.</p>
-
+					<div class="alert alert-warning" role="alert">
+					<p>If you see an error message similar to:</p>
+						<p>Could not get lock /var/lib/dpkg/lock-frontend - open (11: Resource temporarily unavailable)</p>
+						<p>Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?</p>
+					<p>then be sure that you have closed any browser pages for your Mail-in-a-Box instance and run the above command again.</p>
+					</div>
 
 	    			<h2 id="moving-boxes">Moving to a New Box / Testing Backups</h2>
 
