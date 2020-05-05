@@ -40,7 +40,7 @@
 					<p style="margin: 0 0 .5em 14px; border-bottom: 1px solid #CCC; color: #888;">Table of Contents</p>
 			        <ul class="nav nav-list">
 			          <li><a href="#relaying">Relaying For Other Machines</a></li>
-			          <li><a href="#filtering">Sieve Filtering</a></li>			          
+			          <li><a href="#filtering">Sieve Filtering</a></li>
 			        </ul>
 				</div>
     		</div>
@@ -59,7 +59,11 @@
 					<p>If the sending machine is running Ubuntu 14.04 this can be done as follows. No changes are required on the Mail-in-a-Box itself (other than the creation of a mail account for the remote machine to authenticate with, and optionally the creation of aliases to authorize the remote machine to send from multiple addresses); <em>all commands that follow are to be run on the remote machine</em>.</p>
 
 					<ol>
-						<li>Run <code>sudo apt-get install postfix</code> and choose &ldquo;Satellite system&rdquo; when prompted.</li>
+						<li>Run <code>sudo apt-get install postfix</code> and choose &ldquo;Satellite system&rdquo; when prompted.
+							<ul>
+								<li>It's important to include the SMTP port for the relay host, for example: <code>box.example.com:587</code></li>
+							</ul>
+						</li>
 						<li>
 							<p>Append the following seven lines to <code>/etc/postfix/main.cf</code>:</p>
 							<pre><code>mydestination =
@@ -100,7 +104,7 @@ smtp_sasl_tls_security_options = </code></pre>
 
 					<p>Users who wish to do their own Sieve filter scripts may do so by using the filter section of Roundcube mail. Make sure to set one of the scripts as active in Roundcube to enable it. These scripts are placed automatically into <code>/home/user-data/mail/sieve/DOMAIN/USER</code>. You can also manually create a script file with path <code>/home/user-data/mail/sieve/DOMAIN/USER.sieve</code>.</p>
 
-					<p>You may also enable server-wide Sieve rules that will be run either before or after the user's sieve script. To so, make a text file with a .sieve extension and place it into <code>/home/user-data/mail/sieve/global_before</code> or <code>/home/user-data/mail/sieve/global_after</code>, depending on if you want the global script run before or after the user's script. You typically would want to use global_before since it is possible for the user's sieve script to stop execution of your global script. At this time, these scripts run for all domains and cannot be specified for only one domain.</p> 
+					<p>You may also enable server-wide Sieve rules that will be run either before or after the user's sieve script. To so, make a text file with a .sieve extension and place it into <code>/home/user-data/mail/sieve/global_before</code> or <code>/home/user-data/mail/sieve/global_after</code>, depending on if you want the global script run before or after the user's script. You typically would want to use global_before since it is possible for the user's sieve script to stop execution of your global script. At this time, these scripts run for all domains and cannot be specified for only one domain.</p>
 
 					<p>Here is an example file in <code>/home/user-data/mail/sieve/global_before/global.sieve</code> that will always place the user's email into a backup mailbox:</p>
 
@@ -111,7 +115,7 @@ fileinto :create "backup-mailbox";
 				  <p>Note that Mail-in-a-Box contains a sieve script to filter Spam which cannot be altered. When the header contains X-Spam-Status with value Yes, the email is filed into the Spam mailbox.</p>
 
 				  <p>For information on what is possible with Dovecot Pigeonhole Sieve, as well as examples, see <a href="http://wiki2.dovecot.org/Pigeonhole/Sieve">http://wiki2.dovecot.org/Pigeonhole/Sieve</a></p>
-				
+
 					<div class="hidden-xs" style="height: 200px"> </div>
 
     		</div>
