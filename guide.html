@@ -368,6 +368,20 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p>You can also add or remove additional email accounts and mail aliases (forwarders).</p>
 
+					<h3>Backup status</h3>
+
+					<p>Here you can configure backups, and get an overview of what has been backed up to date. Backups are encrypted, and are therefore safe to store anywhere you like.</p>
+
+					<p>By default, backups are stored on the box.  You can also configure rsync to copy those local backups to another server, or store backups entirely on Amazon S3, or another compatible service (e.g. <a href="https://www.digitalocean.com/products/spaces/">DigitalOcean Spaces</a>). With S3, no backups are stored locally, preserving some disk space on the box.</p>
+
+					<p>
+					However you store your backups, you must copy the encryption password file described on the Backup Status screen somewhere safe!  Backups cannot be decrypted without the backup key!
+					</p>
+
+					<div class="alert alert-warning">
+						If you're using an S3-compatible service instead of Amazon S3, be aware that mailinabox is not currently compatible with version 4 authentication signatures.  This will rule out some services like <a href="https://www.backblaze.com/b2/docs/s3_compatible_api.html" target="_blank" rel="noopener">Backblaze B2</a>, which currently requires that version.
+					</div>
+
 					<h3>Advanced tools</h3>
 
 					<p>The administrative control panel also helps you with...</p>
@@ -375,7 +389,6 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 					<ul>
 					<li>Setting up contact and calendar synchronization</li>
 					<li>Publishing a static website</li>
-					<li>Checking the status of backups</li>
 					<li>Setting custom DNS records, e.g. if you run a website on the same domain name but on another machine</li>
 					</ul>
 
