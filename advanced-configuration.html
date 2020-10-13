@@ -115,6 +115,16 @@ fileinto :create "backup-mailbox";
 				  <p>Note that Mail-in-a-Box contains a sieve script to filter Spam which cannot be altered. When the header contains X-Spam-Status with value Yes, the email is filed into the Spam mailbox.</p>
 
 				  <p>For information on what is possible with Dovecot Pigeonhole Sieve, as well as examples, see <a href="http://wiki2.dovecot.org/Pigeonhole/Sieve">http://wiki2.dovecot.org/Pigeonhole/Sieve</a></p>
+					
+					<h2>MiaB as Reverse Proxy</h2>
+					<p>If you are running multiple services on the same IP address as your Mail-in-a-Box server, you can use nginx within MiaB to proxy to those services. By editing <code>/home/user-data/www/custom.yaml</code>, proxy and/or redirect can be achieved:</p>
+					<p><code><pre>
+					my-domain.com:
+					   redirects:
+						   ^/foo: https://example.com/bar
+						 proxies:
+						   /baz: http://internal.ip:9090 </pre></code></p>
+					<p>See https://github.com/mail-in-a-box/mailinabox/issues/608#issuecomment-279204357 for more discussion and use cases</p>
 
 					<div class="hidden-xs" style="height: 200px"> </div>
 
