@@ -158,7 +158,7 @@
 					<li title="will not support nameservers on a 4th level sub-domain">.cx</li>
 	    				<li title="requires own A record in DNS; each NS needs own PTR resource record">.is <a href="https://discourse.mailinabox.email/t/answered-no-you-cant-anyone-have-a-is-domain-working-with-miab-dns/1077"</a><i class="glyphicon glyphicon-comment" title="Link to discussion thread."></i></a> <a href="https://www.isnic.is/en/host/req"><i class="glyphicon glyphicon-globe" title="Link to registry requirements."></i></a></li>
 	    				<li title="requires two nameservers">.nl <a href="https://discourse.mailinabox.email/t/nameservers-setup-problems/572/3"</a><i class="glyphicon glyphicon-comment" title="Link to discussion thread."></i></a></li>
-					<li title="SpamAssassin suspicious nTLDs">.bid .buzz .click .date .faith .fit .fun .gdn .icu .life .online .ooo .pro .review .site .space .stream .top .work .world .xyz</li>
+					<li title="SpamAssassin suspicious nTLDs">.bid .buzz .click .cyou .date .faith .fit .fun .gdn .icu .life .online .ooo .pro .review .site .space .stream .top .trade .vip .work .world .xyz</li>
 
 		    			<div><i class="glyphicon glyphicon-comment"></i> indicates link to discussion. <i class="glyphicon glyphicon-globe" title="Link to registry requirements."></i> indicates link to TLD registry requirements.</li>
 	    			</ul>
@@ -167,7 +167,7 @@
 
 	    			<p>I recommend you use <a href="http://www.gandi.net/domain">Gandi.net</a> to register your domain name because I know it works well for Mail-in-a-Box. You can use other domain name registrars besides Gandi, but support for DNSSEC is not good everywhere. (DNSSEC is an optional security feature on Mail-in-a-Box. It&rsquo;s nice to have but things will work just fine without it.) </p>
 
-	    			<p>Not all TLDs support DNSSEC either. If you will use Gandi, you should check their <a href="http://wiki.gandi.net/en/domains/dnssec">list of TLDs that support DNSSEC</a>.</p>
+	    			<p>Not all TLDs support DNSSEC either. If you will use Gandi, you should check their <a href="http://wiki.gandi.net/en/domains/dnssec">list of TLDs that support DNSSEC</a>. For a more complete list of TLDs and their DNSSEC support, see ICANN Research <a href="http://stats.research.icann.org/dns/tld_report/">TLD DNSSEC Report</a>.</p>
 
 	    			<p>After you buy the domain name you&rsquo;ll need to set it up, but that comes later so keep reading. Note that a Mail-in-a-Box box can handle the email for multiple domains names too &mdash; more on that later.</p>
 
@@ -175,7 +175,7 @@
 
 	    			<p>Every machine connected to the Internet has a <b>name</b> and an <b>address</b>.</p>
 
-	    			<p>The <b>address</b>, an IP address, is like a telephone number. It&rsquo;s made up of numbers and is assigned to you by whoever provides Internet access to you.</p>
+	    			<p>The <b>address</b>, an IP address, is like a telephone number. It&rsquo;s made up of numbers and is assigned to you by whoever provides Internet access to your mail server (that&rsquo;s coming in the next section).</p>
 
 	    			<p>The name &mdash; called a <b>hostname</b> &mdash; is something you decide. It can be a domain name you own or any &ldquo;subdomain&rdquo; of a domain you own.</p>
 
@@ -185,6 +185,7 @@
 
 	    			<p>Your Mail-in-a-Box may handle the email for multiple domain names, but the box has a single name.</p>
 
+	    			<p>Your box&rsquo;s name <strong>CANNOT be a domain name that you intend to serve a website on</strong> from another web hosting service. We strongly suggest using a subdomain like <code>box</code>, as in the example above, so that you are able to use the main domain name for a website hosted from another web hosting service if you choose.</p>
 
 	    			<h2 id="machine">The Machine</h2>
 
@@ -368,6 +369,16 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 
 					<p>You can also add or remove additional email accounts and mail aliases (forwarders).</p>
 
+					<h3>Backup status</h3>
+
+					<p>Here you can configure backups, and get an overview of what has been backed up to date. Backups are encrypted, and are therefore safe to store anywhere you like.</p>
+
+					<p>By default, backups are stored on the box.  You can also configure rsync to copy those local backups to another server, or store backups entirely on Amazon S3, or another compatible service (e.g. <a href="https://www.digitalocean.com/products/spaces/">DigitalOcean Spaces</a>). With S3, no backups are stored locally, preserving some disk space on the box.</p>
+
+					<p>
+					However you store your backups, you must copy the encryption password file described on the Backup Status screen somewhere safe!  Backups cannot be decrypted without the backup key!
+					</p>
+
 					<h3>Advanced tools</h3>
 
 					<p>The administrative control panel also helps you with...</p>
@@ -375,7 +386,6 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
 					<ul>
 					<li>Setting up contact and calendar synchronization</li>
 					<li>Publishing a static website</li>
-					<li>Checking the status of backups</li>
 					<li>Setting custom DNS records, e.g. if you run a website on the same domain name but on another machine</li>
 					</ul>
 
