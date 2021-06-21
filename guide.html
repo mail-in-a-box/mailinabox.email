@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html class="no-js">
+<!doctype html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -54,7 +53,7 @@
     </style>
 </head>
 <body data-spy="scroll" data-target="#nav">
-	<a href="https://github.com/mail-in-a-box/mailinabox.email/blob/master/guide.html" class="visible-md visible-lg"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+	<a href="https://github.com/mail-in-a-box/mailinabox.email/blob/main/guide.html" class="visible-md visible-lg"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/365986a132ccd6a44c23a9169022c0b5c890c387/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
 
 	<div id="back">
 		<div class="container">
@@ -169,7 +168,7 @@
 
 	    			<p>Not all TLDs support DNSSEC either. If you will use Gandi, you should check their <a href="http://wiki.gandi.net/en/domains/dnssec">list of TLDs that support DNSSEC</a>. For a more complete list of TLDs and their DNSSEC support, see ICANN Research <a href="http://stats.research.icann.org/dns/tld_report/">TLD DNSSEC Report</a>.</p>
 
-	    			<p>After you buy the domain name you&rsquo;ll need to set it up, but that comes later so keep reading. Note that a Mail-in-a-Box box can handle the email for multiple domains names too &mdash; more on that later.</p>
+	    			<p>After you buy the domain name you&rsquo;ll need to set it up, but that comes later so keep reading. Note that a Mail-in-a-Box box can handle the email for multiple domain names too &mdash; more on that later.</p>
 
 	    			<h2 id="hostname">Your Box Has A Name</h2>
 
@@ -191,7 +190,7 @@
 
 	    			<h3>Finding a cloud service provider</h3>
 
-	    			<p>Now you will rent a machine, or a virtual part of a machine, somewhere in &ldquo;the cloud.&rdquo; We&rsquo;ll call this machine your box. We recommend going over to <a href="https://www.linode.com/">Linode</a>, <a href="http://www.1and1.com/">1&amp;1</a>, or <a href="http://rimuhosting.com/order/v2orderstart.jsp">Rimuhosting.com</a>. (Most any cloud provider will do, but not Amazon Web Services because its network is often blocked to prevent users from sending spam.)</p>
+	    			<p>Now you will rent a machine, or a virtual part of a machine, somewhere in &ldquo;the cloud.&rdquo; We&rsquo;ll call this machine your box. We recommend going over to <a href="https://www.linode.com/">Linode</a>, <a href="http://www.1and1.com/">1&amp;1</a>, or <a href="http://rimuhosting.com/order/v2orderstart.jsp">Rimuhosting.com</a>. (Most cloud providers will do, but not Amazon Web Services because its network is often blocked to prevent users from sending spam.)</p>
 
 					<p><strong>You must choose the <code>Ubuntu 18.04 x64 (server edition)</code> operating system and a machine with at least 512 MB of RAM.</strong> This setup currently costs around $5/month, depending on which provider you choose. We recommend you to use a box with 1 GB of RAM which costs around $10/month.</p>
 
@@ -292,7 +291,7 @@
 					<pre>ssh -i yourkey.pem ubuntu@10.20.30.40</pre>
 
 					<div class="alert alert-warning">
-						<strong>Legal note!</strong> Mail-in-a-Box is made available per the <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/LICENSE">CC0 public domain dedication</a>. By running Mail-in-a-Box, you will invoke scripts that use Let’s Encrypt to provision TLS certificates per the <a href="https://letsencrypt.org/repository/" target="_blank">Let’s Encrypt Subscriber Agreement(s) & Terms of Services</a>. Please be sure you accept the terms in both documents before proceeding.
+						<strong>Legal note!</strong> Mail-in-a-Box is made available per the <a href="https://github.com/mail-in-a-box/mailinabox/blob/main/LICENSE">CC0 public domain dedication</a>. By running Mail-in-a-Box, you will invoke scripts that use Let’s Encrypt to provision TLS certificates per the <a href="https://letsencrypt.org/repository/" target="_blank">Let’s Encrypt Subscriber Agreement(s) & Terms of Services</a>. Please be sure you accept the terms in both documents before proceeding.
 					</div>
 
 					<p>Once inside, you will now get the Mail-in-a-Box code onto your box and start its setup. Copy and paste this into your terminal and hit <key>enter</key>:</p>
