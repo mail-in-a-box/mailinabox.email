@@ -197,7 +197,7 @@
 				<hr>
 				<p><a href="https://github.com/mail-in-a-box/mailinabox"><i class="icon-github"></i>github repository</a></p>
 				<p><a href="https://twitter.com/mailinabox"><i class="icon-twitter"></i>@Mailinabox</a></p>
-				<p><a href="https://github.com/mail-in-a-box/mailinabox/blob/master/CODE_OF_CONDUCT.md">Code of Conduct</a></p>
+				<p><a href="https://github.com/mail-in-a-box/mailinabox/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a></p>
 			</div>
 
 			<div class="col-sm-9 col-lg-8 col-sm-pull-3">
@@ -263,20 +263,20 @@
 
 					<p>The box also includes automatic DNS configuration when you let it become your nameserver so that it can set important DNS records for mail deliverability and security including <a href="https://en.wikipedia.org/wiki/Sender_Policy_Framework">SPF</a>, <a href="https://en.wikipedia.org/wiki/DomainKeys_Identified_Mail">DKIM</a>, <a href="https://en.wikipedia.org/wiki/DMARC">DMARC</a>, and <a href="https://tools.ietf.org/html/rfc8461">MTA-STS</a>. When enabled, <a href="https://en.wikipedia.org/wiki/DNSSEC">DNSSEC</a> (with <a href="https://en.wikipedia.org/wiki/DNS-based_Authentication_of_Named_Entities">DANE TLSA</a>) provides a higher level of protection against active attacks with other mail servers also running DANE TLSA.</p>
 
-					<p>Mail-in-a-Box uses the latest security best practices, including using TLSv1.2, <a href="https://en.wikipedia.org/wiki/Opportunistic_encryption">opportunistic TLS</a> for outgoing mail, strong TLS ciphers, and <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS</a> for the web services. TLS certificates are automatically provisioned from <a href="https://letsencrypt.org">Let&rsquo;s Encrypt</a>. (For more see our <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/security.md">security guide</a>.)</p>
+					<p>Mail-in-a-Box uses the latest security best practices, including using TLSv1.2, <a href="https://en.wikipedia.org/wiki/Opportunistic_encryption">opportunistic TLS</a> for outgoing mail, strong TLS ciphers, and <a href="https://en.wikipedia.org/wiki/HTTP_Strict_Transport_Security">HSTS</a> for the web services. TLS certificates are automatically provisioned from <a href="https://letsencrypt.org">Let&rsquo;s Encrypt</a>. (For more see our <a href="https://github.com/mail-in-a-box/mailinabox/blob/main/security.md">security guide</a>.)</p>
 
 					<p>Your box can host mail for multiple users and multiple domain names. It also supports simple static website hosting (since the box is serving HTTP anyway), or you can host a website elsewhere (just add a custom DNS <code>A</code> record in you Mail-in-a-Box's control panel to point domains to another server).</p>
 
 					<p>Mail-in-a-Box includes a web-based control panel where you can add mail accounts, mail aliases, and custom DNS records and set up backups. The control panel displays comprehensive status checks for DNS records and system activity/monitoring. Control panel functionality can also be accessed over the RESTful HTTP API (<a href="api-docs.html">API documentation</a>).</p>
 
 					<p>Note that while we want everything to &ldquo;just work,&rdquo; we can&rsquo;t control the rest of the Internet. Other mail services might block or spam-filter email sent from your Mail-in-a-Box. This is a challenge faced by everyone who runs their own mail server, with or without Mail-in-a-Box. See our discussion forum for tips about that.</p>
-    			
+
     			<h2>How do I get it?</h2>
 
     				<p>The <a href="guide.html">setup guide</a> walks you through getting your own box set up. Users report it taking just a few hours to get to a fully operational system. And see the video above!</p>
 
 					<div class="alert alert-warning">
-						<strong>Legal note!</strong> Mail-in-a-Box is made available per the <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/LICENSE">CC0 public domain dedication</a>. By running Mail-in-a-Box, you will invoke scripts that use Let’s Encrypt to provision TLS certificates per the <a href="https://letsencrypt.org/repository/" target="_blank">Let’s Encrypt Subscriber Agreement(s) & Terms of Services</a>. Please be sure you accept the terms in both documents before beginning.
+						<strong>Legal note!</strong> Mail-in-a-Box is made available per the <a href="https://github.com/mail-in-a-box/mailinabox/blob/main/LICENSE">CC0 public domain dedication</a>. By running Mail-in-a-Box, you will invoke scripts that use Let’s Encrypt to provision TLS certificates per the <a href="https://letsencrypt.org/repository/" target="_blank">Let’s Encrypt Subscriber Agreement(s) & Terms of Services</a>. Please be sure you accept the terms in both documents before beginning.
 					</div>
 
 	    			<p>If you are an expert and have a domain name and a <u>completely fresh</u> Ubuntu 18.04 machine running in the cloud, you basically just run on that machine:</p>
@@ -284,7 +284,7 @@
 	    			<div class="pre-wrap">
 						<pre>curl -s https://mailinabox.email/setup.sh | sudo bash</pre>
 					</div>
-					
+
 					<p>You will be asked to enter the email address you want and a few other configuration questions. Consult the <a href="guide.html">setup guide</a> for complete details. See the <a href="https://github.com/mail-in-a-box/mailinabox">README</a> on github for advanced instructions.</p>
 
 					<p>Please note that the goal of this project is to provide a simple, turn-key solution. There are basically no configuration options and you can&rsquo;t tweak the machine&rsquo;s configuration files after installation. If you are looking for something more advanced, try <a href="http://www.iredmail.org/">iRedMail</a> or <a href="https://github.com/tonioo/modoboa">Modoboa</a>.</p>
@@ -312,7 +312,7 @@
 
 				<h2>Development</h2>
 
-					<p>Mail-in-a-Box is based on Ubuntu 18.04 LTS 64-bit and uses very-well-documented shell scripts and a Python management daemon to configure the system. Take a look at the <a href="static/architecture.svg">system architecture diagram</a> and <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/security.md">security practices</a>.</p>
+					<p>Mail-in-a-Box is based on Ubuntu 18.04 LTS 64-bit and uses very-well-documented shell scripts and a Python management daemon to configure the system. Take a look at the <a href="static/architecture.svg">system architecture diagram</a> and <a href="https://github.com/mail-in-a-box/mailinabox/blob/main/security.md">security practices</a>.</p>
 
 					<p>Development takes place on github at <a href="https://github.com/mail-in-a-box/mailinabox">https://github.com/mail-in-a-box/mailinabox</a>.</p>
 
@@ -321,11 +321,11 @@
 					<li>Make deploying a good mail server easy.</li>
 					<li>Promote <a href="http://redecentralize.org/">decentralization</a>, innovation, and privacy on the web.</li>
 					<li>Have automated, auditable, and <a href="https://sharknet.us/2014/02/01/automated-configuration-management-challenges-with-idempotency/">idempotent</a> system configuration.</li>
-					<li><strong>Not</strong> make a totally unhackable, NSA-proof server (but see our <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/security.md">security practices</a>).</li>
+					<li><strong>Not</strong> make a totally unhackable, NSA-proof server (but see our <a href="https://github.com/mail-in-a-box/mailinabox/blob/main/security.md">security practices</a>).</li>
 					<li><strong>Not</strong> make something customizable by power users.</li>
 					</ul>
 
-					<p>Additionally, this project has a <a href="https://github.com/mail-in-a-box/mailinabox/blob/master/CODE_OF_CONDUCT.md">Code of Conduct</a>, which supersedes the goals above. Please review it when joining our community.</p>
+					<p>Additionally, this project has a <a href="https://github.com/mail-in-a-box/mailinabox/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a>, which supersedes the goals above. Please review it when joining our community.</p>
 
 					<p>Mail-in-a-Box is dedicated to the public domain using <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.</p>
 
