@@ -117,7 +117,7 @@
 			margin-top: 9.5px;
 			padding-top: 9.5px;
 			width: 90%;
-			font-size: 70%;
+			font-size: 80%;
 			line-height: 120%;
 			color: #666;
 		}
@@ -235,8 +235,9 @@
 						</div>
 					</div>
 
+					<p style="margin-bottom: .25em"><strong>Download Stats</strong></p>
 					<div id="install-stats">
-						<div class="heading"><span></span> installs yesterday. installs per week Aug 2014-present shown below.</div>
+						<div class="heading"><span></span> installs last month. Installs per month since our launch in August 2014:</div>
 					</div>
 
 
@@ -356,19 +357,17 @@
 				$("#install-stats").show();
 				var w = $("#install-stats").width();
 				var h = 2*$("#install-stats .heading").height();
-				$("#install-stats .heading span").text(data[data.length-1][1]);
 
-				// The first few data points are tiny because I just started.
-				data.shift(); data.shift(); data.shift(); data.shift();
-
-				// data is daily data, but that's a lot of data points now, so bin.
+				// data is daily data, but that's a lot of data points now, so bin by month.
 				var data2 = [];
 				for (var i = 0; i < data.length; i++) {
-					if ((i % 7) == 0) data2.push({ dates: [], values: [] });
-					data2[data2.length-1].dates.push(data[i][0]);
-					data2[data2.length-1].values.push(data[i][1]);
+					if (i == 0 || /-01$/.test(data[i][0])) data2.push(0);
+					data2[data2.length-1] += data[i][1];
 				}
+				data2.pop(); // drop the last bin because it is (probably) incomplete
 				data = data2;
+
+				$("#install-stats .heading span").text(data2[data2.length-1].toLocaleString());
 
 				var chart = d3.select("#install-stats").append("svg")
 					.attr("width", w)
@@ -379,7 +378,7 @@
 						.domain([0, data.length])
 						.range([0, w]);
 					var y = d3.scale.linear()
-						.domain([0, d3.max(data.map(function(d) { return d3.mean(d.values); }))])
+						.domain([0, d3.max(data)])
 						.range([0, h]);
 
 					// bars
@@ -389,7 +388,7 @@
 						.attr("x", function(d, i) { return x(i); })
 						.attr("y", 0)
 						.attr("width", parseInt(w / data.length)-1)
-						.attr("height", function(d) { return y(d3.mean(d.values)); } )
+						.attr("height", function(d) { return y(d); } )
 						.attr("fill", "#E0E0E0")
 			})
 
