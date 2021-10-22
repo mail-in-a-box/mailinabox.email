@@ -1,4 +1,3 @@
-@import url(https://fonts.googleapis.com/css?family=Iceland);
 @import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
 @import url(https://fonts.googleapis.com/css?family=Ubuntu:300,500);
 @import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:500);
@@ -10,7 +9,7 @@ body {
 }
 
 h1 {
-	font-family: 'Iceland', sans-serif;
+	font-family: Ubnutu, Arial, sans-serif;
 	font-size: 50px;
 }
 

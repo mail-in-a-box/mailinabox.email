@@ -1,6 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Created with Inkscape (http://www.inkscape.org/) -->
-
 <svg
    xmlns:dc="http://purl.org/dc/elements/1.1/"
    xmlns:cc="http://creativecommons.org/ns#"
@@ -14,7 +12,7 @@
    height="291.95581"
    id="svg2"
    version="1.1"
-   inkscape:version="0.48.4 r9939"
+   inkscape:version="1.0.2 (e86c870879, 2021-01-15)"
    sodipodi:docname="logo_with_title.svg"
    inkscape:export-filename="/home/user/dev/mailinabox.email/static/logo_with_title.png"
    inkscape:export-xdpi="19.729013"
@@ -321,15 +319,16 @@
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
-     inkscape:window-width="1311"
-     inkscape:window-height="744"
-     inkscape:window-x="49"
-     inkscape:window-y="24"
+     inkscape:window-width="1866"
+     inkscape:window-height="1016"
+     inkscape:window-x="54"
+     inkscape:window-y="27"
      inkscape:window-maximized="1"
      fit-margin-top="25"
      fit-margin-left="25"
      fit-margin-right="25"
-     fit-margin-bottom="25" />
+     fit-margin-bottom="25"
+     inkscape:document-rotation="0" />
   <metadata
      id="metadata7">
     <rdf:RDF>
@@ -338,7 +337,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -608,15 +607,14 @@
        transform="matrix(0.20333228,0,0,0.20333228,364.77656,814.73732)" />
     <text
        xml:space="preserve"
-       style="font-size:282.02151489px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#552200;fill-opacity:1;stroke:none;font-family:Sans"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#552200;fill-opacity:1;stroke:none"
        x="455.15973"
        y="853.75751"
-       id="text3060"
-       sodipodi:linespacing="125%"><tspan
+       id="text3060"><tspan
          sodipodi:role="line"
          id="tspan3062"
          x="455.15973"
          y="853.75751"
-         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;fill:#4d4d4d;font-family:Ubuntu;-inkscape-font-specification:Ubuntu Medium">Mail-in-a-Box</tspan></text>
+         style="font-style:normal;font-variant:normal;font-weight:500;font-stretch:normal;font-size:282.022px;line-height:1.25;font-family:Ubuntu;-inkscape-font-specification:'Ubuntu Medium';fill:#4d4d4d">Mail-in-a-Box</tspan></text>
   </g>
 </svg>
