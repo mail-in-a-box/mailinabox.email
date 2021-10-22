@@ -19,7 +19,7 @@
     <link rel="apple-touch-icon" type="image/png" href="/static/logo_small.png">
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="static/vendor/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="guides.css" />
     <style>
 		.tld-list {
@@ -66,19 +66,19 @@
 	<div class="container">
     	<div class="row">
     		<div id="sidebar" class="col-sm-4 col-md-3">
-				<div id="nav" class="small">
+				<div id="nav" class="small sticky-top">
 					<p style="margin: 0 0 .5em 14px; border-bottom: 1px solid #CCC; color: #888;">Table of Contents</p>
-			        <ul class="nav nav-list">
-			          <li><a href="#checklist">Checklist</a></li>
-			          <li><a href="#video">Video Tutorial</a></li>
-			          <li><a href="#domain-name-registration">Getting a Domain Name</a></li>
-			          <li><a href="#hostname">The Box&rsquo;s Hostname</a></li>
-			          <li><a href="#machine">The Machine</a></li>
-			          <li><a href="#glue-records">Domain Name Glue Records</a></li>
-			          <li><a href="#domain-name-nameservers">Domain Name Nameservers</a></li>
-			          <li><a href="#setup">Machine Setup</a></li>
-			          <li><a href="#admin">Administrative Page</a></li>
-			          <li><a href="#checks">Systems Checks</a></li>
+			        <ul class="nav flex-column">
+			          <li class="nav-item"><a class="nav-link" href="#checklist">Checklist</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#video">Video Tutorial</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#domain-name-registration">Getting a Domain Name</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#hostname">The Box&rsquo;s Hostname</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#machine">The Machine</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#glue-records">Domain Name Glue Records</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#domain-name-nameservers">Domain Name Nameservers</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#setup">Machine Setup</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#admin">Administrative Page</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#checks">Systems Checks</a></li>
 			        </ul>
 				</div>
     		</div>
@@ -244,7 +244,7 @@
 
 	    			<p>It looks something like what&rsquo;s shown here:</p>
 
-	    			<img src="static/domain_hostnames.png" title="Glue Record Configuration at Your Domain Registrar" class="img-responsive figure"/>
+	    			<img src="static/domain_hostnames.png" title="Glue Record Configuration at Your Domain Registrar" class="img-fluid figure"/>
 
 	    			<p>Your registrar may ask you to enter these hostnames with the domain name part omitted, as mine did in this case. If so, enter the part of the hostname up to the domain name.</p>
 
@@ -271,7 +271,7 @@
 
 	    			<p>Here&rsquo;s what that looks like in my registrar:</p>
 
-	    			<img src="static/domain_nameservers.png" title="Nameserver Configuration at Your Domain Registrar" class="img-responsive figure"/>
+	    			<img src="static/domain_nameservers.png" title="Nameserver Configuration at Your Domain Registrar" class="img-fluid figure"/>
 
 	    			<p>Don&rsquo;t worry if you are confused about what this all means. It is complicated &mdash; we all get confused at this point.</p>
 
@@ -416,14 +416,7 @@ C0:9B:FF:04:2B:2D:8F:47:5A:8B:D5:88:B7:05:D3:4B:6C:22:80:5F</pre>
     	</div>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"> </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script>
-		if ($(window).width() >= 768) {
-			// scroll spy with a fixed TOC doesn't work on small screens
-			$('#nav').attr('data-spy', 'affix');
-			$('body').scrollspy()
-		}
-	</script>
+	<script src="static/vendor/jquery.js"> </script>
+    <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>

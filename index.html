@@ -28,14 +28,12 @@
     <link rel="icon" type="image/png" href="/static/logo_small.png">
     <link rel="apple-touch-icon" type="image/png" href="/static/logo_small.png">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="static/vendor/bootstrap/css/bootstrap.min.css" />
 
     <link rel="stylesheet" href="static/fontello/css/fontello.css">
 
     <style>
-	    @import url(https://fonts.googleapis.com/css?family=Raleway:400,700);
-		@import url(https://fonts.googleapis.com/css?family=Ubuntu:300);
-		@import url(https://fonts.googleapis.com/css?family=Source+Code+Pro:500);
+	    @import url(static/vendor/google-fonts.css);
 
     	body {
     		font-family: Raleway, sans-serif;
@@ -185,7 +183,7 @@
 		</header>
 
 		<div class="row">
-			<div id="sidebar" class="col-sm-3 col-sm-push-9 col-lg-push-8">
+			<div id="sidebar" class="col-sm-3 order-2">
 				<h2>quick links</h2>
 				<p><a href="guide.html"><i class="icon-th-list"></i>setup guide</a></p>
 				<p><a href="https://discourse.mailinabox.email/"><i class="icon-chat"></i>discussion forum</a></p>
@@ -200,7 +198,7 @@
 				<p><a href="https://github.com/mail-in-a-box/mailinabox/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a></p>
 			</div>
 
-			<div class="col-sm-9 col-lg-8 col-sm-pull-3">
+			<div class="col-sm-9 col-lg-8">
 				<h2>What is it?</h2>
 
 					<p>Mail-in-a-Box lets you become your own mail service provider in a few easy steps. It&rsquo;s sort of like making your own gmail, but one you control from top to bottom.</p>
@@ -248,15 +246,15 @@
 					<div id="screenshots" class="row">
 						<div class="col-sm-4">
 							<div>Roundcube Webmail</div>
-							<a href="static/roundcube.png"><img src="static/roundcube.png" class="img-responsive"></a>
+							<a href="static/roundcube.png"><img src="static/roundcube.png" class="img-fluid"></a>
 						</div>
 						<div class="col-sm-4">
 							<div>Nextcloud Contacts</div>
-							<a href="static/nextcloud_contacts.png"><img src="static/nextcloud_contacts.png" class="img-responsive"></a>
+							<a href="static/nextcloud_contacts.png"><img src="static/nextcloud_contacts.png" class="img-fluid"></a>
 						</div>
 						<div class="col-sm-4">
 							<div>A Control Panel</div>
-							<a href="static/control_panel.png"><img src="static/control_panel.png" class="img-responsive"></a>
+							<a href="static/control_panel.png"><img src="static/control_panel.png" class="img-fluid"></a>
 						</div>
 					</div>
 
@@ -346,9 +344,9 @@
     	</div>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"> </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.4.13/d3.min.js"></script> <!-- activity stats -->
+	<script src="static/vendor/jquery.js"> </script>
+    <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="static/vendor/d3.js"></script> <!-- activity stats -->
 	<script>
 		$(function() {
 			// Create the activity chart.

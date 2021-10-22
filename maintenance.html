@@ -20,7 +20,7 @@
     <link rel="apple-touch-icon" type="image/png" href="/static/logo_small.png">
 
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="static/vendor/bootstrap/css/bootstrap.min.css" />
     <link rel="stylesheet" href="guides.css" />
     <style>
     </style>
@@ -39,14 +39,14 @@
 	<div class="container">
     	<div class="row">
     		<div id="sidebar" class="col-sm-4 col-md-3">
-				<div id="nav" class="small">
+				<div id="nav" class="small sticky-top">
 					<p style="margin: 0 0 .5em 14px; border-bottom: 1px solid #CCC; color: #888;">Table of Contents</p>
-			        <ul class="nav nav-list">
-			          <li><a href="#something-went-wrong">Something Went Wrong</a></li>
-			          <li><a href="#multiple-domains">Multiple Domains</a></li>
-			          <li><a href="#updating-software">Updating System Software</a></li>
-			          <li><a href="#upgrade">Upgrading Mail-in-a-Box</a></li>
-			          <li><a href="#moving-boxes">Moving to a New Box</a></li>
+			        <ul class="nav flex-column">
+			          <li class="nav-item"><a class="nav-link" href="#something-went-wrong">Something Went Wrong</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#multiple-domains">Multiple Domains</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#updating-software">Updating System Software</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#upgrade">Upgrading Mail-in-a-Box</a></li>
+			          <li class="nav-item"><a class="nav-link" href="#moving-boxes">Moving to a New Box</a></li>
 			        </ul>
 				</div>
     		</div>
@@ -230,14 +230,7 @@ sudo -E duplicity restore --force s3://s3.amazonaws.com/your-bucket-name/your-ba
     	</div>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-2.1.1.min.js"> </script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
-	<script>
-		if ($(window).width() >= 768) {
-			// scroll spy with a fixed TOC doesn't work on small screens
-			$('#nav').attr('data-spy', 'affix');
-			$('body').scrollspy()
-		}
-	</script>
+	<script src="static/vendor/jquery.js"> </script>
+    <script src="static/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
