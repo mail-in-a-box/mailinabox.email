@@ -94,6 +94,8 @@ smtp_sasl_tls_security_options = </code></pre>
 
 					<p>And that's it. Mail created and dispatched on the remote machine will now be routed via your Mail-in-a-Box.</p>
 
+				        <p>To avoid issues with spam filters, it is recommended to add all remote machines sending email via the relay to your SPF record. For example: <code>v=spf1 mx ip4:1.2.3.4 -all</code></p>
+
 					<p>You can send a test email on the remote machine by running:</p>
 
 					<pre>echo "relay test" | mail -s "relay test" destinationuser@destinationdomain</pre>
