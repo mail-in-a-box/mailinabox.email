@@ -365,6 +365,7 @@
 				// data is daily data, but that's a lot of data points now, so bin by month.
 				var data2 = [];
 				for (var i = 0; i < data.length; i++) {
+					if (/^2022-09-/.test(data[i][0])) continue; // lost most of the data this month when I migrated my box
 					if (i == 0 || /-01$/.test(data[i][0])) data2.push(0);
 					data2[data2.length-1] += data[i][1];
 				}
