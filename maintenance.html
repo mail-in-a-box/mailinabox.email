@@ -169,7 +169,14 @@ sudo management/backup.py</pre>
 
 	    			<p>Then follow the steps in the setup guide&rsquo;s section <a href="guide.html#setup">Setting Up The Box</a>. When you are prompted for the box&rsquo;s hostname, you will need to use the hostname that you are currently using.</p>
 
-	    			<h3>Restore your mail data (and other files)</h3>
+				<h3>Clean up SSL files</h3>
+				
+					<p>When you set up a new machine, a self-signed SSL certificate will be generated.  The presence of this data will cause nginx to not restart properly, so let's delete this data.  Run:</p>
+
+					<pre> sudo rm -rf /home/user-data/ssl/* </pre>
+
+				
+				<h3>Restore your mail data (and other files)</h3>
 
 	    			<p>Next you&rsquo;ll restore your mail data and other files to the new machine.</p>
 
