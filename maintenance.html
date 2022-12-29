@@ -212,6 +212,15 @@ sudo -E duplicity restore --force s3://s3.amazonaws.com/your-bucket-name/your-ba
 
 					<p>You may have to adjust the S3 URL depending on what AWS region you use. You can find the AWS Regions and Endpoints <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">here</a></p>
 
+					<h5>S3 compatible backups</h5>
+
+					<p>If your backups are stored in an S3 compatible storage which is not amazon, you have to set the s3 endpoint url:</p>
+
+					<pre>export AWS_ACCESS_KEY_ID=paste your AWS access key ID here
+export AWS_SECRET_ACCESS_KEY=paste your AWS secret access key here
+export PASSPHRASE=$(cat your_backup_secret_key_file.txt)
+sudo -E duplicity restore --force s3://your-bucket-name/your-backup-path /home/user-data/ --s3-endpoint-url=https://host</pre>
+
 					<h3>Re-configure the box</h3>
 
 					<p>Re-run Mail-in-a-Box setup now that your old files are back:</p>
