@@ -9,11 +9,6 @@
     <meta name="description" content="Maintenance instructions for Mail-in-a-Box. Take back control of your email with this easy-to-deploy mail server in a box." />
 
     <meta property="og:site_name" content="Mail-in-a-Box">
-    <meta name="twitter:creator" content="@joshdata" />
-    <meta name="twitter:creator:id" content="352686442" />
-    <meta name="twitter:site" content="@mailinabox" />
-    <meta name="twitter:site:id" content="2612357965" />
-
     <meta name="og:image" content="https://mailinabox.email/static/logo.png" />
     <link rel="vcs-git" href="https://github.com/mail-in-a-box/mailinabox.email" title="code for Mail-in-a-Box website" />
     <link rel="icon" type="image/png" href="/static/logo_small.png">
@@ -31,7 +26,7 @@
 	<div id="back">
 		<div class="container">
 			<a href="/">
-				&lt; Back to Mail-in-a-Box
+				< Back to Mail-in-a-Box
 			</a>
 		</div>
 	</div>
@@ -68,12 +63,12 @@
 	    			<li>Restart your box by logging in with SSH and then typing <code>sudo reboot</code>. Once the box has started up, check the System Status Checks page again.</li>
 	    			</ol>
 
-	    			<p>Please do these steps first. If you&rsquo;ve done these steps, then head to the <a href="https://discourse.mailinabox.email">discussion forum</a> to ask your question. In your post:</p>
+	    			<p>Please do these steps first. If you’ve done these steps, then head to the <a href="https://discourse.mailinabox.email">discussion forum</a> to ask your question. In your post:</p>
 
 	    			<ol>
-	    			<li>Describe the problem you are having. Instead of saying &ldquo;it doesn&rsquo;t work&rdquo;, write the error message you see, post a screenshot, or describe what you are seeing that you don&rsquo;t want to be seeing.</li>
-	    			<li>Mention that you &ldquo;checked the status page, re-ran setup, and rebooted the box&rdquo;, per the steps above, so that anyone answering knows what you have tried so far. If you don&rsquo;t mention this, someone may ask you to do it before providing other assistance.</li>
-	    			<li>If everything in the System Status Checks is green, mention that by saying &ldquo;all checks are green&rdquo;. If something isn&rsquo;t green, mention it.</li>
+	    			<li>Describe the problem you are having. Instead of writing “it doesn’t work,” write the error message you see, post a screenshot, or describe what you are seeing that you don’t want to be seeing.</li>
+	    			<li>Mention that you “checked the status page, re-ran setup, and rebooted the box,” per the steps above, so that anyone answering knows what you have tried so far. If you don’t mention this, someone may ask you to do it before providing other assistance.</li>
+	    			<li>If everything in the System Status Checks is green, mention that by saying “all checks are green.” If something isn’t green, mention it.</li>
 	    			</ol>
 
 	    			<p>If you figure out the problem on your own, you are also welcome to write up your experience on the <a href="https://discourse.mailinabox.email">discussion forum</a> so that it might help others.</p>
@@ -84,9 +79,9 @@
 	    			<p>Your box can host email and serve static websites for more than one domain name. To set up additional domain names, just follow three steps:</p>
 
 	    			<ol>
-	    			<li>Buy an additional domain name if you don&rsquo;t yet own it. See the <a href="guide.html#domain-name-registration">Your Domain Name</a> section of the setup guide for tips.</li>
-	    			<li>Configure its nameservers to be the same nameservers on your first domain name. Follow the <a href="guide.html#domain-name-nameservers">Domain Name Configuration — Nameservers</a> section of the setup guide for instructions.</li>
-	    			<li>Add an email account (user) or alias on your box for the new domain name using the control panel. If you only plan to serve a website, still add an email address or alias &mdash; that&rsquo;s how the box knows to handle that domain name.</li>
+	    			<li>Buy an additional domain name if you don’t yet own it. See the <a href="guide.html#domain-name-registration">Your Domain Name</a> section of the setup guide for tips.</li>
+	    			<li>Configure its nameservers to be the same nameservers on your first domain name. Follow the <a href="guide.html#domain-name-nameservers">Domain Name Configuration—Nameservers</a> section of the setup guide for instructions.</li>
+	    			<li>Add an email account (user) or alias on your box for the new domain name using the control panel. If you only plan to serve a website, still add an email address or alias—that’s how the box knows to handle that domain name.</li>
 	    			</ol>
 
 
@@ -96,22 +91,30 @@
 
 					<p>You should periodically update the system software on your box. The box will automatically install security updates as they are made available by Ubuntu, but your control panel will let you know if a reboot is needed or if non-security updates are available for you to install.</p>
 
-					<p>When indicated to do so, log into your machine with SSH (using the same <code>ssh</code> command that you used <a href="guide.html#setup">during setup</a>) and then type:</p>
+					<p>When indicated to do so, log into your machine with SSH (using the same <code>ssh</code> command that you used <a href="guide.html#setup">during setup</a>) and then run:</p>
 
-					<pre>sudo apt-get update &amp;&amp; sudo apt-get upgrade</pre>
+					<pre>sudo apt-get update && sudo apt-get dist-upgrade</pre>
 
-					<p>If prompted to reboot, type:</p>
+					<p>If prompted to reboot, then run:</p>
 
 					<pre>sudo reboot</pre>
 
-					<p>We will post security advisories to our twitter account <a href="https://twitter.com/mailinabox">@mailinabox</a>, the <a href="https://discourse.mailinabox.email/c/announcements">announcements section of the discussion forum</a>, and our Slack chat (see the homepage).</p>
+					<p>If apt-get dist-upgrade reports that “packages have been kept back” then those packages are being released in <a href="https://wiki.ubuntu.com/PhasedUpdates">Phased Updates</a>. If you want your system to be updated with held back packages without waiting for the Phased Update process to complete, for example because an update is expected to fix a problem, then copy the listed names of the held back packages that should be updated and run:</p>
+
+					<pre>sudo apt-get install pasted-names-of-the-held-back-packages</pre>
+
+					<p>Occasionally, after updating Ubuntu, run:</p>
+
+					<pre>sudo apt-get autoremove && sudo apt-get autoclean --yes && sudo apt-get check</pre>
+
+					<p>We will post security advisories to our Fosstodon account <a href="https://fosstodon.org/@MailInABox">@MailInABox</a>, the <a href="https://discourse.mailinabox.email/c/announcements">announcements section of the discussion forum</a>, and our Slack chat (see the homepage).</p>
 
 
 	    			<h2 id="upgrade">Upgrading Mail-in-a-Box</h2>
 
-					<p>You should move to the latest Mail-in-a-Box release as releases are posted, especially if an update addresses any security issues, although you do not necessarily need to do so. We will post release announcements to our twitter account <a href="https://twitter.com/mailinabox">@mailinabox</a>, the <a href="https://discourse.mailinabox.email/c/announcements">announcements section of the discussion forum</a>, and our Slack chat (see the homepage).</p>
+					<p>You should move to the latest Mail-in-a-Box release as releases are posted, especially if an update addresses any security issues, although you do not necessarily need to do so. We will post release announcements to our Fosstodon account <a href="https://fosstodon.org/@MailInABox">@MailInABox</a>, the <a href="https://discourse.mailinabox.email/c/announcements">announcements section of the discussion forum</a>, and our Slack chat (see the homepage).</p>
 
-					<p>Check the <a href="https://github.com/mail-in-a-box/mailinabox/blob/main/CHANGELOG.md">release notes</a> prior to updating to see what&rsquo;s been changed in the latest version.</p>
+					<p>Check the <a href="https://github.com/mail-in-a-box/mailinabox/blob/main/CHANGELOG.md">release notes</a> prior to updating to see what’s been changed in the latest version.</p>
 
 					<div class="alert alert-warning" role="alert">
 	    				<p>If you are upgrading from Mail-in-a-Box version 5x or earlier on <strong>Ubuntu 18.04</strong> to version 60 or later on <strong>Ubuntu 22.04</strong>:</p>
@@ -135,11 +138,11 @@
 
 	    			<h2 id="moving-boxes">Moving to a New Box / Testing Backups</h2>
 
-	    			<p>If you want to move your Mail-in-a-Box installation to a new machine (e.g. you&rsquo;re getting more memory, getting a new IP address, etc.), or if something is horribly wrong with your box, you can easily move all of your data to a new machine. <strong>This is also the process for upgrading a Mail-in-a-Box box from version 5x or earlier on Ubuntu 18.04 to version 60 or later on Ubuntu 22.04</strong> (<a href="https://discourse.mailinabox.email/t/version-60-for-ubuntu-22-04-is-released/9558">see the release announcement for details</a>).</p>
+	    			<p>If you want to move your Mail-in-a-Box installation to a new machine (e.g. you’re getting more memory, getting a new IP address, etc.), or if something is horribly wrong with your box, you can easily move all of your data to a new machine. <strong>This is also the process for upgrading a Mail-in-a-Box box from version 5x or earlier on Ubuntu 18.04 to version 60 or later on Ubuntu 22.04</strong> (<a href="https://discourse.mailinabox.email/t/version-60-for-ubuntu-22-04-is-released/9558">see the release announcement for details</a>).</p>
 
 
 					<div class="alert alert-success" role="alert">
-	    				<p>Even if your box is working fine, it&rsquo;s a good idea to test out this procedure from time to time so that you can verify that your backups are working and that you haven&rsquo;t lost the backup secret key.</p>
+	    				<p>Even if your box is working fine, it’s a good idea to test out this procedure from time to time so that you can verify that your backups are working and that you haven’t lost the backup secret key.</p>
 					</div>
 
 					<h3>Upgrade your old box first!</h3>
@@ -165,9 +168,9 @@ sudo management/backup.py</pre>
 
 	    			<h3>Create a new box</h3>
 
-	    			<p>Start by creating a new Mail-in-a-Box machine: Spin up a new machine following the setup guide&rsquo;s section <a href="guide.html#machine">The Machine</a>. <em>Use as many of the same settings as on your original box as makes sense.</em> On Digital Ocean you will need to use the exact same name for your box as you did previously or reverse DNS won&rsquo;t work.</p>
+	    			<p>Start by creating a new Mail-in-a-Box machine: Spin up a new machine following the setup guide’s section <a href="guide.html#machine">The Machine</a>. <em>Use as many of the same settings as on your original box as makes sense.</em> On Digital Ocean you will need to use the exact same name for your box as you did previously or reverse DNS won’t work.</p>
 
-	    			<p>Then follow the steps in the setup guide&rsquo;s section <a href="guide.html#setup">Setting Up The Box</a>. When you are prompted for the box&rsquo;s hostname, you will need to use the hostname that you are currently using.</p>
+	    			<p>Then follow the steps in the setup guide’s section <a href="guide.html#setup">Setting Up The Box</a>. When you are prompted for the box’s hostname, you will need to use the hostname that you are currently using.</p>
 
 				<h3>Clean up SSL files</h3>
 				
@@ -178,23 +181,23 @@ sudo management/backup.py</pre>
 				
 				<h3>Restore your mail data (and other files)</h3>
 
-	    			<p>Next you&rsquo;ll restore your mail data and other files to the new machine.</p>
+	    			<p>Next you’ll restore your mail data and other files to the new machine.</p>
 
 					<h4>Locating your backup secret key</h4>
 
 					<p>Your backups are encrypted, and you will need your backup secret key to restore from the backup.</p>
 
-					<p>You should have already stored the backup secret key in a safe place &mdash; like in your home &mdash; per the backup instructions in the control panel. If you haven&rsquo;t done that yet... now is the time! The file is located on your old box at <code>/home/user-data/backup/secret_key.txt</code>. Copy that file to a safe place now.</p>
+					<p>You should have already stored the backup secret key in a safe place—like in your home—per the backup instructions in the control panel. If you haven’t done that yet... now is the time! The file is located on your old box at <code>/home/user-data/backup/secret_key.txt</code>. Copy that file to a safe place now.</p>
 
-					<p>Copy that file onto your new box. Any SFTP program like <a href="https://filezilla-project.org/">FileZilla</a> can help you with that. (SFTP is like SSH, so you will use the same login credentials as you use with SSH.)</p>
+					<p>Copy that file onto your new box. Any SFTP program like <a href="https://cyberduck.io/">Cyberduck</a> or <a href="https://filezilla-project.org/">FileZilla</a> can help you with that. (SFTP is like SSH, so you will use the same login credentials as you use with SSH.)</p>
 
 					<h4>Restoring backup files</h4>
 
 					<h5>Local backups</h5>
 
-					<p>If you are using the default backup method, which stores backups on the box itself, then hopefully you have figured out how to periodically copy those files somewhere else safe &mdash; otherwise what&rsquo;s the point!</p>
+					<p>If you are using the default backup method, which stores backups on the box itself, then hopefully you have figured out how to periodically copy those files somewhere else safe—otherwise what’s the point!</p>
 
-					<p>Using any SFTP program like <a href="https://filezilla-project.org/">FileZilla</a> (or <code>scp</code> if you know how) copy your backups from wherever you stored them to somewhere on your new machine. If your old box is still running, then just copy them from <code>/home/user-data/backup/encrypted</code> on your old box.</p>
+					<p>Using any SFTP program like <a href="https://cyberduck.io/">Cyberduck</a> or <a href="https://filezilla-project.org/">FileZilla</a> (or <code>scp</code> if you know how) copy your backups from wherever you stored them to somewhere on your new machine. If your old box is still running, then just copy them from <code>/home/user-data/backup/encrypted</code> on your old box.</p>
 
 					<p>Then restore the files:</p>
 
@@ -203,23 +206,33 @@ sudo -E duplicity restore --force file:///path/to/copied/files /home/user-data/<
 
 					<h5>Amazon S3 backups</h5>
 
-					<p>If your backups are stored in Amazon S3, get your account credentials handy and then run a duplicity restore:</p>
+					<p>If backups are stored in Amazon S3, have account credentials handy and then run a Duplicity restore. Replace the sample keys, URLs, and paths in the example commands below with the actual keys, URLs, and paths from your instance of Mail-in-a-Box, and then run the commands:</p>
 
-					<pre>export AWS_ACCESS_KEY_ID=paste your AWS access key ID here
-export AWS_SECRET_ACCESS_KEY=paste your AWS secret access key here
+					<pre>export AWS_ACCESS_KEY_ID=paste_your_AWS_access_key_ID_here
+export AWS_SECRET_ACCESS_KEY=paste_your_AWS_secret_access_key_here
 export PASSPHRASE=$(cat your_backup_secret_key_file.txt)
-sudo -E duplicity restore --force s3://s3.amazonaws.com/your-bucket-name/your-backup-path /home/user-data/</pre>
+sudo -E duplicity restore --force s3://s3.amazonaws.com/bucket-name/backup-path /home/user-data/</pre>
 
-					<p>You may have to adjust the S3 URL depending on what AWS region you use. You can find the AWS Regions and Endpoints <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">here</a></p>
+					<p>You may have to adjust the S3 URL depending on what AWS region you use. You can find the AWS Regions and Endpoints <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">here</a>.</p>
 
 					<h5>S3 compatible backups</h5>
 
-					<p>If your backups are stored in an S3 compatible storage which is not amazon, you have to set the s3 endpoint url:</p>
+					<p>If backups are stored in S3 compatible storage (not Amazon), then the S3 endpoint URL and the storage path relative to that endpoint must be set as environment variables to run a Duplicity restore. Replace the sample keys, URLs, and paths in the example commands below with the actual keys, URLs, and paths from your instance of Mail-in-a-Box, and then run the commands:</p>
 
-					<pre>export AWS_ACCESS_KEY_ID=paste your AWS access key ID here
-export AWS_SECRET_ACCESS_KEY=paste your AWS secret access key here
+					<pre>export AWS_ACCESS_KEY_ID=paste_your_AWS_access_key_ID_here
+export AWS_SECRET_ACCESS_KEY=paste_your_AWS_secret_access_key_here
 export PASSPHRASE=$(cat your_backup_secret_key_file.txt)
-sudo -E duplicity restore --force s3://your-bucket-name/your-backup-path /home/user-data/ --s3-endpoint-url=https://host</pre>
+sudo -E duplicity restore --force s3:///bucket-name/backup-path \
+--s3-endpoint-url=https://subdomain.domain.tld /home/user-data/</pre>
+
+					<p>If you want to check the status of backups stored in S3 compatible storage (not Amazon) before restoring files, then the S3 endpoint URL and the storage path relative to that endpoint must be set as environment variables to run a Duplicity status check. Checking the status of Duplicity backup collections is a good way to test access before running a Duplicity restore. Replace the sample keys, URLs, and paths in the example commands below with the actual keys, URLs, and paths from your instance of Mail-in-a-Box, and then run the commands:</p>
+
+					<pre>export AWS_ACCESS_KEY_ID=paste_your_AWS_access_key_ID_here
+export AWS_SECRET_ACCESS_KEY=paste_your_AWS_secret_access_key_here
+sudo -E duplicity collection-status s3:///bucket-name/backup-path \
+--s3-endpoint-url=https://subdomain.domain.tld</pre>
+
+					<p>Consult the <a href="https://duplicity.us/stable/duplicity.1.html">Duplicity Reference Manual</a> if you want more information about using Duplicity.</p>
 
 					<h3>Re-configure the box</h3>
 
@@ -231,9 +244,9 @@ sudo -E duplicity restore --force s3://your-bucket-name/your-backup-path /home/u
 
 					<h3>Update your DNS</h3>
 
-	    			<p>Finally, update your domain name&rsquo;s glue records to the new machine&rsquo;s IP address (see the setup guide&rsquo;s section on <a href="guide.html#machine">glue records</a>.</p>
+	    			<p>Finally, update your domain name’s glue records to the new machine’s IP address (see the setup guide’s section on <a href="guide.html#machine">glue records</a>.</p>
 
-	    			<p>DNS can take a few hours to update, so wait a while, and then see if the control panel&rsquo;s status checks report any problems and that your devices are picking up mail on your new box.</p>
+	    			<p>DNS can take a few hours to update, so wait a while, and then see if the control panel’s status checks report any problems and that your devices are picking up mail on your new box.</p>
 
 	    			<p>(Skip this if you are just testing your backups.)</p>
 
