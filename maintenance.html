@@ -201,7 +201,7 @@ sudo management/backup.py</pre>
 
 					<p>Then restore the files:</p>
 
-					<pre>export PASSPHRASE=$(cat your_backup_secret_key_file.txt)
+					<pre>export PASSPHRASE=$(head -n1 your_backup_secret_key_file.txt)
 sudo -E duplicity restore --force file:///path/to/copied/files /home/user-data/</pre>
 
 					<h5>Amazon S3 backups</h5>
@@ -210,7 +210,7 @@ sudo -E duplicity restore --force file:///path/to/copied/files /home/user-data/<
 
 					<pre>export AWS_ACCESS_KEY_ID=paste_your_AWS_access_key_ID_here
 export AWS_SECRET_ACCESS_KEY=paste_your_AWS_secret_access_key_here
-export PASSPHRASE=$(cat your_backup_secret_key_file.txt)
+export PASSPHRASE=$(head -n1 your_backup_secret_key_file.txt)
 sudo -E duplicity restore --force s3://s3.amazonaws.com/bucket-name/backup-path /home/user-data/</pre>
 
 					<p>You may have to adjust the S3 URL depending on what AWS region you use. You can find the AWS Regions and Endpoints <a href="https://docs.aws.amazon.com/general/latest/gr/rande.html#s3_region">here</a>.</p>
